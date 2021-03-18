@@ -1,4 +1,6 @@
-package ex4.io.printf;
+package ex5.io.scanner;
+
+import java.util.Scanner;
 
 public class Program {
 
@@ -7,16 +9,28 @@ public class Program {
 		int total;
 		float avg;
 
-		kor1 = 50;
-		kor2 = 60;
-		kor3 = 80;
+		Scanner sc = new Scanner(System.in);
 
-		total = kor1 + kor2 + kor3;
-		// avg = (float)(total/3.0); // double보다 float이 작으니까 작은 공간에 큰것을 넣으면 오류가 남
-		avg = total/3.0f;
-
+		kor1 = 0;
+		kor2 = 0;
+		kor3 = 0;
+		
+		// 성적 입력 부분
+		System.out.print("┌────────────────────────────┐\n");
+		System.out.print("│           성적 입력          │\n");
+		System.out.print("└────────────────────────────┘\n");
+		System.out.print("국어1 성적을 입력하세요 >> ");
+		kor1 = sc.nextInt();
+		System.out.print("국어2 성적을 입력하세요 >> ");
+		kor2 = sc.nextInt();
+		System.out.print("국어3 성적을 입력하세요 >> ");
+		kor3 = sc.nextInt();
+		
 
 		// 성적 출력 부분
+		total = kor1 + kor2 + kor3;
+		avg = total/3.0f;
+
 		System.out.print("┌────────────────────────────┐\n");
 		System.out.print("│           성적 출력          │\n");
 		System.out.print("└────────────────────────────┘\n");
