@@ -21,6 +21,7 @@ public class Program {
 		}
 		System.out.println(total);
 		
+		// 3~7까지 더하기. 이렇게 하래
 		total = 0;
 		for(int i = 0; i<5; i++) {
 			total += i+3;
