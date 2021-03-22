@@ -1,12 +1,14 @@
 # JAVA
 > 뉴렉처 자바 프로그래밍 Study : 2021.03.17 ~ 2021.03.
 ---
->> break 라벨문 처음 알았다.
+>> <b><u>✨Check✨</u></b><br>
+>> 1. break 라벨문<br>
+>> 2. hasNext()
 ---
 ## 목차
 - [JAVA](#java)
 	- [> 뉴렉처 자바 프로그래밍 Study : 2021.03.17 ~ 2021.03.](#-뉴렉처-자바-프로그래밍-study--20210317--202103)
-	- [>> break 라벨문 처음 알았다.](#-break-라벨문-처음-알았다)
+	- [>> 2. hasNext()](#-2-hasnext)
 	- [목차](#목차)
 	- [프로그래밍이란?](#프로그래밍이란)
 	- [6강. 자바 언어의 특징](#6강-자바-언어의-특징)
@@ -446,3 +448,33 @@ while
 ## 33강. 제어구조 continue와 break문
 - continue : 건너뛰기
 - break : 중단하기
+- hasNext() : boolean 다음 값이 있는지 없는지 true와 false로 알려줌
+  - 그것을 이용해 while문 안에 쓸 수 있다!!!
+
+```java
+package ex13.io.control6.continue_break;
+
+import java.util.Scanner;
+
+public class Program {
+
+	public static void main(String[] args) {
+		int n = 0;
+
+		Scanner sc = new Scanner(System.in);
+		System.out.print("값을 sp로 구분해서 5개 이상 입력하세요:");
+
+		// 3 Enter, 34 5 6 234 345 54 45 Enter
+		while(sc.hasNext()) {
+			n = sc.nextInt();
+			if(n<10) {
+				continue;
+			}else if(n>300) {
+				break;
+			}else { 
+				System.out.println(n);
+			}
+		}
+	}
+}
+```
