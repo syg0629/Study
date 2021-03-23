@@ -1,14 +1,18 @@
 # JAVA
-> 뉴렉처 자바 프로그래밍 Study : 2021.03.17 ~ 2021.03.
+> 뉴렉처 자바 프로그래밍 Study : 2021.03.17 ~ 2021.03.23 <br>
+> 뉴렉처 자바 코드연습 Study : 2021.03.23 ~ 2021.03.<br>
 ---
 >> <b><u>✨Check✨</u></b><br>
->> 1. break 라벨문<br>
->> 2. hasNext()
+>> 1. 32강. break 라벨문<br>
+>> 2. 33강. hasNext()<br>
+>> 3. 37강. kors[3*j+i], total = kors[j][0]+kors[j][1]+kors[j][2];
+>> 4. 자바 코드 연습 기초 #6. 범위가 좁은 조건문(특수한 조건문)을 제일 위에 놓아야한다. else에는 기본값이 들어가도록 한다.<br>  
+>> 목차 확장자 이용후 지워야할 듯
 ---
 ## 목차
 - [JAVA](#java)
-	- [> 뉴렉처 자바 프로그래밍 Study : 2021.03.17 ~ 2021.03.](#-뉴렉처-자바-프로그래밍-study--20210317--202103)
-	- [>> 2. hasNext()](#-2-hasnext)
+	- [> 뉴렉처 자바 코드연습 Study : 2021.03.23 ~ 2021.03.<br>](#-뉴렉처-자바-코드연습-study--20210323--202103)
+	- [>> 목차 확장자 이용후 지워야할 듯](#-목차-확장자-이용후-지워야할-듯)
 	- [목차](#목차)
 	- [프로그래밍이란?](#프로그래밍이란)
 	- [6강. 자바 언어의 특징](#6강-자바-언어의-특징)
@@ -30,6 +34,13 @@
 	- [31강. 제어구조 else if, else](#31강-제어구조-else-if-else)
 	- [32강. 제어구조 switch와 break 라벨문](#32강-제어구조-switch와-break-라벨문)
 	- [33강. 제어구조 continue와 break문](#33강-제어구조-continue와-break문)
+	- [34강. 배열이란?](#34강-배열이란)
+	- [36강. 다차원 배열](#36강-다차원-배열)
+	- [37강. 다차원 배열 표현식](#37강-다차원-배열-표현식)
+	- [38강. 상수형 변수](#38강-상수형-변수)
+	- [자바 코드 연습 별찍기 #1](#자바-코드-연습-별찍기-1)
+	- [자바 코드 연습 기초 #3 - 반복문 중첩](#자바-코드-연습-기초-3---반복문-중첩)
+	- [자바 코드 연습 기초 #6 - 오목판의 외곽선 꾸미기](#자바-코드-연습-기초-6---오목판의-외곽선-꾸미기)
 <br>
 
 
@@ -51,7 +62,7 @@
     - float : 실수 변수
     - Open perspective -> Java
 
-</br></br>
+</></br>
 
 ## 6강. 자바 언어의 특징
 - C/C++언어와 비교했을 때 Java언어의 특징
@@ -478,3 +489,107 @@ public class Program {
 	}
 }
 ```
+<br><br>
+
+## 34강. 배열이란?
+- 배열을 쓴다는건 반복문을 쓸 수 있다는 것.
+- 배열은 객체를 만들때 기본적인 값이 0임.
+
+<br><br>
+
+## 36강. 다차원 배열
+- `int [][] kors = new int [3][3];` 
+- 3개짜리가 3번 마련됨
+- 총 9개의 integer를 만들고 두개로 나눠서 쓸 수 있도록 하겠다.
+- `int[] kors = new int[9];`라고 쓰지 말고 `int[] kors = new int[3*3];` 이렇게 써야 계산은 CPU에게 맡기면서 우리는 저게 2개의 차원으로 나눠졌다는 것을 암
+
+<br><br>
+
+## 37강. 다차원 배열 표현식
+- 3칸씩 이동할 수 있게끔 => kors[3*j+i] 하지만 이렇게 쓰는 것 보다 kors[j][i]이게 더 좋은 방법이다
+
+<br><br>
+
+## 38강. 상수형 변수
+- 항상 같은 수를 담는 변수
+- 일반적으로 상수를 담는 변수는 대문자로 쓴다. 코드의 가독성 증가
+- 누적 `total += kors[i];`
+
+
+<br><br>
+
+## 자바 코드 연습 별찍기 #1
+```java
+package ex17.star;
+
+public class Program {
+	public static void main(String[] args) {
+		for(int j = 0; j<10; j++) {
+			for (int i = 0; i < 10; i++) {
+				System.out.print("☆");
+				if(i == 9) {
+				System.out.println();
+				}
+			}
+		}
+	}
+}
+```
+🎈 나는 이렇게 작성했는데 선생님이 작성하신 코드를 보니 정말 바보같이 작성한거더라..... 어휴.... 이제 잘하면 되니까!!! (˶╹̆ ▿╹̆˵)و✧
+
+```java
+package ex17.star;
+
+public class Program2 {
+	public static void main(String[] args) {
+		for(int j = 0; j<10; j++) {
+			for (int i = 0; i < 10; i++) {
+				System.out.print("☆");
+			}
+			System.out.println();
+		}
+	}
+}
+```
+🎈이렇게 작성하시오오...⁽⁽◝( ˙ ꒳ ˙ )◜⁾⁾
+
+<br><br>
+
+## 자바 코드 연습 기초 #3 - 반복문 중첩
+- for문 안에 if문을 쓰거나 격자로 해서 이중 for문을 쓰거나 2가지 방법이 있다.
+```java
+package ex19.test;
+
+public class Program {
+
+	public static void main(String[] args) {
+		for(int i = 0; i<9; i++) {
+			System.out.printf("%d ", i+1);
+			if(i%3 == 2){
+				System.out.println("");
+			}
+		}
+
+	}
+}
+```
+``` java
+package ex19.test;
+
+public class Program2 {
+
+	public static void main(String[] args) {
+		for (int j = 0; j<3; j++) {
+			for(int i = 0; i<3; i++) {
+				System.out.printf("%d ", 3*j+i+1);
+			}
+			System.out.println();
+		}
+	}
+}
+```
+<br><br>
+
+## 자바 코드 연습 기초 #6 - 오목판의 외곽선 꾸미기
+- 범위가 좁은 조건문(특수한 조건문)을 제일 위에 놓아야한다
+- else에는 기본값이 들어가도록 한다.
