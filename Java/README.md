@@ -1,17 +1,20 @@
 # JAVA
 > 뉴렉처 자바 프로그래밍 Study : 2021.03.17 ~ 2021.03.23 <br>
-> 뉴렉처 자바 코드연습 Study : 2021.03.23 ~ 2021.03.<br>
+> 뉴렉처 자바 코드연습 Study : 2021.03.23 ~ 2021.03.24<br>
+> 뉴렉처 자바 구조적인 프로그래밍 Study : 2021.03.24 ~ 2021.03.<br>
 ---
 >> <b><u>✨Check✨</u></b><br>
 >> 1. 32강. break 라벨문<br>
 >> 2. 33강. hasNext()<br>
 >> 3. 37강. kors[3*j+i], total = kors[j][0]+kors[j][1]+kors[j][2];
->> 4. 자바 코드 연습 기초 #6. 범위가 좁은 조건문(특수한 조건문)을 제일 위에 놓아야한다. else에는 기본값이 들어가도록 한다.<br>  
+>> 4. 자바 코드 연습 기초 #6. 범위가 좁은 조건문(특수한 조건문)을 제일 위에 놓아야한다. else에는 기본값이 들어가도록 한다.<br>
+>> 5. 자바 코드 연습 기초 #11. 코드의 복잡도가 높아지면 인덱스 값을 저장할 임시변수가 있는 게 좋다. ex) int index = -1; <br>
+>> 6. 자바 코드 연습 기초 #13. Random nextInt(int bound)  
 >> 목차 확장자 이용후 지워야할 듯
 ---
 ## 목차
 - [JAVA](#java)
-	- [> 뉴렉처 자바 코드연습 Study : 2021.03.23 ~ 2021.03.<br>](#-뉴렉처-자바-코드연습-study--20210323--202103)
+	- [> 뉴렉처 자바 구조적인 프로그래밍 Study : 2021.03.24 ~ 2021.03.<br>](#-뉴렉처-자바-구조적인-프로그래밍-study--20210324--202103)
 	- [>> 목차 확장자 이용후 지워야할 듯](#-목차-확장자-이용후-지워야할-듯)
 	- [목차](#목차)
 	- [프로그래밍이란?](#프로그래밍이란)
@@ -41,6 +44,13 @@
 	- [자바 코드 연습 별찍기 #1](#자바-코드-연습-별찍기-1)
 	- [자바 코드 연습 기초 #3 - 반복문 중첩](#자바-코드-연습-기초-3---반복문-중첩)
 	- [자바 코드 연습 기초 #6 - 오목판의 외곽선 꾸미기](#자바-코드-연습-기초-6---오목판의-외곽선-꾸미기)
+	- [자바 코드 연습 기초 #7 - 배열 참조변수 선언과 초기화 방법 정하기](#자바-코드-연습-기초-7---배열-참조변수-선언과-초기화-방법-정하기)
+	- [자바 코드 연습 기초 #8 - 자바에서 다차원 배열은 모두 톱니형 배열이다.](#자바-코드-연습-기초-8---자바에서-다차원-배열은-모두-톱니형-배열이다)
+	- [자바 코드 연습 기초 #9 - 배열 값 이동하기](#자바-코드-연습-기초-9---배열-값-이동하기)
+	- [자바 코드 연습 기초 #10 - 배열 합치기](#자바-코드-연습-기초-10---배열-합치기)
+	- [자바 코드 연습 기초 #11 - 배열 항목 찾기](#자바-코드-연습-기초-11---배열-항목-찾기)
+	- [자바 코드 연습 기초 #12 - 배열 값 교환하기](#자바-코드-연습-기초-12---배열-값-교환하기)
+	- [자바 코드 연습 기초 #13 - 배열에 랜덤 값 채우기](#자바-코드-연습-기초-13---배열에-랜덤-값-채우기)
 <br>
 
 
@@ -62,7 +72,7 @@
     - float : 실수 변수
     - Open perspective -> Java
 
-</></br>
+</br></br>
 
 ## 6강. 자바 언어의 특징
 - C/C++언어와 비교했을 때 Java언어의 특징
@@ -593,3 +603,153 @@ public class Program2 {
 ## 자바 코드 연습 기초 #6 - 오목판의 외곽선 꾸미기
 - 범위가 좁은 조건문(특수한 조건문)을 제일 위에 놓아야한다
 - else에는 기본값이 들어가도록 한다.
+
+<br><br>
+
+## 자바 코드 연습 기초 #7 - 배열 참조변수 선언과 초기화 방법 정하기
+- 배열을 참조하는 변수를 선언하는 방법
+  - int nums[] = 
+  - int [] nums = 
+- 배열 초기화하는 방법
+  - int [] nums = new int[]{1,2,3,4,5,6,7};
+  - int [] nums = {1,2,3,4,5,6,7};
+
+<br><br>
+
+## 자바 코드 연습 기초 #8 - 자바에서 다차원 배열은 모두 톱니형 배열이다.
+- lotto 번호를 저장하기 위한 1차원 배열
+  - int [] lotto = new int[6];
+- lotto 번호 3개를 일괄처리 하려면 다차원 배열로
+  - int [] lotto1  = new int[6];
+  - int [] lotto2 = new int[6];
+  - int [] lotto3 = new int[6];<br>
+    => int [][] lottos = new int[3][6];
+<br>	
+- 동일한 격자 크기의 배열 생성
+  - int [][] lottos = new int[3][6];
+- 미루기 or 톱니형 격자 크기의 배열 생성 
+  - int[][] lottos = new int[3][];
+    - lottos[0] = new int[6];
+    - lottos[1] = new int[3];
+    - lottos[2] = new int[5];
+<br>
+- Q1: 다음 연산이 가능할까?
+  - int[][] lottos = new int[3][6];
+	- lottos[0] = new int[2]  -> OK
+	- lottos[0][2] = 3; -> X
+	- 인덱스가 0,1 밖에 안되는데 2가 나와서 안됨. 자바가 가지고 있는 태생적인 문제.
+
+- Q2: 다음 배열의 객체 생성 방법은 오류는 없지만 잘못된 코드이다. 어떤 부분이 그런가?
+  - int[][] lottos = new int [3][6];
+    - lottos[0] = new int[2];
+    - lottos[1] = new int[5];
+    - lottos[2] = new int[3]; <br>
+    => A2: int[][] lottos = new int [3][]; 이렇게 해야함
+
+<br><br>
+
+## 자바 코드 연습 기초 #9 - 배열 값 이동하기
+- package ex21.array; Program1
+
+<br><br>
+
+## 자바 코드 연습 기초 #10 - 배열 합치기
+- package ex21.array; Program2
+
+<br><br>
+
+## 자바 코드 연습 기초 #11 - 배열 항목 찾기
+- nums 배열에서 숫자 1을 찾고 그 위치 인덱스를 출력하시오.
+
+```java
+package ex21.array;
+
+public class Program3 {
+	public static void main(String[] args) {
+		int[] nums= {5,2,7,4,6,1,3};
+		
+		for (int i = 0; i < nums.length; i++) {
+			if(nums[i] == 1) {
+				System.out.println(i+1);
+			}
+		}
+	}
+}
+// 자바 코드 연습 기초 #11 - 배열 항목 찾기
+// 이건 내가 작성한 코드. 코드의 복잡도가 높아지면 인덱스 값을 저장할 임시변수가 있는 게 좋음
+```
+```java
+package ex21.array;
+
+public class Program3_1 {
+	public static void main(String[] args) {
+		int[] nums= {5,2,7,4,6,1,3};
+
+		int index = -1; // 찾지 못했다는 의미. -1으로 쓰는게 바람직. 0도 인덱스 값이 있기 때문
+
+		for (int i = 0; i < 7; i++) {
+			if(nums[i]== 1) {
+				index = i+1;
+				break; // 값을 찾았으면 바로 빠져나오게끔
+			}
+		}
+		System.out.println(index);
+	}
+}
+// 자바 코드 연습 기초 #11 - 배열 항목 찾기
+// 선생님 코드
+```
+
+<br><br>
+
+## 자바 코드 연습 기초 #12 - 배열 값 교환하기
+- temp를 넣어서 임시적으로 변수 값을 저장한 다음 교환
+```java
+package ex21.array;
+
+public class Program4 {
+	public static void main(String[] args) {
+		int[] nums= {5,2,7,4,6,1,3};
+		int temp;
+		
+		temp = nums[1];
+		nums[1] = nums[2];
+		nums[2] = temp;
+
+		for (int i = 0; i < nums.length; i++) {
+			System.out.print(nums[i]+" ");
+		}
+	}
+}
+```
+
+<br><br>
+
+## 자바 코드 연습 기초 #13 - 배열에 랜덤 값 채우기
+- Random 값을 주는 도구 java.util.Random
+- Random nextInt(int bound) : 값을 입력 받음. 만약 100을 입력했다면 0 ~ 99까지의 값을 랜덤으로 보여줌. pseudorandom 값을 반환함. 가짜 랜덤(무작위로 보이는 알고리즘에 의한 랜덤). 
+```java
+Random rand = new Random();
+rand.nextInt(45); -> 0~44
+```
+- scanner와 비슷하지만 scanner는 스트림에서 얻어온 것.
+- Random은 램덤 알고리즘에 의해서 다음 값을 얻어옴.
+
+```java
+package ex21.array;
+
+import java.util.Random;
+
+public class Program5 {
+	public static void main(String[] args) {
+		Random rand = new Random();
+		int[] lotto = new int[6];
+
+		for (int i = 0; i < lotto.length; i++) {
+			lotto[i] = rand.nextInt(45)+1;
+			System.out.print(lotto[i]+" ");
+		}
+	}
+}
+// 자바 코드 연습 기초 #13 - 배열에 랜덤 값 채우기
+```
