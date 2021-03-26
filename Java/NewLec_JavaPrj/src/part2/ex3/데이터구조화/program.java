@@ -1,11 +1,11 @@
 package part2.ex3.데이터구조화;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class program {
 	public static void main(String[] args) {
 		Exam [] exams = new Exam[3];
+		int current = 0;
 
 		int menu;
 		boolean keepLoop = true;
@@ -16,11 +16,11 @@ public class program {
 
 			switch (menu) {
 			case 1:
-				inputList(exams); 
+				inputList(exams, current); 
 				break;
 
 			case 2:
-				printList(exams);
+				printList(exams, current);
 				break;
 
 			case 3:
@@ -35,12 +35,12 @@ public class program {
 			}
 		}
 	}
-	private static void printList(Exam[] exams) {
+	private static void printList(Exam[] exams, int size) {
 		System.out.print("┌────────────────────────────┐\n");
 		System.out.print("│           성적 출력          │\n");
 		System.out.print("└────────────────────────────┘\n");
 
-		for(int i = 0; i<3; i++) {
+		for(int i = 0; i<size; i++) {
 			Exam exam = exams[i];
 			int kor = exam.kor; // 이건 연산이 아님. 그래서 for문 안에 있어도 괜찮음
 			int eng = exam.eng;
@@ -58,14 +58,13 @@ public class program {
 		}
 	}
 
-	private static void inputList(Exam[] exams) {
+	private static void inputList(Exam[] exams, int current) {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.print("┌────────────────────────────┐\n");
 		System.out.print("│           성적 입력          │\n");
 		System.out.print("└────────────────────────────┘\n");
 
-		for (int i = 0; i < 3; i++) {
 			int kor, eng, math;
 
 			do {
@@ -99,8 +98,9 @@ public class program {
 			exam.eng = eng;
 			exam.math = math;
 			
-			exams[i] = exam;
-		}
+			exams[current] = exam;
+			current++;
+		
 	}
 	static int inputMenu() {
 		Scanner sc = new Scanner(System.in);
@@ -114,26 +114,5 @@ public class program {
 		System.out.print("\t선택 > ");
 		int menu = sc.nextInt();
 		return menu;
-	}
-
-
-	static void printKors(int[] kors) {
-		System.out.print("┌────────────────────────────┐\n");
-		System.out.print("│           성적 출력          │\n");
-		System.out.print("└────────────────────────────┘\n");
-
-		int kor = exam.kor;
-		int eng = exam.eng;
-		int math = exam.math;
-
-		int total = kor + eng + math;
-		float avg = total/3.0f;
-
-		System.out.printf("\t국어 : %3d\n", kor);
-		System.out.printf("\t영어 : %3d\n", eng);
-		System.out.printf("\t수학 : %3d\n", math);
-
-		System.out.printf("\t총점 : %3d\n", total);
-		System.out.printf("\t평균 : %6.2f\n", avg);
 	}
 }
