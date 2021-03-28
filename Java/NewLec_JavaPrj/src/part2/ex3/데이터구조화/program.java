@@ -20,7 +20,8 @@ public class program {
 				break;
 
 			case 2:
-				printList(exams, current);
+				printList(exams, current); // inputList에서 값을 하나를 입력받지만 실제 값은 하나일 수도 있고 둘일 수도 있음. exams에 들어있는 갯수 만큼 출력해야 함.
+				// 현재 들어가 있는 exams의 갯수는 어떻게 알까? -> current 
 				break;
 
 			case 3:
@@ -35,7 +36,7 @@ public class program {
 			}
 		}
 	}
-	private static void printList(Exam[] exams, int size) {
+	private static void printList(Exam[] exams, int size) { // 이름이 current로 같기도 하고 그 사이즈만큼 돈다는 뜻으로 size로 !
 		System.out.print("┌────────────────────────────┐\n");
 		System.out.print("│           성적 출력          │\n");
 		System.out.print("└────────────────────────────┘\n");
@@ -58,49 +59,49 @@ public class program {
 		}
 	}
 
-	private static void inputList(Exam[] exams, int current) {
+	private static void inputList(Exam[] exams, int current) { // current가 main함수에 있기 떄문에 매개변수로 넣어줘야함
 		Scanner sc = new Scanner(System.in);
 
 		System.out.print("┌────────────────────────────┐\n");
 		System.out.print("│           성적 입력          │\n");
 		System.out.print("└────────────────────────────┘\n");
 
-			int kor, eng, math;
+		int kor, eng, math;
 
-			do {
-				System.out.printf("국어 성적을 입력하세요 >> ");
-				kor = sc.nextInt();
+		do {
+			System.out.printf("국어 성적을 입력하세요 >> ");
+			kor = sc.nextInt();
 
-				if (kor < 0 || 100 < kor) {
-					System.out.println("성적범위(0~100)를 벗어났습니다.");
-				}
-			} while (kor < 0 || 100 < kor);
+			if (kor < 0 || 100 < kor) {
+				System.out.println("성적범위(0~100)를 벗어났습니다.");
+			}
+		} while (kor < 0 || 100 < kor);
 
-			do {
-				System.out.printf("영어 성적을 입력하세요 >> ");
-				eng = sc.nextInt();
+		do {
+			System.out.printf("영어 성적을 입력하세요 >> ");
+			eng = sc.nextInt();
 
-				if (eng < 0 || 100 < eng) {
-					System.out.println("성적범위(0~100)를 벗어났습니다.");
-				}
-			} while (eng < 0 || 100 < eng);
-			do {
-				System.out.printf("수학 성적을 입력하세요 >> ");
-				math = sc.nextInt();
+			if (eng < 0 || 100 < eng) {
+				System.out.println("성적범위(0~100)를 벗어났습니다.");
+			}
+		} while (eng < 0 || 100 < eng);
+		do {
+			System.out.printf("수학 성적을 입력하세요 >> ");
+			math = sc.nextInt();
 
-				if (math < 0 || 100 < math) {
-					System.out.println("성적범위(0~100)를 벗어났습니다.");
-				}
-			} while (math < 0 || 100 < math);
-			
-			Exam exam = new Exam();
-			exam.kor = kor;
-			exam.eng = eng;
-			exam.math = math;
-			
-			exams[current] = exam;
-			current++;
-		
+			if (math < 0 || 100 < math) {
+				System.out.println("성적범위(0~100)를 벗어났습니다.");
+			}
+		} while (math < 0 || 100 < math);
+
+		Exam exam = new Exam();
+		exam.kor = kor;
+		exam.eng = eng;
+		exam.math = math;
+
+		exams[current] = exam;
+		current++;
+
 	}
 	static int inputMenu() {
 		Scanner sc = new Scanner(System.in);
