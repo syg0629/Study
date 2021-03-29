@@ -1,7 +1,8 @@
 # JAVA
 > 뉴렉처 자바 프로그래밍 Study : 2021.03.17 ~ 2021.03.23 <br>
 > 뉴렉처 자바 코드연습 Study : 2021.03.23 ~ 2021.03.24<br>
-> 뉴렉처 자바 구조적인 프로그래밍 Study : 2021.03.24 ~ 2021.03.<br>
+> 뉴렉처 자바 구조적인 프로그래밍 Study : 2021.03.24 ~ 2021.03.29<br>
+> 뉴렉처 자바 객체지향 프로그래밍 Study : 2021.03.29 ~ 2021.03.<br>
 ---
 >> <b><u>✨Check✨</u></b><br>
 >> 1. 32강. break 라벨문<br>
@@ -12,13 +13,14 @@
 >> 6. 자바 코드 연습 기초 #13. Random nextInt(int bound) <br> 
 >> 7. F3을 누르면 관련된 코드로 이동<br>
 >> 8. alt + ←,→ 이것도 관련 코드 이동<br>
+>> 9. 구조적인 프로그래밍 10~15강 까지는 반복해서 들어서 내것화 해야할 듯<br>
 <br>
 >> 목차 확장자 이용후 지워야할 듯..
 
 ---
 ## 목차
 - [JAVA](#java)
-	- [> 뉴렉처 자바 구조적인 프로그래밍 Study : 2021.03.24 ~ 2021.03.<br>](#-뉴렉처-자바-구조적인-프로그래밍-study--20210324--202103)
+	- [> 뉴렉처 자바 객체지향 프로그래밍 Study : 2021.03.29 ~ 2021.03.<br>](#-뉴렉처-자바-객체지향-프로그래밍-study--20210329--202103)
 	- [목차](#목차)
 	- [프로그래밍이란?](#프로그래밍이란)
 	- [6강. 자바 언어의 특징](#6강-자바-언어의-특징)
@@ -61,6 +63,11 @@
 	- [자바 구조적인 프로그래밍 강의 9강 - 구조체를 이용한 코드 작성하기](#자바-구조적인-프로그래밍-강의-9강---구조체를-이용한-코드-작성하기)
 	- [자바 구조적인 프로그래밍 강의 10강 - 구조체 배열 이용하기](#자바-구조적인-프로그래밍-강의-10강---구조체-배열-이용하기)
 	- [자바 구조적인 프로그래밍 강의 11강 - 가변 길이 배열](#자바-구조적인-프로그래밍-강의-11강---가변-길이-배열)
+	- [자바 구조적인 프로그래밍 강의 12강 - 가변 길이를 위한 구조체 생성](#자바-구조적인-프로그래밍-강의-12강---가변-길이를-위한-구조체-생성)
+	- [자바 구조적인 프로그래밍 강의 13강 - 가변 길이 배열 구현하기](#자바-구조적인-프로그래밍-강의-13강---가변-길이-배열-구현하기)
+	- [- 가변 List : `[] + current + capacity + amount`](#--가변-list----current--capacity--amount)
+	- [자바 구조적인 프로그래밍 강의 14강 - 함수 오버로딩(overloading)](#자바-구조적인-프로그래밍-강의-14강---함수-오버로딩overloading)
+	- [자바 구조적인 프로그래밍 강의 15강 - 코드 실행과 함수 호출 스택](#자바-구조적인-프로그래밍-강의-15강---코드-실행과-함수-호출-스택)
 	- [자바 객체지향 강의 1강 - 객체지향 프로그래밍의 시작 캡슐화](#자바-객체지향-강의-1강---객체지향-프로그래밍의-시작-캡슐화)
 <br>
 
@@ -850,20 +857,358 @@ exams[0] = new Exam(); // 0번째에게 실제 객체에 참조시켜줘여함
 ## 자바 구조적인 프로그래밍 강의 11강 - 가변 길이 배열
 - 배열은 고정길이를 가지고 있음. 길이가 긴 배열을 원한다면 더 큰 배열을 만들어서 이주 시키고 기존 배열을 소거하는 방식으로 써야함.
 - ArrayIndexOutOfBoundsException : 배열 길이 초과
+```java
+package part2.ex3.데이터구조화;
 
+import java.util.Scanner;
 
+public class program {
+	public static void main(String[] args) {
+		Exam [] exams = new Exam[3];
+		int current = 0;
 
+		int menu;
+		boolean keepLoop = true;
 
+		while (keepLoop) {
 
+			menu = inputMenu();
 
+			switch (menu) {
+			case 1:
+				inputList(exams, current); 
+				break;
 
+			case 2:
+				printList(exams, current); // inputList에서 값을 하나를 입력받지만 실제 값은 하나일 수도 있고 둘일 수도 있음. exams에 들어있는 갯수 만큼 출력해야 함.
+				// 현재 들어가 있는 exams의 갯수는 어떻게 알까? -> current로!! 
+				break;
 
+			case 3:
+				System.out.println("──────────────────────────────");
+				System.out.println("종료합니댜~*_*");
 
+				keepLoop = false;
+				break;
 
+			default:
+				System.out.println("입력 오류입니다. 1~3번만 입력해주세요.");
+			}
+		}
+	}
+	private static void printList(Exam[] exams, int size) { // 이름이 current로 같기도 하고 그 사이즈만큼 돈다는 뜻으로 size로 !
+		System.out.print("┌────────────────────────────┐\n");
+		System.out.print("│           성적 출력          │\n");
+		System.out.print("└────────────────────────────┘\n");
 
+		for(int i = 0; i<size; i++) {
+			Exam exam = exams[i];
+			int kor = exam.kor; // 이건 연산이 아님. 그래서 for문 안에 있어도 괜찮음
+			int eng = exam.eng;
+			int math = exam.math;
 
+			int total = kor + eng + math;
+			float avg = total/3.0f;
 
+			System.out.printf("\t국어 : %3d\n", kor);
+			System.out.printf("\t영어 : %3d\n", eng);
+			System.out.printf("\t수학 : %3d\n", math);
 
+			System.out.printf("\t총점 : %3d\n", total);
+			System.out.printf("\t평균 : %6.2f\n", avg);
+		}
+	}
+
+	private static void inputList(Exam[] exams, int current) { // current가 main함수에 있기 떄문에 매개변수로 넣어줘야함
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("┌────────────────────────────┐\n");
+		System.out.print("│           성적 입력          │\n");
+		System.out.print("└────────────────────────────┘\n");
+
+		int kor, eng, math;
+
+		do {
+			System.out.printf("국어 성적을 입력하세요 >> ");
+			kor = sc.nextInt();
+
+			if (kor < 0 || 100 < kor) {
+				System.out.println("성적범위(0~100)를 벗어났습니다.");
+			}
+		} while (kor < 0 || 100 < kor);
+
+		do {
+			System.out.printf("영어 성적을 입력하세요 >> ");
+			eng = sc.nextInt();
+
+			if (eng < 0 || 100 < eng) {
+				System.out.println("성적범위(0~100)를 벗어났습니다.");
+			}
+		} while (eng < 0 || 100 < eng);
+		do {
+			System.out.printf("수학 성적을 입력하세요 >> ");
+			math = sc.nextInt();
+
+			if (math < 0 || 100 < math) {
+				System.out.println("성적범위(0~100)를 벗어났습니다.");
+			}
+		} while (math < 0 || 100 < math);
+
+		Exam exam = new Exam();
+		exam.kor = kor;
+		exam.eng = eng;
+		exam.math = math;
+
+		exams[current] = exam;
+		current++; // 자기가 있는 변수에 ++만 된 것. 즉, main함수의 current가 반영된게 아니라 inputList 내에서 만 반영. 그래서 출력될게 없음
+
+	}
+	static int inputMenu() {
+		Scanner sc = new Scanner(System.in);
+		// 메인 메뉴 부분
+		System.out.print("┌────────────────────────────┐\n");
+		System.out.print("│           메인 메뉴          │\n");
+		System.out.print("└────────────────────────────┘\n");
+		System.out.println("\t1. 성적 입력");
+		System.out.println("\t2. 성적 출력");
+		System.out.println("\t3. 종료");
+		System.out.print("\t선택 > ");
+		int menu = sc.nextInt();
+		return menu;
+	}
+}
+
+```
+=> 이렇게 하면 성적출력이 안됨.
+=> 성적입력을 했을 때 current가 ++가 되어도 inputList내에서만 반영이 되지 main함수의 current까지는 반영이 안되기 때문
+
+<br><br>
+
+## 자바 구조적인 프로그래밍 강의 12강 - 가변 길이를 위한 구조체 생성
+- 11강에서 발생했던 문제의 해결책을 알아보자
+```java
+Exam[] exams = new Exma[3]; // 공유될 아이
+int current = 0;
+
+inputList(exams, current); // 위에 아이들을 다 공유하고 있다.
+printList(exmas, current); // But current는 공유되는게 아니라 값만 전달시키는 것.
+```
+- 정수형은 값 변수. 참조할 수 있는게 아님. 자바에서는 밑의 함수에 있는 내용을 다른 함수에 공유할 수 있는 방법이 없음. 자바에서는 주소라는 개념을 전달할 수 없음.
+- 공유할 것이라면 기본 자료형을 쓰는게 아니다 -> int를 쓰면 안된다.
+- 기본 자료형을 쓴다는 것은 지역변수 내에서 임시변수를 쓴다던가 제어변수를 위해서 쓰는 것이지
+그게 관리되는 데이터로서는 X
+
+```java
+Exam[] exams = new Exam[3];
+int current = 0;
+
+inputList(exams, current);
+printList(exams, current);
+
+=> 여기서의 exams, current를 더 큰 단위로 묶어라 => list
+
+class ExamList{
+	Exams[] exams;
+	int current;
+}
+
+ExamList list = new ExamList();
+list.exams = new Exam[3];
+list.current = 0;
+
+inputList(list);
+print List(list);
+```
+
+```java
+package part2.ex3.데이터구조화;
+
+import java.util.Scanner;
+
+public class Listprogram {
+	public static void main(String[] args) {
+		ExamList list = new ExamList(); // ExamList 안에 있는 exams에 객체를 만듬.
+		list.exams = new Exam[3]; // .을 통해 접근
+		list.current = 0;
+
+		int menu;
+		boolean keepLoop = true;
+
+		while (keepLoop) {
+
+			menu = inputMenu();
+
+			switch (menu) {
+			case 1:
+				inputList(list); 
+				break;
+
+			case 2:
+				printList(list); // inputList에서 값을 하나를 입력받지만 실제 값은 하나일 수도 있고 둘일 수도 있음. exams에 들어있는 갯수 만큼 출력해야 함.
+				// 현재 들어가 있는 exams의 갯수는 어떻게 알까? -> current 
+				break;
+
+			case 3:
+				System.out.println("──────────────────────────────");
+				System.out.println("종료합니댜~*_*");
+
+				keepLoop = false;
+				break;
+
+			default:
+				System.out.println("입력 오류입니다. 1~3번만 입력해주세요.");
+			}
+		}
+	}
+	private static void printList(ExamList list) { // 이름이 current로 같기도 하고 그 사이즈만큼 돈다는 뜻으로 size로 !
+		System.out.print("┌────────────────────────────┐\n");
+		System.out.print("│           성적 출력          │\n");
+		System.out.print("└────────────────────────────┘\n");
+
+		int size = list.current;
+		Exam[] exams = list.exams;
+		
+		for(int i = 0; i<size; i++) {
+			Exam exam = exams[i];
+			int kor = exam.kor; // 이건 연산이 아님. 그래서 for문 안에 있어도 괜찮음
+			int eng = exam.eng;
+			int math = exam.math;
+
+			int total = kor + eng + math;
+			float avg = total/3.0f;
+
+			System.out.printf("\t국어 : %3d\n", kor);
+			System.out.printf("\t영어 : %3d\n", eng);
+			System.out.printf("\t수학 : %3d\n", math);
+
+			System.out.printf("\t총점 : %3d\n", total);
+			System.out.printf("\t평균 : %6.2f\n", avg);
+			System.out.println("──────────────────────────────");
+		}
+	}
+
+	private static void inputList(ExamList list) { // current가 main함수에 있기 떄문에 매개변수로 넣어줘야함
+		Scanner sc = new Scanner(System.in);
+
+		System.out.print("┌────────────────────────────┐\n");
+		System.out.print("│           성적 입력          │\n");
+		System.out.print("└────────────────────────────┘\n");
+
+		int kor, eng, math;
+
+		do {
+			System.out.printf("국어 성적을 입력하세요 >> ");
+			kor = sc.nextInt();
+
+			if (kor < 0 || 100 < kor) {
+				System.out.println("성적범위(0~100)를 벗어났습니다.");
+			}
+		} while (kor < 0 || 100 < kor);
+
+		do {
+			System.out.printf("영어 성적을 입력하세요 >> ");
+			eng = sc.nextInt();
+
+			if (eng < 0 || 100 < eng) {
+				System.out.println("성적범위(0~100)를 벗어났습니다.");
+			}
+		} while (eng < 0 || 100 < eng);
+		do {
+			System.out.printf("수학 성적을 입력하세요 >> ");
+			math = sc.nextInt();
+
+			if (math < 0 || 100 < math) {
+				System.out.println("성적범위(0~100)를 벗어났습니다.");
+			}
+		} while (math < 0 || 100 < math);
+
+		Exam exam = new Exam();
+		exam.kor = kor;
+		exam.eng = eng;
+		exam.math = math;
+
+		if(!exams의 공간이 있는지) {
+			공간을 늘려주기
+		}
+		
+		list.exams[list.current] = exam;
+		list.current++; // list를 붙이면 아까와 달리 공유가 되는 것임. list안에 있는 것을 가져오기 때문에
+
+	}
+	static int inputMenu() {
+		Scanner sc = new Scanner(System.in);
+		// 메인 메뉴 부분
+		System.out.print("┌────────────────────────────┐\n");
+		System.out.print("│           메인 메뉴          │\n");
+		System.out.print("└────────────────────────────┘\n");
+		System.out.println("\t1. 성적 입력");
+		System.out.println("\t2. 성적 출력");
+		System.out.println("\t3. 종료");
+		System.out.print("\t선택 > ");
+		int menu = sc.nextInt();
+		return menu;
+	}
+}
+
+```
+- 배열은 처음에 크기를 정해놓고 그 크기가 넘어가면 오류가 발생함.
+
+<br><br>
+
+## 자바 구조적인 프로그래밍 강의 13강 - 가변 길이 배열 구현하기
+- 12강에서 발생했던 문제의 해결책을 알아보자
+- 가변적으로 데이터를 수집하기 위해 배열을 이용하는 방법
+- 동적인 공간을 관리하기 위해 필요한 capacity변수
+- 용량(capcity)이 변하기 때문에 새로운 변수가 필요함
+- 가변 List : `[] + current + capacity + amount`
+---
+1. 연습문제
+	- 공간을 점진적으로 늘리는 위치와 방법
+```java
+// 만약에 공간이 모자라면
+if(capacity == current){
+	Exam[] temp = new Exam[capacity + amount];
+	for(int i = 0; i<current; i++){	// list의 값을 이주시킴
+		temp[i] = list[i];
+	} 
+	list = temp;
+	capacity += amount;
+}
+
+1. amount개 확장한 새로운 배열 temp를 생성한다.
+	Exam[] temp = new Exam[capacity + amount];
+2. list에 있는 데이터를 temp 배열로 옮긴다.
+	for(int i = 0; i<current; i++){	// list의 값을 이주시킴
+		temp[i] = list[i];
+3. temp가 참조하는 객체를 list가 참조하게 한다.
+	list = temp;
+4. 현재 capacity의 값을 +10 증가시킨다.
+	capacity += amount; 
+```
+
+<br>
+
+## 자바 구조적인 프로그래밍 강의 14강 - 함수 오버로딩(overloading)
+- 함수를 선택적으로 사용할 수 있게 하기
+- 같은 기능 하지만 다른 인자를 가지는 함수를 추가하기
+- 오버로드를 구현하면 사용자가 골라쓸 수 있다.
+- 오버로딩을 사용할 때 주의해야하는 점 : 함수명이 같다는 건 기능이 같다는 것. 기능이 인자에 따라 차이가 나긴하지만 기본 골격은 같음.
+- 인자가 많은 쪽이 인자가 없는 쪽이 할 수 있는 일을 다 할 수 있음. 오히려 인자가 없는 쪽이 인자가 많은 쪽이 할 수 있는 일을 다 할 수 없음. 인자가 없는 쪽이 해당되는 구현을 하는게 아니다.  => <u> 공통의 기능을 가지고 있으면 코드의 집중화를 꼭 할 것</u>
+
+<br><br>
+
+## 자바 구조적인 프로그래밍 강의 15강 - 코드 실행과 함수 호출 스택
+- 이건 필기보다 실제 강의의 그림을 보면서 설명 듣는게 더 나을듯!!!!
+- 프로그램이 실행될 때 메모리를 쓰게 됨.
+- 메모리는 2가지 용도로 나눠쓰게 됨.
+  - 코드영역 or Text영역 : 코드가 올라오는 곳
+  - Heap or Stack : 코드가 실행되는 과정에서 필요한 데이터가 있으면 마련되는 곳. 그 데이터를 보관
+    - Heap : 동적으로 생성되는 메모리를 마련하는 공간, 참조가 사라져도 메모리에 남아있는 특징이 있음 -> 메모리를 잡아먹는 아이가 될 수 있음. 하지만 자바는 주기적으로 이런 아이를 찾아서 수거함.
+    - Stack : 함수의 지역변수를 마련하는 공간, main함수 위에 다른 함수들 내용이 적재되어 있다가 다 쓰게되면 사라짐 -> main함수도 끝나게 되면 main 함수 Stack도 사라짐
+- 코드가 제일 먼저 실행 : main 함수
+- 공간은 미리 마련되어야함.
+- main 함수에서 선언했던 내용들 int total = 0; 이런 것들은 stack에 저장이 됨.
+ 
 <br>
 
 ---

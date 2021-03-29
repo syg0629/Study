@@ -2,10 +2,11 @@ package part2.ex3.데이터구조화;
 
 import java.util.Scanner;
 
-public class program {
+public class Listprogram {
 	public static void main(String[] args) {
-		Exam [] exams = new Exam[3];
-		int current = 0;
+		ExamList list = new ExamList(); // ExamList 안에 있는 exams에 객체를 만듬.
+		list.exams = new Exam[3]; // .을 통해 접근
+		list.current = 0;
 
 		int menu;
 		boolean keepLoop = true;
@@ -16,12 +17,11 @@ public class program {
 
 			switch (menu) {
 			case 1:
-				inputList(exams, current); 
+				inputList(list); 
 				break;
 
 			case 2:
-				printList(exams, current); // inputList에서 값을 하나를 입력받지만 실제 값은 하나일 수도 있고 둘일 수도 있음. exams에 들어있는 갯수 만큼 출력해야 함.
-				// 현재 들어가 있는 exams의 갯수는 어떻게 알까? -> current 
+				printList(list, 2); // 2만 출력해달라고 함.
 				break;
 
 			case 3:
@@ -36,10 +36,17 @@ public class program {
 			}
 		}
 	}
-	private static void printList(Exam[] exams, int size) { // 이름이 current로 같기도 하고 그 사이즈만큼 돈다는 뜻으로 size로 !
+	private static void printList(ExamList list) { // 이름이 current로 같기도 하고 그 사이즈만큼 돈다는 뜻으로 size로 !
+		printList(list, list.current); // printList(list)를 하게되면 자기가 지신을 호출하는거라 무한 loop에 빠지게 됨. 
+		// 이렇게 해야 코드 집중화가 되는 것
+	}
+	private static void printList(ExamList list, int size) { // 이름이 current로 같기도 하고 그 사이즈만큼 돈다는 뜻으로 size로 !
 		System.out.print("┌────────────────────────────┐\n");
 		System.out.print("│           성적 출력          │\n");
 		System.out.print("└────────────────────────────┘\n");
+
+		// int size = list.current;
+		Exam[] exams = list.exams;
 
 		for(int i = 0; i<size; i++) {
 			Exam exam = exams[i];
@@ -56,10 +63,12 @@ public class program {
 
 			System.out.printf("\t총점 : %3d\n", total);
 			System.out.printf("\t평균 : %6.2f\n", avg);
+			System.out.println("──────────────────────────────");
 		}
 	}
 
-	private static void inputList(Exam[] exams, int current) { // current가 main함수에 있기 떄문에 매개변수로 넣어줘야함
+
+	private static void inputList(ExamList list) { // current가 main함수에 있기 떄문에 매개변수로 넣어줘야함
 		Scanner sc = new Scanner(System.in);
 
 		System.out.print("┌────────────────────────────┐\n");
@@ -99,8 +108,23 @@ public class program {
 		exam.eng = eng;
 		exam.math = math;
 
-		exams[current] = exam;
-		current++; // 자기가 있는 변수에 ++만 된 것. 즉, main함수의 current가 반영된게 아니라 inputList 내에서 만 반영. 그래서 출력될게 없음
+		Exam[] exams = list.exams;
+		int size = list.current;
+
+		if(exams.length == size) {
+			// 1. 크기가 5개 정도 더 큰 새로운 배열을 생성하시오.
+			Exam[] temp = new Exam[size + 5];
+			// 2. 값을 이주시키기
+			for (int i = 0; i < size; i++) {
+				temp[i] = exams[i];
+			}
+			// 3. exams = temp;(X) 
+			// list.exams가 새로 만든 temp 배열을 참조하도록 한다.
+			list.exams = temp;
+		}
+
+		list.exams[list.current] = exam;
+		list.current++; // list를 붙이면 아까와 달리 공유가 되는 것임. list안에 있는 것을 가져오기 때문에
 
 	}
 	static int inputMenu() {
