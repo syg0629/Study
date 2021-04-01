@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Program {
 	public static void main(String[] args) {
 		ExamList list = new ExamList(); // ExamList 안에 있는 exams에 객체를 만듬.
-		ExamList.init(list);
+		ExamList.init(list); // list라는 객체를 줄테니 초기화를 거기서 해달라
 
 		int menu;
 		boolean keepLoop = true;

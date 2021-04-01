@@ -106,3 +106,6 @@ public class ExamList {
 		list.current = 0;		
 	}
 }
+/*
+ * 오류 범위가 여기서만 한정된다.
+ */
