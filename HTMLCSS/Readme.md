@@ -82,5 +82,15 @@
 ```
 - href : hypertext(html문서, 웹 페이지) reference(주소값)
 - href 주소값 표기 방법
-  - 웹 URL 갖다 붙이기
-  - 
+    1. 웹 URL 갖다 붙이기
+        - `<a href="http://edu.goorm.io">구름EDU</a>`
+    2. 내가 사용할 문서의 상대경로
+       - `<a href="./about.html">이 파일로 이동</a>`
+    3. 페이지 내 이동(id 값을 적어주면 됨. 책갈피 기능)
+        - `<a href="#hello">hello 섹션으로 이동</a>`
+    4. 메일쓰기
+        - `<a href="mailto:~~~@gmail.com" class="mail">메일쓰기</a>`
+    5. 전화걸기
+        - `<a href="tel:01012345678">전화걸기</a>` 모바일에서 확인하면 바로 전화가 걸려진다.
+    6. 링크를 누르면 내가 있던 페이지에서 이동하게되는데 target을 이용하면 다른 탭에서 열림
+        - `<a href="http://edu.goorm.io" target = "_black">구름EDU</a>`
