@@ -1,0 +1,26 @@
+<!-- [HTML 기초] Form (2) - Input -->
+<!-- form2Input.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Form - Input</title>
+  <link rel="stylesheet" href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <form action="" method="GET">
+    <h1>회원가입</h1>
+    <input type="text" placeholder="이름" maxlength="13" minlength="5"/>
+    <input type="text" placeholder="아이디" required/>
+    <input type="email" placeholder="이메일"disabled/>
+    <input type="password" placeholder="비밀번호"/>
+    <input type="tel" placeholder="전화번호(01*-****-****)" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}"/>
+    <input type="number" placeholder="만 나이"/>
+    <input type="url" placeholder="포트폴리오 URL을 적으시오">
+    <input type="file" accept=".png, .jpg"/>
+    <input type="date">
+    <button>submit</button>
+  </form>
+</body>
+</html>
