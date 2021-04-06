@@ -9,18 +9,37 @@
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <form action="" method="GET">
     <h1>회원가입</h1>
-    <input type="text" placeholder="이름" maxlength="13" minlength="5"/>
-    <input type="text" placeholder="아이디" required/>
-    <input type="email" placeholder="이메일"disabled/>
-    <input type="password" placeholder="비밀번호"/>
-    <input type="tel" placeholder="전화번호(01*-****-****)" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}"/>
-    <input type="number" placeholder="만 나이"/>
-    <input type="url" placeholder="포트폴리오 URL을 적으시오">
-    <input type="file" accept=".png, .jpg"/>
-    <input type="date">
-    <button>submit</button>
+    
+    <form action="#" method="POST">
+    <label for="user-name">아이디</label>
+    <input type="text" placeholder="아이디" id="user-name" required/>
+    
+    <label for="user-id">이름</label>
+    <input type="text" placeholder="이름" id="user-id" maxlength="10" minlength="5"/>
+    
+    <label for="user-email">이메일</label>
+    <input type="email" placeholder="이메일" id="user-email" disabled/>
+    
+    <label for="user-password">비밀번호</label>
+    <input type="password" placeholder="비밀번호" id="user-password" maxlength="12" minlength="6"/>
+
+    <label for="user-tel">전화번호</label>
+    <input type="tel" placeholder="전화번호(01*-****-****)" id="user-tel" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}"/>
+    
+    <label for="user-age">나이</label>
+    <input type="number" placeholder="만 나이" id="user-age" min="12" max="122"/>
+    
+    <label for="user-url">포트폴리오</label>
+    <input type="url" id="user-url" placeholder="포트폴리오 URL을 적으시오">
+    
+    <label for="user-profile-picture">프로필 사진</label>
+    <input type="file" id="user-profile-picture" accept="image/*, audio/*, video/*"/> <!--accept=".png, .jpg"/>-->
+    
+    <label for="user-bir">생일</label>
+    <input type="date" id="user-bir">
+
+    <button type="submit">가입하기</button>
   </form>
 </body>
 </html>
