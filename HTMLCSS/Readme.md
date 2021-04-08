@@ -27,6 +27,7 @@
   - [[HTML 기초] Form (2) - Input](#html-기초-form-2---input)
   - [[HTML 기초] Form (3) - Label](#html-기초-form-3---label)
   - [Q & A](#q--a)
+  - [Form (4) - Radio & Checkbox](#form-4---radio--checkbox)
 <br>
 
 
@@ -318,3 +319,22 @@ by. 김버그
 말씀하신 경우에는 javascript가 관여를 해야하는 부분인데요~
 사용자가 새로운 값을 입력하면, javascript가 입력값을 확인을 합니다.
 확인하다 -가 필요한 자리에 샥 -를 끼워 넣어버리는 것
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## Form (4) - Radio & Checkbox
+- Radio : 둘 중에 하나만 선택
+- Checkbox : 중복 선택 가능
+
+```html
+<input type="radio" id="subscribed" name="subscription">
+<label for="subscribed">구독중</label>
+<input type="radio" id="unsubscribed" name="subscription">
+<label for="unsubscribed">미구독</label>
+- radio도 label을 붙일 수 있다. 
+- name을 적어 놓아야 radio 중복이 안됨.
+
+```
