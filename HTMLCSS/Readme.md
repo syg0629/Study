@@ -5,7 +5,7 @@
 >> <b><u>✨Check✨</u></b><br>
 >> 1. nav 태그를 아껴쓰자(1페이지 당 보통 1개) / 다른 페이지로 이동할 수 있는 링크를 모아둔 네비게이션 메뉴에만 제한해서 쓰쟈!<br>
 >> 2. input type="submit"과 button의 차이<br>
->> 3. <br>
+>> 3. select 태그 자식 요소로 option외 optgroup도 있다.(option을 그룹핑할 때 사용)<br>
 >> 4. <br>
 
 ## 목차
@@ -26,8 +26,11 @@
   - [[HTML 기초] Form (1) - 기본구조](#html-기초-form-1---기본구조)
   - [[HTML 기초] Form (2) - Input](#html-기초-form-2---input)
   - [[HTML 기초] Form (3) - Label](#html-기초-form-3---label)
+  - [[HTML 기초] Form (4) - Radio & Checkbox](#html-기초-form-4---radio--checkbox)
+  - [[HTML 기초] Form (5) - Select & Option](#html-기초-form-5---select--option)
+  - [[HTML 기초] Form (6) - Textarea](#html-기초-form-6---textarea)
+  - [[HTML 기초] Form (7) - Buttons](#html-기초-form-7---buttons)
   - [Q & A](#q--a)
-  - [Form (4) - Radio & Checkbox](#form-4---radio--checkbox)
 <br>
 
 
@@ -295,6 +298,80 @@ by. 김버그
 [목차로 이동🚗](#목차)
 </br></br>
 
+## [HTML 기초] Form (4) - Radio & Checkbox
+- Radio : 둘 중에 하나만 선택
+- Checkbox : 중복 선택 가능
+
+```html
+<input type="radio" id="subscribed" name="subscription" value="subscribed">
+<label for="subscribed">구독중</label>
+<input type="radio" id="unsubscribed" name="subscription" value="unsubscribed">
+<label for="unsubscribed">미구독</label>
+- radio도 label을 붙일 수 있다. 
+- name을 적어 놓아야 radio 중복이 안됨. 하나만 선택 가능. 서로 연관이 되어 있음을 알림.
+- value 값을 적어줘야 서버로 넘어갈 때 해당 값이 넘어가게 됨.
+- input type="radio"에 필수로 들어가야하는 attr name과 value
+```
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [HTML 기초] Form (5) - Select & Option
+- select의 자식요소 option
+- select에 name값을 넣어주면 되고, option에 value값을 넣어주면 된다.
+- `<select multiple>`은 Ctrl 누르고 선택시 다중 선택이 가능하다.
+- 🎈추가로!! select 태그 자식 요소로 option외 optgroup도 있다.
+- option이 가장 기본이 되는 자식 요소
+- optgroup는 option을 그룹핑할 때 사용
+```html
+<select  name="city">
+  <optgroup label="경기도">
+    <option value="0">고양</option>
+    <option value="1">과천</option>
+    <!-- ... -->
+  </optgroup>
+  <optgroup label="경상도">
+    <option value="2">김해</option>
+    <option value="3">창원</option>
+    <!-- ... -->
+  </optgroup>
+  <option value="4">서울</option>
+</select>
+
+이런식으로 관련있는 option끼리는 optgroup으로 그룹핑을 하고 label을 적어주면 된다.
+```
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [HTML 기초] Form (6) - Textarea
+- `<textarea></textarea>`
+- <u>여러 줄에</u> 걸쳐서 많은 양의 글을 받을 때 사용
+- `<textarea rows="40">세로로 40줄 길어짐</textarea>`
+- `<textarea cols="50">가로로 50칸 길어짐</textarea>`
+- 위 rows와 cols는 css로 조절 가능하기에 외우지 않아도 괜찮움!
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [HTML 기초] Form (7) - Buttons
+```html
+🎈Syntax Alert 문법주의
+button type 3가지 : button, submit, reset
+<button type="button">그냥 버튼</button>
+<button type="submit">제출하기</button>
+<button type="reset">다시 쓰기</button>
+```
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
 ## Q & A
 1. GET과 POST
 - GET 요청은 캐시가 된다는 장점이 있습니다 (=한번 본 페이지는 빠르게 로딩이 가능하다는 거죠)
@@ -319,22 +396,3 @@ by. 김버그
 말씀하신 경우에는 javascript가 관여를 해야하는 부분인데요~
 사용자가 새로운 값을 입력하면, javascript가 입력값을 확인을 합니다.
 확인하다 -가 필요한 자리에 샥 -를 끼워 넣어버리는 것
-
-</br>
-
-[목차로 이동🚗](#목차)
-</br></br>
-
-## Form (4) - Radio & Checkbox
-- Radio : 둘 중에 하나만 선택
-- Checkbox : 중복 선택 가능
-
-```html
-<input type="radio" id="subscribed" name="subscription">
-<label for="subscribed">구독중</label>
-<input type="radio" id="unsubscribed" name="subscription">
-<label for="unsubscribed">미구독</label>
-- radio도 label을 붙일 수 있다. 
-- name을 적어 놓아야 radio 중복이 안됨.
-
-```

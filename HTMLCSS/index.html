@@ -178,11 +178,48 @@
 <!-- [HTML 기초] Form (2) - Input -->
 <!--form2Input.html 참조할 것!-->
 
-<!-- [HTML 기초] Form (3) - Label-->
+<!-- [HTML 기초] Form (3) - Label -->
 <!--form2Input.html 참조할 것!-->
 
-<!-- [HTML 기초] Form (4) - Radio & Checkbox-->
-<input type="radio" id="subscribed" name="subscription">
+<!-- [HTML 기초] Form (4) - Radio & Checkbox -->
+<input type="radio" id="subscribed" name="subscription" value="subscribed">
 <label for="subscribed">구독중</label>
-<input type="radio" id="unsubscribed" name="subscription">
+<input type="radio" id="unsubscribed" name="subscription" value="unsubscribed">
 <label for="unsubscribed">미구독</label>
+
+<form method="get">
+    <h1>사용 가능 언어</h1>
+
+    <input type="checkbox" id="html" name="skills" value="html"/>
+    <label for="html">HTML</label>
+    <input type="checkbox" id="css" name="skills" value="css"/>
+    <label for="css">CSS</label>
+    <input type="checkbox" id="js" name="skills" value="js"/>
+    <label for="js">JavaScript</label>
+
+    <button type="submit">submit</button>
+</form>
+
+<hr>
+
+<!-- [HTML 기초] Form (5) - Select & Option -->
+<form action="" method="GET">
+    <label for="skill">스킬</label>
+    <select multiple name="skill" id="skill">
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="js">JavaScript</option>
+    </select>
+
+    <button type="submit">submit</button>
+</form>
+
+
+<!-- [HTML 기초] Form (6) - Textarea -->
+<label for="field">자기소개:</label>
+<textarea id="field" placeholder="자기소개를 입력하세요."></textarea>
+
+<!-- [HTML 기초] Form (7) - Buttons -->
+<button type="button">그냥 버튼</button>
+<button type="submit">제출하기</button>
+<button type="reset">다시 쓰기</button>
