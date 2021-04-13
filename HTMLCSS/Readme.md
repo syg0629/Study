@@ -32,14 +32,15 @@
   - [[HTML 기초] Form (5) - Select & Option](#html-기초-form-5---select--option)
   - [[HTML 기초] Form (6) - Textarea](#html-기초-form-6---textarea)
   - [[HTML 기초] Form (7) - Buttons](#html-기초-form-7---buttons)
-  - [표 Table (1) - 기본 구조](#표-table-1---기본-구조)
-  - [표 Table (2) - 심화](#표-table-2---심화)
-  - [미디어 파일 Media](#미디어-파일-media)
-  - [기타 Etc](#기타-etc)
-  - [Doctype & Document Structure](#doctype--document-structure)
-  - [Title, Link, Style & Script](#title-link-style--script)
-  - [Meta 메타 데이터](#meta-메타-데이터)
-  - [Q & A](#q--a)
+  - [[HTML 기초] 표 Table (1) - 기본 구조](#html-기초-표-table-1---기본-구조)
+  - [[HTML 기초] 표 Table (2) - 심화](#html-기초-표-table-2---심화)
+  - [[HTML 기초] 미디어 파일 Media](#html-기초-미디어-파일-media)
+  - [[HTML 기초] 기타 Etc](#html-기초-기타-etc)
+  - [[HTML 기초] Doctype & Document Structure](#html-기초-doctype--document-structure)
+  - [[HTML 기초] Title, Link, Style & Script](#html-기초-title-link-style--script)
+  - [[HTML 기초] Meta 메타 데이터](#html-기초-meta-메타-데이터)
+  - [[HTML 기초] Q & A](#html-기초-q--a)
+  - [[HTML 훈련]](#html-훈련)
 <br>
 
 
@@ -381,7 +382,7 @@ button type 3가지 : button, submit, reset
 [목차로 이동🚗](#목차)
 </br></br>
 
-## 표 Table (1) - 기본 구조
+## [HTML 기초] 표 Table (1) - 기본 구조
 - 데이터를 담은 표를 만들 떄 사용
 ```html
 <table> 테이블을 작성한다는 시작을 알림
@@ -399,7 +400,7 @@ button type 3가지 : button, submit, reset
 [목차로 이동🚗](#목차)
 </br></br>
 
-## 표 Table (2) - 심화
+## [HTML 기초] 표 Table (2) - 심화
 - `표Table2.html` 참조할 것
 - 먼저 한 줄에 몇 개의 칸이 들어가는지 알아야 함.
 - 줄에 대한 테이블 헤더 : th
@@ -412,7 +413,7 @@ button type 3가지 : button, submit, reset
 [목차로 이동🚗](#목차)
 </br></br>
 
-## 미디어 파일 Media
+## [HTML 기초] 미디어 파일 Media
 - html 문서 안에 text가 아닌 어떤 형태에 데이터를 집어 넣는 경우를 미디어 파일이라고 함.
 - `<img src="" alt="">` 이미지
 - `<audio src=""></audio>` 음성파일
@@ -446,7 +447,7 @@ https://caniuse.com/
 [목차로 이동🚗](#목차)
 </br></br>
 
-## 기타 Etc
+## [HTML 기초] 기타 Etc
 1.  `<abbr title="풀네임">약어</abbr>`
     - abbreviation 약자, 약어
     - 마우스를 가져다 놓으면 풀 네임이 나온다. 
@@ -485,7 +486,7 @@ href="https://youtube.com/c/kimbug">https://youtube.com/c/kimbug</a>
 [목차로 이동🚗](#목차)
 </br></br>
 
-## Doctype & Document Structure
+## [HTML 기초] Doctype & Document Structure
 - Document Type Declaration
   = DTD 선언
   = 문서 형식 선언
@@ -497,7 +498,7 @@ href="https://youtube.com/c/kimbug">https://youtube.com/c/kimbug</a>
 [목차로 이동🚗](#목차)
 </br></br>
 
-## Title, Link, Style & Script
+## [HTML 기초] Title, Link, Style & Script
 - `<title>문서의 대제목</title>` : 검색 최적화에 매우 중요
   - title 잘 쓰는 방법
     - 키워드 단순 나열은 비추
@@ -521,21 +522,23 @@ href="https://youtube.com/c/kimbug">https://youtube.com/c/kimbug</a>
 [목차로 이동🚗](#목차)
 </br></br>
 
-## Meta 메타 데이터
+## [HTML 기초] Meta 메타 데이터
 - head 안에 작성
 - attr : name, content
 - name="메타데이터 종류(author, description, keywords)"
 - content="메타데이터 값" 
 - `<meta name="viewport" content="width=device-width, initial-scale=1.0">` : viewport 화면 사이즈, 디바이스 사이즈에 맞춰 알아서 사이즈가 조절됨. 반응형 사이트. CSS를 아무리 만져도 여기에서 viewport를 작성하지 않으면 먹히지 않음.
+- meta:vp + 엔터 = 자동완성
 - `<meta name="keywords" content="공부, 공부해야지, html, css">` : 여기에 있는 키워드를 누군가 검색하면 내것이 보여주게 해줘
 - meta태그는 종류가 많음.
+
 
 </br>
 
 [목차로 이동🚗](#목차)
 </br></br>
 
-## Q & A
+## [HTML 기초] Q & A
 1. GET과 POST
 - GET 요청은 캐시가 된다는 장점이 있습니다 (=한번 본 페이지는 빠르게 로딩이 가능하다는 거죠)
 - GET과 POST 각각의 특성을 알기 전에 각 method를 사용 목적을 먼저 생각하는 게 더 좋을 것 같아요!
@@ -559,3 +562,22 @@ href="https://youtube.com/c/kimbug">https://youtube.com/c/kimbug</a>
 말씀하신 경우에는 javascript가 관여를 해야하는 부분인데요~
 사용자가 새로운 값을 입력하면, javascript가 입력값을 확인을 합니다.
 확인하다 -가 필요한 자리에 샥 -를 끼워 넣어버리는 것
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [HTML 훈련]
+- 마크업할 때 가장 먼저 진행되어야 하는 것은 최선을 다해서 요소를 짜는 것.
+- HTML escape code(https://www.freeformatter.com/html-entities.html)
+- img가 정보로 가치가 없을 때는 이미지를 안 넣어도 된다. 그 역할을 CSS로 넘겨버려도 된다.
+  - `<img/>`를 사용: 해당 이미지는 정보 콘텐츠로서 가치가 있다!
+  - `background-image`를 사용: 그냥 꾸미기 용이다!
+- `<img alt="">`의 활용도
+  - text 자체와 alt를 동시에 적어야할 때는 text를 생략하고 이미지의 alt 값으로 대체할 수 있다.
+  - alt 값을 무엇을 둬야할지 모르겠을 때 `alt=""`하고 비워두어야한다. alt를 없애면 올바른 마크업이 아님.
+- `&`의 경우는 브라우저가 렌더링할 때 헷갈려할 수도 있으니 HTML escape code인 `&amp;`를 사용해야한다.
+- WAI-ARIA 인터넷의 접근성을 높이는데 사용
+  - `<a href="#" aria-label="Go to previous page" class="disabled">Previous</a>` 
+  - aria-label : 눈에 보이지는 않지만 브라우저에게 전달되면 좋은 정보, 스크린 리더를 통해 웹을 사용하는 사용자들에게 전달해야하는 정보를 제공
