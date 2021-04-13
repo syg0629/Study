@@ -34,6 +34,11 @@
   - [[HTML 기초] Form (7) - Buttons](#html-기초-form-7---buttons)
   - [표 Table (1) - 기본 구조](#표-table-1---기본-구조)
   - [표 Table (2) - 심화](#표-table-2---심화)
+  - [미디어 파일 Media](#미디어-파일-media)
+  - [기타 Etc](#기타-etc)
+  - [Doctype & Document Structure](#doctype--document-structure)
+  - [Title, Link, Style & Script](#title-link-style--script)
+  - [Meta 메타 데이터](#meta-메타-데이터)
   - [Q & A](#q--a)
 <br>
 
@@ -186,7 +191,7 @@ ol>li*2 이렇게 치면
 - dl : description list. 이제 정의리스트를 쓸 것이다 라고 알림.
   - 이 안에는 꼭 dt, dd태그가 들어가야함. But, ul,ol과는 다르게 div로 묶고 그 안에 dt, dd태그가 있어도 괜찮음.
   - dt : description term. key값에 해당됨.
-  - dd : description data. ke에 대한 설명.
+  - dd : description data. key에 대한 설명.
   - dfn : 의미를 dt보다 좀 더 사전적으로, 구체적으로 정의내리고 싶을 때 사용
 ```html
 🎈Syntax Alert 문법주의
@@ -387,7 +392,7 @@ button type 3가지 : button, submit, reset
 </table>
 - th를 어떻게 정의하느냐에 따라서 뒤에도 영향을 받음.
 - th의 갯수와 td의 갯수는 맞춰줘야함
-- 테이블의 구조를 쫌 더 명확하게 보여주기 위해 `<thead></thead>`, `<tbody></tbody>`
+- 테이블의 구조를 쫌 더 명확하게 보여주기 위해 <thead></thead>, <tbody></tbody>
 ```
 </br>
 
@@ -395,12 +400,136 @@ button type 3가지 : button, submit, reset
 </br></br>
 
 ## 표 Table (2) - 심화
-- 표Table2.html 참조할 것
+- `표Table2.html` 참조할 것
 - 먼저 한 줄에 몇 개의 칸이 들어가는지 알아야 함.
 - 줄에 대한 테이블 헤더 : th
 - `&amp;` 이스케이프코드
 - th로 할당된 칸 수를 컴퓨터는 알고 있음. 또 rowspan, colspan을 쓰면 그 칸의 수도 컴퓨터가 기억하고 있기 때문에 그 칸의 내용은 빼고 작성해도 괜찮음.
 - `scope="row|col"` 테이블 헤더한테만 쓸 수 있음. 테이블 헤더가 가로줄의 헤더인지 세로줄의 헤더인지 알려줌. 우리 눈에는 똑같지만 브라우저에게는 정확한 정보를 제공함. 일반 스크린 리더나 다른 도구를 이용해 웹을 이용하는 사용자들에게도 물론 도움을 줌. table 내 정보들의 관계성을 더 명확하게 파악할 수 있음.
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## 미디어 파일 Media
+- html 문서 안에 text가 아닌 어떤 형태에 데이터를 집어 넣는 경우를 미디어 파일이라고 함.
+- `<img src="" alt="">` 이미지
+- `<audio src=""></audio>` 음성파일
+  `<audio src="./assets/audios/kimbug.mp3"></audio>`
+    - controls을 넣어주면 사용자가 컨트롤 가능함.
+    - autoplay 음성 자동재생. 브라우저 정책상 요즘은 막혀있음. autoplay를 하려면 muted속성도 함께 적어줘야함.
+    - loop autoplay 무한 자동재생.
+```html
+<audio controls>
+    <source src="assets/audios/kimbug.wav" type="audio/wav"/>
+    <source src="assets/audios/kimbug.mp3" type="audio/mpeg"/>
+    <source src="assets/audios/kimbug.ogg" type="audio/ogg"/>
+</audio>
+    <p>
+        당신의 브라우저를 버리시고 크롬을 사용하시는게 어떨까요?
+        라고 위에 음성파일을 재생할 수 없는 사용자에게 알려주는게 User friendly함
+    </p>
+
+이렇게 작성해도 브라우저에서는 하나만 나옴. 한번만 재생이 됨.
+내가 만약 wav로 하나만 작성을 했다면 익스플로어 사용자는 음성파일을 들을 수 없음. 그런 사용자를 위해 위처럼 작성하게 됨.
+https://caniuse.com/
+이 브라우저별 사용가능한지 아닌지는 위 사이트에서 확인 가능.
+```
+- `<video src=""></video>`비디오
+    - audio와 attr가 동일하다.
+- `<iframe src="" frameborder="0"></iframe>` html 안에 또다른 html이나 컨텐츠를 임베드 하고 싶을 때 사용하는 태그
+    - 직접 iframe을 작성하는 경우는 별로 없을 것임.
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## 기타 Etc
+1.  `<abbr title="풀네임">약어</abbr>`
+    - abbreviation 약자, 약어
+    - 마우스를 가져다 놓으면 풀 네임이 나온다. 
+```html
+<p>
+    너 혹시 <abbr title="Attention Deficit Hyperactivity Disorder">ADHD</abbr>니?
+</p>
+```
+2. `<address>연락처</address>`
+    - (물리적)주소, url, 전화번호, 이메일, SNS
+```html
+<address>
+    <h1>
+        김버그
+    </h1>
+    <a
+href="https://youtube.com/c/kimbug">https://youtube.com/c/kimbug</a>
+</address>
+```
+3. `<pre>내가 작성한 그대로 나옴</pre>`
+- preformatted text, code
+- 그래서 보통 code를 작성할 때 `<pre>` 안에 쓰게 됨.
+- 하지만 이 둘을 항상 같이 묶어 놓을 필요는 없음.
+- 여러줄로 작성하고 들여쓰기로 작성하려면 `<pre><code>코드</code></pre>`
+```html
+<pre>
+    <code>
+        console.log('hello syg0629');
+            var syg0629 = 'syg0629';
+    </code>
+</pre>
+```
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## Doctype & Document Structure
+- Document Type Declaration
+  = DTD 선언
+  = 문서 형식 선언
+`<!DOCTYPE html>` : 브라우저야, 이 문서는 HTML5 버전으로 작성된 문서야. 그에 맞춰 잘 렌더링해줘 라는 뜻..
+- `<html></html>`안에는 `<head></head>`,`<body></body>`가 들어감.
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## Title, Link, Style & Script
+- `<title>문서의 대제목</title>` : 검색 최적화에 매우 중요
+  - title 잘 쓰는 방법
+    - 키워드 단순 나열은 비추
+    - 페이지마다 그에 맞게 변경
+    - 무엇에 관한 내용인지 센스있게 작성
+    - Search Engine Optimization
+- `<link rel="stylesheet" href="style.css">` : CSS 스타일시트를 첨부하는 태그
+    - link:css + 엔터 = 자동완성
+    - 웹 폰트를 쓸 때도 작성. CSS 파일에도 물론 적용되어야함. 
+- `<style>//CSS 코드</style>` : HTML 문서 내에 CSS코드를 작성할 때 사용하나 따로 CSS파일을 만드는게 훨씬 좋음.
+- `<script src="경로"></script>` : HTML 문서 내에 JavaScript파일을 첨부할 때 사용
+    - script:src + 엔터 = 자동완성
+- `<script>//자바스크립트 코드</script>`
+    - 왜 script는 head 안에 안 쓰나요?
+      - 브라우저가 어떤 식으로 태그를 렌더링하는지 알아야함.
+      - 링크랑 스크립트의 차이
+        - 링크는 우리가 가지고 있는게 아니라서 요청을 하고 받아오는 시간이 있음. 근데 기다리지 않고 skip하고 다른 것으로 넘어감. 하지만 script 태그는 다 안 받아오면 거기에서 멈춰버림. 그래서 이 태그를 head에 적어버리면 head에서 body를 렌더링하지 못하고 멈쳐서 다 로드될 때까지 기다림. 그래서 body안에서 모든 컨텐츠들이 다 로드가 된 다음 작성이 되어야 좋음. body 내에서도 가장 마지막에 작성되는 것이 좋다!!
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## Meta 메타 데이터
+- head 안에 작성
+- attr : name, content
+- name="메타데이터 종류(author, description, keywords)"
+- content="메타데이터 값" 
+- `<meta name="viewport" content="width=device-width, initial-scale=1.0">` : viewport 화면 사이즈, 디바이스 사이즈에 맞춰 알아서 사이즈가 조절됨. 반응형 사이트. CSS를 아무리 만져도 여기에서 viewport를 작성하지 않으면 먹히지 않음.
+- `<meta name="keywords" content="공부, 공부해야지, html, css">` : 여기에 있는 키워드를 누군가 검색하면 내것이 보여주게 해줘
+- meta태그는 종류가 많음.
+
 </br>
 
 [목차로 이동🚗](#목차)

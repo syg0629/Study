@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>김버그의 버그없는 HTML과 CSS</title>
+    <link rel="stylesheet" href="./titleLinkStyleScript.css">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <h1>kimbug</h1>
+    <script src="./titleLinkStyleScript.js"></script>
+    <script>
+        var h1 = document.querySelector('h1');
+        h1.addEventListener('click', function(evet){
+            this.textContent = 'hi';
+        })
+    </script>
+</body>
+</html>
