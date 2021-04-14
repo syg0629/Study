@@ -199,6 +199,17 @@ ol>li*2 이렇게 치면
 - dt가 연속적으로 나와도 되지만 dt, dd, dt 이렇게는 불가능함.
 - dl의 자식요소는 오직 div, dt, dd만 가능하다.
 - dt와 dd는 반드시 dl의 자식요소로 존재해야 한다.
+
+<dl>
+    <dt>학습 學習 [학씁]</dt>
+    <dd>
+        1. noun 배워서 익힘.
+    </dd>
+    <dd>
+        2. noun 심리 경험의 결과로 나타나는, 비교적 지속적인 행동의 변화나 그 잠재력의 변화. 또는 지식을 습득하는 과정
+    </dd>
+</dl>
+
 ```
 
 </br>
@@ -580,4 +591,15 @@ href="https://youtube.com/c/kimbug">https://youtube.com/c/kimbug</a>
 - `&`의 경우는 브라우저가 렌더링할 때 헷갈려할 수도 있으니 HTML escape code인 `&amp;`를 사용해야한다.
 - WAI-ARIA 인터넷의 접근성을 높이는데 사용
   - `<a href="#" aria-label="Go to previous page" class="disabled">Previous</a>` 
-  - aria-label : 눈에 보이지는 않지만 브라우저에게 전달되면 좋은 정보, 스크린 리더를 통해 웹을 사용하는 사용자들에게 전달해야하는 정보를 제공
+  - `aria-labe=""` : 눈에 보이지는 않지만 브라우저에게 전달되면 좋은 정보, 스크린 리더를 통해 웹을 사용하는 사용자들에게 전달해야하는 정보를 제공
+  - `aria-hidden="true"` : 스크린리더로 읽을 때 감추는 것.
+- ~는 ~고 ~는 ~다. key와 value의 형태 
+- 제출을 하려면 form태그 필요
+  - form태그 위에서부터 감쌀 필요 없고, 딱 전달할 내용만 감싸면 된다. form 태그에도 class 가능..
+```html
+Input Group
+<form action="" method="GET" class="input-group">
+        <input type="email" name="email" placeholder="Your Email">
+        <button type="submit" name="Subscriptions" value="Subscribe">Subscribe</button>
+</form>
+```
