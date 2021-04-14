@@ -603,3 +603,13 @@ Input Group
         <button type="submit" name="Subscriptions" value="Subscribe">Subscribe</button>
 </form>
 ```
+- `class="sr-only"` : Screen Reader only
+- 테이블을 만들 때는 우리 눈에 보이지 않는다고 해서 thead를 작성하지 않으면 안됨!!! 만들고 CSS로 바꾸기
+- video source태그 쓰면 type 써주기
+```html
+<video controls autoplay muted>
+    <source src="./kimbug-bjj.mp4" type="video/mp4">
+    <source src="kimbug-bjj.mov" type="video/mp4">
+</video>
+```
+- `lang=ko`인지 `lang=en`인지 확인
