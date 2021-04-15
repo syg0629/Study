@@ -9,7 +9,8 @@
 >> 4. `&amp;` 이스케이프코드<br>
 >> 5. th로 할당된 칸 수를 컴퓨터는 알고 있음. 또 rowspan, colspan을 쓰면 그 칸의 수도 컴퓨터가 기억하고 있기 때문에 그 칸의 내용은 빼고 작성해도 괜찮음.<br>
 >> 6. `scope="row|col"` 테이블 헤더한테만 쓸 수 있음. 테이블 헤더가 가로줄의 헤더인지 세로줄의 헤더인지 알려줌. 우리 눈에는 똑같지만 브라우저에게는 정확한 정보를 제공함. 일반 스크린 리더나 다른 도구를 이용해 웹을 이용하는 사용자들에게도 물론 도움을 줌. table 내 정보들의 관계성을 더 명확하게 파악할 수 있음.<br>
-
+>> 7. Sectioning Elements(총 4개) : section, article, nav, aside<br>
+>> 8. Selectioning element 내에는 반드시 heading 태그를 작성해야한다`<h1> ~ <h6>`.<br>
 ## 목차
 <!-- TOC -->[HTML & CSS](#html--css) 
 - [HTML & CSS](#html--css)
@@ -41,6 +42,16 @@
   - [[HTML 기초] Meta 메타 데이터](#html-기초-meta-메타-데이터)
   - [[HTML 기초] Q & A](#html-기초-q--a)
   - [[HTML 훈련]](#html-훈련)
+  - [[트위터 마크업 챌린지] 구조적인 웹 문서 설계](#트위터-마크업-챌린지-구조적인-웹-문서-설계)
+  - [[트위터 마크업 챌린지] 올바른 Sectioning Elements 사용 방법](#트위터-마크업-챌린지-올바른-sectioning-elements-사용-방법)
+  - [[트위터 마크업 챌린지] 페이지 구조 설계](#트위터-마크업-챌린지-페이지-구조-설계)
+  - [[트위터 마크업 챌린지] Header](#트위터-마크업-챌린지-header)
+  - [[트위터 마크업 챌린지] Global Navigation](#트위터-마크업-챌린지-global-navigation)
+  - [[트위터 마크업 챌린지] Main](#트위터-마크업-챌린지-main)
+  - [[트위터 마크업 챌린지] Section(Tweet Form, Timeline)](#트위터-마크업-챌린지-sectiontweet-form-timeline)
+  - [[트위터 마크업 챌린지] Article(Tweet)](#트위터-마크업-챌린지-articletweet)
+  - [[트위터 마크업 챌린지] Aside](#트위터-마크업-챌린지-aside)
+  - [[트위터 마크업 챌린지] Footer](#트위터-마크업-챌린지-footer)
 <br>
 
 
@@ -605,6 +616,7 @@ Input Group
 ```
 - `class="sr-only"` : Screen Reader only
 - 테이블을 만들 때는 우리 눈에 보이지 않는다고 해서 thead를 작성하지 않으면 안됨!!! 만들고 CSS로 바꾸기
+- `lang=ko`인지 `lang=en`인지 확인
 - video source태그 쓰면 type 써주기
 ```html
 <video controls autoplay muted>
@@ -612,4 +624,122 @@ Input Group
     <source src="kimbug-bjj.mov" type="video/mp4">
 </video>
 ```
-- `lang=ko`인지 `lang=en`인지 확인
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [트위터 마크업 챌린지] 구조적인 웹 문서 설계
+- 구조적으로 문서를 설계한다는 것은 글의 구조를 쉽게 파악할 수 있게 하는 것.
+- 브라우저에도 글의 개요가 필요하다.
+- Sectioning Elements
+  - section, article, nav, aside, header, main, footer
+  - 상황에 맞는 적절한 Sectioning 요소를 올바르게 사용해야함.
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [트위터 마크업 챌린지] 올바른 Sectioning Elements 사용 방법
+- 🎈<u><b>Sectioning Elements(총 4개)
+  - section, article, nav, aside</b></u>
+  - 공통적으로 지켜야할 규칙
+  - Sectioning elements = 단원이라고 생각하면 됨.
+  - 단원에는 단원의 주제, 제목이 있음.
+  - 🎈<u><b>selectioning element 내에는 반드시 heading 태그를 작성해야한다`<h1> ~ <h6>`.</b></u>
+```html
+<section>
+  <h1>섹션의 제목</h1>
+  <p></p>
+</section>
+```
+```html
+<nav>
+  <h1>메뉴</h1>
+  <ul>
+    <li>
+      <a href="#">링크</a>
+    </li>
+  </ul>
+</nav>
+```
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [트위터 마크업 챌린지] 페이지 구조 설계
+1. 전체 페이지를 마크업할 때, 구획 나누기 먼저 할 것.
+  - 논리적으로 긴밀하게 관련된 집합체
+2. 적절한 Sectioning elements 정해주기
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [트위터 마크업 챌린지] Header
+- div와 비슷함.
+- section의 상단부분, 도입부를 알려줌.
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [트위터 마크업 챌린지] Global Navigation
+- 🎈<u><b>Sectioning elements이기 때문에 heading 태그를 무조건 작성해줘야함.</b></u>
+- 문서 간으로 이동을 할 수 있는 메뉴가 있는 경우 사용 -> nav
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [트위터 마크업 챌린지] Main
+- 본문의 가장 핵심이 되는 부분을 묶어주는 역할.
+- 하나의 html에는 단 한 개의 main을 가지고 있을 수 있음.
+- section, article, nav, aside 안에 올 수 없음.
+- Sectioning elements가 아니기 때문에 heading 태그가 반드시 필요하지 않다.
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [트위터 마크업 챌린지] Section(Tweet Form, Timeline)
+- 가장 만만한 Sectioning elements
+- div도 괜찮지만 section을 쓸 때 뉘앙스가 더 배가 됨.
+- 논리적으로 완결성 있는 집합체
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [트위터 마크업 챌린지] Article(Tweet)
+- Sectioning elements로 heading 태그가 반드시 있어야한다.
+- 뉴스 기사나 블로그처럼 컨텐츠로 완결성이 있는 경우 section 보다 더 뉘앙스를 살리기 위해 사용
+- 독립적으로 존재해도 완결성이 있는 경우 사용
+- footer 하단부의 도입부를 알림
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [트위터 마크업 챌린지] Aside
+- Sectioning elements이기 때문에 heading 태그 필수
+- 사이드 바 or 배너 광고때 이용
+- 논리적으로 완결이 되었지만 본문 내용과 직접적으로 연관이 없는 것
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [트위터 마크업 챌린지] Footer
+- Sectioning elements가 아니기 때문에 heading 태그가 반드시 필요하지 않다.
+- 
