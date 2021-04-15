@@ -1,0 +1,25 @@
+a {
+  background-color: #a389f4;
+}
+
+a:hover {
+  background-color: #7e5bdf;
+}
+
+a:active {
+  background-color: #592dea;
+  color: white;
+}
+
+input {
+  outline: none;
+  box-shadow: none;
+}
+
+input:focus {
+  border-color: #009eeb;
+}
+
+input:active {
+  border-color: #85d7ff;
+}

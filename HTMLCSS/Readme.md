@@ -1,6 +1,7 @@
 # HTML & CSS
 <b> 출처 : https://edu.goorm.io/learn/lecture/20583/%EA%B9%80%EB%B2%84%EA%B7%B8%EC%9D%98-html-css%EB%8A%94-%EC%9E%AC%EB%B0%8C%EB%8B%A4<br></b>
-> 김버그의 HTML&CSS는 재밋다 Study : 2021.03.30 ~ <br>
+> 김버그의 HTML은 재밌다 Study : 2021.03.30 ~ 2021.04.15<br>
+> 김버그의 CSS는 재밌다 Study : 2021.04.15 ~ <br>
 ---
 >> <b><u>✨Check✨</u></b><br>
 >> 1. nav 태그를 아껴쓰자(1페이지 당 보통 1개) / 다른 페이지로 이동할 수 있는 링크를 모아둔 네비게이션 메뉴에만 제한해서 쓰쟈!<br>
@@ -11,11 +12,13 @@
 >> 6. `scope="row|col"` 테이블 헤더한테만 쓸 수 있음. 테이블 헤더가 가로줄의 헤더인지 세로줄의 헤더인지 알려줌. 우리 눈에는 똑같지만 브라우저에게는 정확한 정보를 제공함. 일반 스크린 리더나 다른 도구를 이용해 웹을 이용하는 사용자들에게도 물론 도움을 줌. table 내 정보들의 관계성을 더 명확하게 파악할 수 있음.<br>
 >> 7. Sectioning Elements(총 4개) : section, article, nav, aside<br>
 >> 8. Selectioning element 내에는 반드시 heading 태그를 작성해야한다`<h1> ~ <h6>`.<br>
+>> 9. `box-sizing: border-box;`을 하지 않고 CSS를 작업하면 기본값인 `box-sizing: content-box`가 되어서 margin과 padding 때문에 내가 원하는 width와 height 값이 나오지 않을 수 있음.<br>
 ## 목차
-<!-- TOC -->[HTML & CSS](#html--css) 
+<!-- TOC -->
 - [HTML & CSS](#html--css)
-  - [> 김버그의 HTML&CSS는 재밋다 Study : 2021.03.30 ~ <br>](#-김버그의-htmlcss는-재밋다-study--20210330--)
+  - [> 김버그의 CSS는 재밌다 Study : 2021.04.15 ~ <br>](#-김버그의-css는-재밌다-study--20210415--)
   - [목차](#목차)
+- [HTML](#html)
   - [[시작하기에 앞서] HTML이 왜 중요한가요?](#시작하기에-앞서-html이-왜-중요한가요)
   - [[HTML 기초] 태그 해부학](#html-기초-태그-해부학)
   - [[HTML 기초] 제목과 문단 Headings & Paragraph](#html-기초-제목과-문단-headings--paragraph)
@@ -52,12 +55,25 @@
   - [[트위터 마크업 챌린지] Article(Tweet)](#트위터-마크업-챌린지-articletweet)
   - [[트위터 마크업 챌린지] Aside](#트위터-마크업-챌린지-aside)
   - [[트위터 마크업 챌린지] Footer](#트위터-마크업-챌린지-footer)
+- [CSS](#css)
+  - [[CSS 기초] CSS 소개 & 기본 형태](#css-기초-css-소개--기본-형태)
+  - [[CSS 기초] CSS 사용 방법](#css-기초-css-사용-방법)
+  - [[CSS 기초] Selectors - 요소, 클래스, ID 선택자 (Type, Class & ID Selector)](#css-기초-selectors---요소-클래스-id-선택자-type-class--id-selector)
+  - [[CSS 기초] Selectors - 자식, 자손, 형제 선택자 (Child, Descendant & Sibling Combinators)](#css-기초-selectors---자식-자손-형제-선택자-child-descendant--sibling-combinators)
+  - [[CSS 기초] Selectors - 구조적 가상 클래스 선택자 (Structural Pseudo-classes)](#css-기초-selectors---구조적-가상-클래스-선택자-structural-pseudo-classes)
+  - [[CSS 기초] Selectors - 동적 가상 클래스 선택자 (User Action Pseudo-classes)](#css-기초-selectors---동적-가상-클래스-선택자-user-action-pseudo-classes)
+  - [[CSS 기초] Selectors - CSS 선택자 올림픽](#css-기초-selectors---css-선택자-올림픽)
+  - [[CSS 기초] Box - Box Model](#css-기초-box---box-model)
+  - [[CSS 기초] Box - Box Sizing](#css-기초-box---box-sizing)
+  - [[CSS 기초] Box - Box](#css-기초-box---box)
+  - [[CSS 기초] Box - Block](#css-기초-box---block)
 <br>
 
 
 ---
-<br>
+<br></br></br>
 
+# HTML
 ## [시작하기에 앞서] HTML이 왜 중요한가요?
 - 개발자모드(F12) -> Network -> Doc => 이게 HTML
 - 웹 페이지의 모든 것의 시작은 HTML에서 비롯된다.
@@ -742,4 +758,223 @@ Input Group
 
 ## [트위터 마크업 챌린지] Footer
 - Sectioning elements가 아니기 때문에 heading 태그가 반드시 필요하지 않다.
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br></br></br>
+
+# CSS
+## [CSS 기초] CSS 소개 & 기본 형태
+- CSS : Cascading Style Sheet
+- HTML에 디자인을 입히는 아이
+```css
+selector {
+  property : value;
+}
+- 선택자(selector) : 누구를 꾸밀지 지목
+- 🎈CSS를 끝낼때 `;`는 필수!!! 오류가 나도 CSS는 알려주지 않음.
+```
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] CSS 사용 방법
+1. link 태그를 이용해서 CSS 파일을 import
+```html
+<html>
+  <title>How to use CSS</title>
+  <link rel="stylesheet" href="./style.css"/>
+```
+2. html 내에 `<style></style>`태그를 이용해서 CSS를 쓸 수 있지만 권장하지 않는다.
+3. inline style : 요소에 직접 style을 넣는 방법. 특별한 이유가 있지 않는 이상 이건 절대 사용하지 말 것 => 나중에 유지보수 관리 때 굉장히 굉장히 힘들댜ㅑㅑ(⊙o⊙)
+  `<p style="font-size: 32px;">`
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Selectors - 요소, 클래스, ID 선택자 (Type, Class & ID Selector)
+- Type Selector
+  - html tag selector
+```css
+p {
+  color : #212529;
+}
+```
+- Class Selector : 
+  - html에서 `class`라고 작성. CSS에서는 `.`으로 작성.
+  - 모두 같은 스타일링 효과를 주려면 같은 `class 이름`을 사용
+  - `class` 한 요소에 여러 개를 줄 수 있음.
+```html
+<div class="box-0 box-1 box-2" >
+한 칸씩 띄어주어야 각각의 다른 클래스로 적용.
+```
+```css
+.box-0.box1 {
+  color : #212529;
+}
+
+이렇게 안떨어져 있으면 .box-0 이자 .box1 인 것을 말함.
+떨어지면 다른 의미가 됨.
+```
+- ID Selector
+  - 단 한개만 존재해야함
+  - html에서 `id`라고 작성. CSS에서는 `#`으로 작성.
+```html
+<div id="syg0629">
+```
+```css
+#syg0629 {
+  font-style: italic;
+}
+```
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Selectors - 자식, 자손, 형제 선택자 (Child, Descendant & Sibling Combinators)
+- 같은 계층에 있는지에 따라 생각하면 됨.
+- 자식 선택자
+  - parent > child
+  - parent가 child를 감싸고 있음.
+- 자손 선택자
+  - parent child
+  - 가운데 공백이 있어야함.
+  - 물론 자식도 선택됨.
+- 형제 선택자
+  - parent + sibling
+    - 선택한 아이 다음 1개만 효과를 주고싶을 때
+  - parent ~ sibling
+    - 선택한 아이 다음에 오는 모든 아이들에게 효과를 주고 싶을 때
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Selectors - 구조적 가상 클래스 선택자 (Structural Pseudo-classes)
+- Pseudo : 가짜, 가상
+- element:first-child
+- element:last-child
+- element:nth-child(n)
+```html
+<ol>
+    <li>Do something</li>
+    <li>Do something else</li>
+    <li>Create something</li>
+    <li>Create something else</li>
+    <li>Make something </li>
+    <li>Make something else</li>
+</ol>
+```
+```css
+li:first-child {
+  color: #0066ff;
+}
+li이자 fist-child 인 아이.
+붙여서 사용해야함.
+
+li:last-child {
+  color: #ff4949;
+}
+
+li:nth-child(3) {
+  color: #ffc82c
+}
+li에서 3번째 아이.
+
+li:nth-child(2n) {
+  color: #ffffff
+}
+li이자 짝수인 아이
+
+li:nth-child(2n-1) {
+  color: #ffffff
+}
+li이자 홀수인 아이
+```
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Selectors - 동적 가상 클래스 선택자 (User Action Pseudo-classes)
+- element:hover
+  - 마우스를 가져가 놓았을 때
+- element:focus
+  - 해당 요소가 focus가 되었을 때
+- element:action
+  - 마우스로 클릭하는 찰나의 순간
+=> 클릭이 되고 포커스가 된다. active가 먼저 먹고 그다음 focus이지만, CSS 작성할 때는 focus 상태일 때의 스타일을 기본으로 깔고, active 상태일 때 추가로 스타일을 추가해 "덮어주는 것"!!!
+```css
+input:focus {
+}
+
+input:active {
+}
+순서로 작성해야함. 반대로 하면 동작하지 않음.
+```
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Selectors - CSS 선택자 올림픽
+- 선택자 우선순위
+  - 동일한 CSS 코드가 2개 있고 value만 다르다면 나중에 선언된 태그가 동작.
+  - 1 : !important `color: hotpink !important;` 가능하면 쓰지 말 것.
+  - 2 : Inline Style 가능하면 쓰지 말 것.
+  - 3 : ID Selector
+  - 4 : Class, Pseudo-class(first-child, 
+last-child, nth-child(n), hover, focus, active) Selector
+  - 5 : Type Selector가 순위가 가장 낮음. html 태그 자체
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Box - Box Model
+- width : content의 가로
+- height : content의 세로
+- border : 테두리 &nbsp; `border: 1px(굵기) solid(스타일) #000(색상)`, `border : none(테두리 쓰고 싶지 않을 때)`, `border-radius: 4px(숫자가 높을 수록 둥글게둥글게🏐, 그냥 동그라미 : 50%)`
+- padding : 안쪽 여백. 즉, content와 border 사이의 공간
+  - 속기형 : 시계 방향(top, right, botoom, left)
+  - `padding: 10px 20px 30px 40px`
+- margin : 바깥 여백. 즉, 요소와 요소 사이의 간격
+  - 속기형 : 시계 방향(top, right, botoom, left)
+    - `magin: 10px 20px`
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Box - Box Sizing
+- `box-sizing: border-box;`을 하지 않고 CSS를 작업하면 기본값인 `box-sizing: content-box`가 되어서 margin과 padding 때문에 내가 원하는 width와 height 값이 나오지 않을 수 있음.
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Box - Box
+- Box는 여러 종류가 있음.
+- Box Type(Block, Inline, Inline Block, Flex)이 무엇이냐에 따라 Box Model(width, padding ...)의 작동 방식도 달라짐.
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Box - Block
+- Display는 Box Type을 결정짓는 CSS 속성
+- Display 값이 무엇인가에 따라 Box Type이 달라짐
 - 

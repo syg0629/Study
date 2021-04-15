@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  width: 480px;
+  height: 480px;
+  padding: 40px 50px;
+  background-color: #0066ff;
+  color: white;
+  font-weight: 700;
+}
