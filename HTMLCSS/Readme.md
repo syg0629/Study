@@ -67,6 +67,8 @@
   - [[CSS 기초] Box - Box Sizing](#css-기초-box---box-sizing)
   - [[CSS 기초] Box - Box](#css-기초-box---box)
   - [[CSS 기초] Box - Block](#css-기초-box---block)
+  - [[CSS 기초] Box - Inline](#css-기초-box---inline)
+  - [[CSS 기초] Box - Inline Block](#css-기초-box---inline-block)
 <br>
 
 
@@ -975,6 +977,41 @@ last-child, nth-child(n), hover, focus, active) Selector
 </br></br>
 
 ## [CSS 기초] Box - Block
-- Display는 Box Type을 결정짓는 CSS 속성
-- Display 값이 무엇인가에 따라 Box Type이 달라짐
-- 
+- 모든 html 요소는 display 값이 있음. 
+- display는 Box Type을 결정짓는 CSS 속성
+- display 값이 무엇인가에 따라 Box Type이 달라짐
+- Block : (지나가지 못하게) 막다, 차단하다 => 길막
+- Block Type요소에 width를 선언하지 않은 경우, width = 부모의 content-box의 100%. 아래 따라오는 다른 요소는 위 요소를 침범하지 못 함.
+- 따로 width를 선언한 경우, 남은 공간은 margin으로 자동으로 채움. 아래 요소가 위로 올라오지 못함.
+- `margin-left: auto;` 자동으로 생기는 마진을 전부 왼쪽으로 보내겠다!(보통 오른쪽에 있음)
+- `margin: 0 auto;` : margin-left와 right를 auto로 해서 가운데 정렬
+- 따로 부모의 height를 선언하지 않을 경우, `자식 요소의 height의 합 = 부모의 height`
+- 마음대로 사용 가능 : width, height, padding, border, margin
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Box - Inline
+- Inline : 라인 안에 있음.
+- 기본적으로 옆으로 흐름
+- 사용불가 : width, height, padding-top, padding-bottom, border-top, border-bottom, margin-top, margin-bottom
+- Inline의 줄간격 흐름을 박살내는 아이들이기 때문.
+- left/right는 사용 가능
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Box - Inline Block
+- Inline의 좋은 점과 Block의 좋은 점을 모두 가진 아이.
+
+```html
+1. 인라인을 사용해야 하는 경우 텍스트와 같이 문단에서 줄 간격에 따라 흘러야 하는 경우 (사실 인라인으로 억지로 바꾸는 경우는 정말 극히 드물기에... 좋은 예시를 들기가 어렵네요)
+
+2. 블록을 사용해야 하는 경우 공간의 영역을 차지해야 하는 경우 width나 height를 사용해야 하는 경우 (사실 display: block을 가장 많이 사용하는데요, 그 이유는 width나 height 사이즈를 잡을 수 없는 인라인 요소를 사이즈를 잡을 수 있게 만들기 위해서 자주 사용합니다)
+
+3. 인라인 블록을 사용해야 하는 경우 width나 height 사이즈를 설정해야 하고 동시에 별도의 설정 없이(가령 float나 flex가 있습니다) 가로 배치도 자동으로 되게 하고 싶을 때!! (이 경우는 꽤나 명확하죠)
+```
