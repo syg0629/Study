@@ -13,6 +13,8 @@
 >> 7. Sectioning Elements(총 4개) : section, article, nav, aside<br>
 >> 8. Selectioning element 내에는 반드시 heading 태그를 작성해야한다`<h1> ~ <h6>`.<br>
 >> 9. `box-sizing: border-box;`을 하지 않고 CSS를 작업하면 기본값인 `box-sizing: content-box`가 되어서 margin과 padding 때문에 내가 원하는 width와 height 값이 나오지 않을 수 있음.<br>
+>> 10. `margin`쓸 때 `margin-top`이나 `margin-bottom` 중 하나만 골라 쓸 것. 그렇지 않으면 코드를 보면 중구난방으로 되어 있는데 기준을 잡으면 유지보수할 때도 좋음.
+
 ## 목차
 <!-- TOC -->
 - [HTML & CSS](#html--css)
@@ -69,6 +71,11 @@
   - [[CSS 기초] Box - Block](#css-기초-box---block)
   - [[CSS 기초] Box - Inline](#css-기초-box---inline)
   - [[CSS 기초] Box - Inline Block](#css-기초-box---inline-block)
+  - [[CSS 기초] Float - Float1](#css-기초-float---float1)
+  - [[CSS 기초] Float - Float2](#css-기초-float---float2)
+  - [[실습] Float 훈련1](#실습-float-훈련1)
+  - [[실습] Float 훈련2](#실습-float-훈련2)
+  - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
 
@@ -1015,3 +1022,108 @@ last-child, nth-child(n), hover, focus, active) Selector
 
 3. 인라인 블록을 사용해야 하는 경우 width나 height 사이즈를 설정해야 하고 동시에 별도의 설정 없이(가령 float나 flex가 있습니다) 가로 배치도 자동으로 되게 하고 싶을 때!! (이 경우는 꽤나 명확하죠)
 ```
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Float - Float1
+- 가로배치 + 레이아웃 와장창
+- float : (물 위나 공중에서) 떠가다. (가라앉지 않고 물에) 뜨다.
+- `opacity: 0;` 완전 투명.
+- `opacity: 0.5;` 50%만 투명.
+- `opacity: 1;` 완전 불투명.
+1. 집 나간 내 새끼, 찾을 길 없네
+   - float를 써서 위로 떠버리면 부모와 형제들은 집나간 아이의 행방을 모른다. 그래서 height도 집 나간 아이 제외한 값이 나오고, 레이아웃도 바뀌게 된다.
+2. 블록으로 신분 상승
+   - 기존 Inline, Inline Block, Block이 float를 쓰게되면 Block으로 된다. Block이 됨으로 width, height 등등 Block이 가지는 특징을 다 쓸 수 있음.
+3. 길막을 못해 슬픈 블록아!
+   - float을 쓰면 블록은 블록인데 길막을 하지 못하는 하자가 있는 블록이 됨.
+   - 원래 Block은 width를 선언하지 않은 경우, width=부모의 content-box의 100%
+       - float이 되면, 안에 있는 content 만큼만 가진다. 붕 뜨기 위해서는 가벼워야하므로!
+   - 원래 Block은 따로 width를 선언한 경우, 남은 공간은 margin으로 자동으로 채운다
+       - float이 되면, 자동으로 생기는 margin auto가 생기지 않는다. 밑에 있는 친구들이 위로 올라온다.
+4. 플로트, 나만 볼 수 있어요(feat. 인라인)
+- 자식들이 다 float을 쓰게 되면 집을 다 나가게 됨으로 parent의 height는 0이 되어버림. 가로배치는 성공. But 레이아웃 붕괴.
+- height가 0가 되면 영역차지를 안하는 것
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+ 
+## [CSS 기초] Float - Float2
+- Float로 부셔진 레이아웃 고치기
+1. 쉬운 방법 : `overflow: hidden;`
+   - 원래는 float를 쓰면 부모는 집나간 자식의 존재를 모름.
+   - `overflow: hidden`을 쓰면 부모가 그 자식을 찾음.
+2. 정석 : `clearfix`
+   - `clear: left || right || both` 총 3가지 값을 가지고 있음.
+   - `clear: left` float: left의 영향을 받지 않겠다.
+   - `clear: right` float: right의 영향을 받지 않겠다.
+   - `clear: both` 둘 다 영향을 받지 않겠다.
+   - display가 block인 요소한테만 사용할 수 있음.
+3. 가상요소를 만들어서 CSS로 레이아웃 해결
+   - 가상요소는 각 요소당 2개씩 만들 수 있음.
+   - `::before`, `::after`
+```css
+.pseudo::before {
+  content: "";
+  display: block;
+}
+
+가상요소를 만들려면 content가 필수인데 inline요소.
+또 clear를 사용해주려면 block인 요소에만 작용되기 때문에 `display: block`을 해준다.
+```
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+ 
+## [실습] Float 훈련1
+```css
+list-style-type: decimal;
+리스트 스타일이 1.,2. 이런식으로 
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+ul 때문에 `padding-left: 40px`이 기본적으로 생김.
+없애주어야함.
+
+li 안에 a가 있을 때는 a 태그에 padding 을 주는게 좋음.
+a에 padding을 주어야 li 영역 전체가 target 영역이 됨.
+li에 padding을 주게 되면 고정된 a 영역, 글씨를 눌러야만 반응됨.
+taget 영역 넓히기
+```
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+ 
+## [실습] Float 훈련2
+🎈Tip
+1. `margin`쓸 때 `margin-top`이나 `margin-bottom` 중 하나만 골라 쓸 것. 그렇지 않으면 코드를 보면 중구난방으로 되어 헷갈림. 기준을 잡으면 유지보수할 때도 좋음.
+2. `clearfix`를 자주 쓰게 되면
+```css
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+``` 
+을 미리 만들어 놓아서 html class clearfix 이용
+3.  가로배치를 할 아이가 누구인지 생각할 것 -> 가로배치한 이후(float), 그 아이의 부모한테 clearfix를 해줄 것. 
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Q & A
+1. active란 상태는 a, button, input, textarea 등과 같이 인터렉션 요소가 있는 요소에게만 적용되는 가상클래스입니다! 그래서 div나 li, span과 같은 친구들에게는 active 상태가 적용이 안 될 거예요!
+   -  어째 li는 안먹고 a는 먹더라니..(⊙o⊙)

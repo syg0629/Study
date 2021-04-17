@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+.parent {
+  width: 400px;
+  margin: 0 auto;
+  background-color: #eff2f7;
+  /* overflow: hidden; */
+}
+
+.child {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  float: left;
+}
+
+.parent::after {
+  content: "";
+  display: block;
+  clear: left;
+}
+
+.red {
+  background-color: #ff4949;
+  opacity: ;
+}
+
+.yellow {
+  background-color: #ffc82c;
+}
+
+.blue {
+  background-color: #0066ff;
+}
+
+.other {
+  background-color: #000;
+  color: #fff;
+}
+
+.pseudo::before {
+  content: "✨";
+}
+
+.pseudo::after {
+  content: "✨";
+}
