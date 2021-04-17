@@ -13,7 +13,9 @@
 >> 7. Sectioning Elements(총 4개) : section, article, nav, aside<br>
 >> 8. Selectioning element 내에는 반드시 heading 태그를 작성해야한다`<h1> ~ <h6>`.<br>
 >> 9. `box-sizing: border-box;`을 하지 않고 CSS를 작업하면 기본값인 `box-sizing: content-box`가 되어서 margin과 padding 때문에 내가 원하는 width와 height 값이 나오지 않을 수 있음.<br>
->> 10. `margin`쓸 때 `margin-top`이나 `margin-bottom` 중 하나만 골라 쓸 것. 그렇지 않으면 코드를 보면 중구난방으로 되어 있는데 기준을 잡으면 유지보수할 때도 좋음.
+>> 10. `margin`, `padding` 쓸 때 `~top`이나 `~bottom` 중 하나, `~left`이나 `~right`중 하나만 골라 쓸 것. 그렇지 않으면 코드를 볼 때 중구난방으로 되어 헷갈림. 기준을 잡으면 유지보수할 때도 좋음.
+>> 11. `image`.. `inline`이다......근데 width랑 height가 먹힌다. 반전..（⊙ｏ⊙）... 이미지 태그만 그렇대! 그래도 `display: block`을 주는게 좋대!!
+
 
 ## 목차
 <!-- TOC -->
@@ -75,6 +77,13 @@
   - [[CSS 기초] Float - Float2](#css-기초-float---float2)
   - [[실습] Float 훈련1](#실습-float-훈련1)
   - [[실습] Float 훈련2](#실습-float-훈련2)
+  - [[CSS 기초] Position - Position 1 & 2](#css-기초-position---position-1--2)
+    - [static](#static)
+    - [relative](#relative)
+    - [absolute](#absolute)
+    - [fixed](#fixed)
+    - [z-index](#z-index)
+    - [image](#image)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1107,7 +1116,7 @@ taget 영역 넓히기
  
 ## [실습] Float 훈련2
 🎈Tip
-1. `margin`쓸 때 `margin-top`이나 `margin-bottom` 중 하나만 골라 쓸 것. 그렇지 않으면 코드를 보면 중구난방으로 되어 헷갈림. 기준을 잡으면 유지보수할 때도 좋음.
+1. `margin`, `padding` 쓸 때 `~top`이나 `~bottom` 중 하나, `~left`이나 `~right`중 하나만 골라 쓸 것. 그렇지 않으면 코드를 볼 때 중구난방으로 되어 헷갈림. 기준을 잡으면 유지보수할 때도 좋음.
 2. `clearfix`를 자주 쓰게 되면
 ```css
 .clearfix::after {
@@ -1124,6 +1133,62 @@ taget 영역 넓히기
 [목차로 이동🚗](#목차)
 </br></br>
 
+## [CSS 기초] Position - Position 1 & 2
+- 요소를 원하는 위치에 자유롭게 이동시키기 위해 사용하는 property
+- 총 5가지 종류(static, relative, absolute, fixed, sticky)
+  - But, sticky는 아직 지원하는 브라우저가 많이 없음.
+- Position을 공부할 때 반드시 생각해야하는 것(2가지).
+  1. 내가 어떤 종류의 Position을 사용하고 있는가?
+  2. 내가 사용하는 Position은 무엇을 기준으로 요소를 위치시키는가?
+- 기준이 각각의 Position Type에 따라서 많이 달라짐.
+<br><br>
+
+### static
+- 모든 요소의 기본 Position 값
+
+### relative
+- 자신이 원래 있던 자리를 기준
+- relative를 쓰면 float와 마찬가지로 부모를 떠나 붕 뜬다.
+- 하지만 float와 반대로 레이아웃이 붕괴되거나, 다른 요소들에게 영향을 끼치진 않음. 
+
+### absolute
+- float를 사용했을 때의 현상과 동일한 것들이 많음.
+  - 집 나간 내 새끼, 찾을 길 없네
+  - 블록으로 신분 상승
+  - 길막을 못해 슬픈 블록아!
+  - ~~플로트, 나만 볼 수 있어요(feat.인라인)~~ (얘만 제외)
+    - 천상천하 유아독존. 붕 떠서 사라짐
+- 자신이 삼고싶은 기준점을 새로 정할 수 있음.
+  - float는 자신을 감싸고 있는 부모에게 철저히 종속 되었음.
+  - absolute는 자신을 감싸고 있는 여러 조상 중에서 자기가 기준으로 삼고 싶은 요소를 선택할 수 있음 => position이 static이 아닌 요소. 
+  - 만약 부모가 static이면 부모 패스하고 할머니, 할아버지에게 감.
+- position absolute를 사용할 때는 어떤 조상요소를 기준으로 움직일 것인지에 대한 기준점 설정이 반드시 필요함 -> 가장 만만하게 쓸 수 있는게 &nbsp; `position: relative`
+
+### fixed
+- absolute와 완전히 동일한 현상이 일어남.
+  - 집 나간 내 새끼, 찾을 길 없네
+  - 블록으로 신분 상승
+  - 길막을 못해 슬픈 블록아!
+- 차이점은 absolute와 달리 fixed는 자신의 기준점이 명확하게 정해져 있음 -> viewport 
+- viewport 사이즈로 자신을 위치시키게 됨.
+- viewport : 내가 보고 있는 브라우저 창의 전체 크기
+
+### z-index
+- position된 요소들이 수직 방향 되었을 때 위치를 알려줌.
+- position에서 static을 제외한 모든 요소들은 다 수직방향으로 붕뜬다. 붕뜨면 z-index라는 레벨이 생김. 'z축으로 몇 번째 레벨에 위치시킬까?'라는 값을 설정해줄 때 사용. z-index 사용으로 살짝 덮어쓸 수 있음.
+
+### image
+- 사진 inline이다........근데 width랑 height가 먹힌다. 반전..（⊙ｏ⊙）... 이미지 태그만 그렇대! 그래도 `display: block`을 주는게 좋대!!
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
 ## [CSS 기초] Q & A
 1. active란 상태는 a, button, input, textarea 등과 같이 인터렉션 요소가 있는 요소에게만 적용되는 가상클래스입니다! 그래서 div나 li, span과 같은 친구들에게는 active 상태가 적용이 안 될 거예요!
    -  어째 li는 안먹고 a는 먹더라니..(⊙o⊙)
+
+2. position과 float 중 어떤 것을 사용할 지 판단할 때 
+   - 뭔가 특정 장소에 고정시켜 놓아야 한다 = position
+   - 두 요소를 옆으로 배치시켜야 한다 = float

@@ -45,6 +45,7 @@ p {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  margin-right: 20px;
 }
 
 .card-content h1 {
@@ -59,8 +60,4 @@ p {
 .card-user,
 .card-content {
   float: left;
-}
-
-.card-content {
-  margin-left: 20px;
 }
