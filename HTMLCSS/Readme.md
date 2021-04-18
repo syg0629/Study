@@ -84,6 +84,8 @@
     - [fixed](#fixed)
     - [z-index](#z-index)
     - [image](#image)
+    - [`width: 100%;` & `height: auto;`](#width-100--height-auto)
+    - [transform](#transform)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1180,6 +1182,29 @@ taget 영역 넓히기
 ### image
 - 사진 inline이다........근데 width랑 height가 먹힌다. 반전..（⊙ｏ⊙）... 이미지 태그만 그렇대! 그래도 `display: block`을 주는게 좋대!!
 
+### `width: 100%;` & `height: auto;`
+- `width: 100%;` : 자기 부모의 content box 길이에 100% 맞게 됨.
+- `height: auto` : width 길이에 맞게 알맞은 비율로 해줌.
+```css
+.card {
+  width: 400px;
+}
+
+.card-carousel img {
+  width: 100%;
+  height: auto;
+}
+이미지 사이즈 조절할 때 굉장히 많이 쓰는 조합
+```
+### transform
+- position 태그로 위치를 이동시키긴 했으나 이동시킨 요소는 그 지점부터 시작이 됨. 그래서 내가 생각했던 위치가 아닐 수 도 있음.
+그때 사용하는 태그가 transform.
+- 변형하다. 어떤 요소의 모형을 변형시킬 때 사용.
+- `transform: rotate()` : 요소를 내가 원하는 각도로 돌릴 수 있음.
+- `transform: scale()` : 요소를 확대, 축소시킬 수 있음.
+- `transform: translate(X, Y)` : X축, Y축으로 위치를 이동시킬 때 사용하는 함수.
+- 자기 자신이 기준임
+
 </br>
 
 [목차로 이동🚗](#목차)
@@ -1192,3 +1217,4 @@ taget 영역 넓히기
 2. position과 float 중 어떤 것을 사용할 지 판단할 때 
    - 뭔가 특정 장소에 고정시켜 놓아야 한다 = position
    - 두 요소를 옆으로 배치시켜야 한다 = float
+   - 
