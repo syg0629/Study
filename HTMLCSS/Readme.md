@@ -1217,4 +1217,6 @@ taget 영역 넓히기
 2. position과 float 중 어떤 것을 사용할 지 판단할 때 
    - 뭔가 특정 장소에 고정시켜 놓아야 한다 = position
    - 두 요소를 옆으로 배치시켜야 한다 = float
-   - 
+
+3. input과 button padding 처리시 좌우 padding만 설정하는 이유?
+- height를 설정하면 텍스트가 자동으로 가운데 배치가 된다.
