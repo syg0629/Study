@@ -86,6 +86,10 @@
     - [image](#image)
     - [`width: 100%;` & `height: auto;`](#width-100--height-auto)
     - [transform](#transform)
+  - [[CSS 기초] Flexbox 1](#css-기초-flexbox-1)
+  - [[CSS 기초] Flexbox 2 (justify-content / align-items / align-content / order)](#css-기초-flexbox-2-justify-content--align-items--align-content--order)
+    - [order](#order)
+    - [기본값](#기본값)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1204,6 +1208,87 @@ taget 영역 넓히기
 - `transform: scale()` : 요소를 확대, 축소시킬 수 있음.
 - `transform: translate(X, Y)` : X축, Y축으로 위치를 이동시킬 때 사용하는 함수.
 - 자기 자신이 기준임
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Flexbox 1
+- 정렬의 끝판왕
+- 그동안 float 공부하느라 너무 수고많으셨고, 지금부터는 flex만 사용하면 되겠습니다...(쌤...（⊙ｏ⊙)
+- 4가지만 생각하면 됨.
+
+
+1. 나, 플렉스박스 쓸거임(단호)
+```css
+.flexbox {
+  display: flex;
+  /* flex | inline-flex */
+- display: 박스의 타입을 정해주는 CSS property
+- flex: block과 비슷한데 요소들을 쉽게 정렬할 수 있다는 차이가 있음. 
+- 정렬 하고자하는 요소를 감싸는 부모한테 display: flex
+}
+```
+2. 가로 정렬? 세로정렬?
+```css
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  /* row | row-reverse | column | column-reverse */
+  /* 가로|  가로 반대  |  세로  | 세로 반대*/
+- flex를 사용하면 우리 눈엔 안보이는 2개의 축이 생김(flex-direction에 따라 Main axis, 그의 수직으로 Cross axis)
+- Axis
+}
+```
+3. 무조건 한 줄 안에 다 정렬?
+```css
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  /* nowrap | wrap */
+- nowrap: 기본값. 감싸지 않고(no warp) 자식의 사이즈를 줄여서라도 한줄로 정렬해버림
+- wrap: 한 줄에 모두 정렬하기에 공간이 넉넉하지 않으면 여러 줄을 만들어버림(사이즈가 줄지 않음)
+}
+
+  ```
+4. 씐나는 플레스박스 파티 타임
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Flexbox 2 (justify-content / align-items / align-content / order)
+- Main axis 기준으로 정렬 : justify-content
+```css
+justify-content: center;
+/* flex-start | flex-end | center | space-between | space-around*/
+
+- 반면 float는 left | right만 가능했음. center, space-between, space-around 불가능.
+```
+- Cross axis 기준으로 정렬 : align-items | align-content
+```css
+align-items: center;
+/* flex-start | flex-end | center */
+- 하나의 flex 라인에 흐르는 Cross axis를 기준으로 정렬. 각각의 flex line이 기준. space-between | space-around는 불가능
+
+align-content: center;
+/* flex-start | flex-end | center | space-between | space-around*/
+- 전체 흐름의 Cross axis
+
+```
+- 선 : align-items
+- 후 : align-content 으로 작업하면 80% 된대
+
+### order
+- flexbox, order를 사용하면 mark up이 된 것과 상관 없이 마음대로 순서를 바꿀 수 있음.
+
+### 기본값
+- flex-direction: row;
+- flex-wrap: nowrap;
+- justify-content: flex-start;
 
 </br>
 
