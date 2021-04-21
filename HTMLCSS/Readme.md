@@ -13,8 +13,10 @@
 >> 7. Sectioning Elements(총 4개) : section, article, nav, aside<br>
 >> 8. Selectioning element 내에는 반드시 heading 태그를 작성해야한다`<h1> ~ <h6>`.<br>
 >> 9. `box-sizing: border-box;`을 하지 않고 CSS를 작업하면 기본값인 `box-sizing: content-box`가 되어서 margin과 padding 때문에 내가 원하는 width와 height 값이 나오지 않을 수 있음.<br>
->> 10. `margin`, `padding` 쓸 때 `~top`이나 `~bottom` 중 하나, `~left`이나 `~right`중 하나만 골라 쓸 것. 그렇지 않으면 코드를 볼 때 중구난방으로 되어 헷갈림. 기준을 잡으면 유지보수할 때도 좋음.
->> 11. `image`.. `inline`이다......근데 width랑 height가 먹힌다. 반전..（⊙ｏ⊙）... 이미지 태그만 그렇대! 그래도 `display: block`을 주는게 좋대!!
+>> 10. `margin`, `padding` 쓸 때 `~top`이나 `~bottom` 중 하나, `~left`이나 `~right`중 하나만 골라 쓸 것. 그렇지 않으면 코드를 볼 때 중구난방으로 되어 헷갈림. 기준을 잡으면 유지보수할 때도 좋음.<br>
+>> 11. `image`.. `inline`이다......근데 width랑 height가 먹힌다. 반전..（⊙ｏ⊙）... 이미지 태그만 그렇대! 그래도 `display: block`을 주는게 좋대!!<br>
+>> 12. a태그 inline<br>
+>> 13. `position: fixed` 요소에게 직접 먹임<br>
 
 
 ## 목차
@@ -90,6 +92,8 @@
   - [[CSS 기초] Flexbox 2 (justify-content / align-items / align-content / order)](#css-기초-flexbox-2-justify-content--align-items--align-content--order)
     - [order](#order)
     - [기본값](#기본값)
+  - [[CSS 기초] Media Query](#css-기초-media-query)
+    - [viewport height & viewport width](#viewport-height--viewport-width)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1238,7 +1242,7 @@ taget 영역 넓히기
   /* row | row-reverse | column | column-reverse */
   /* 가로|  가로 반대  |  세로  | 세로 반대*/
 - flex를 사용하면 우리 눈엔 안보이는 2개의 축이 생김(flex-direction에 따라 Main axis, 그의 수직으로 Cross axis)
-- Axis
+- row-reverse, column-reverse는 main axis만 바뀌고 cross는 바뀌지 않음!
 }
 ```
 3. 무조건 한 줄 안에 다 정렬?
@@ -1289,6 +1293,35 @@ align-content: center;
 - flex-direction: row;
 - flex-wrap: nowrap;
 - justify-content: flex-start;
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Media Query
+- media query : 반응형 웹(Rsponsive Web)을 만들기 위해 반드시 필요한 CSS 언어
+```css
+@media screen and (min-width: 768px) {
+}
+- 내가 보고 있는 화면의 사이즈가 ~px 이상/이하일 때는 이런 스타일을 적용해줘!
+- 바뀌는 부분만 넣어주면 됨.
+```
+- viewport meta : 반응형 웹(Rsponsive Web)을 만들기 위해 반드시 필요한 HTML 언어
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=divice-width" />
+    ...
+  </head>
+</html>
+```
+- media query를 활용해서 반응형 웹을 만들때 모바일 버전으로 먼저 작성하는게 좋음! 확장 공사를 해나가는게 작업을 할때 편함.
+- 개발자 모드에서 iPhone 5/SE로 해서 하면 좋음(작아서 웬만하면 안깨짐)
+- 
+### viewport height & viewport width
+- `height: 100vh;` & `width: 100vw;`
 
 </br>
 

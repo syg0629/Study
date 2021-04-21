@@ -35,7 +35,6 @@ body {
 }
 
 /* ▼ WHERE YOUR CODE BEGINS */
-
 body {
   display: flex;
   justify-content: center;
@@ -43,6 +42,16 @@ body {
   width: 100%; /* 이거 확인!! */
   height: 100vh; /* 이거 확인!! */
   background-color: #273444;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 368px;
+  padding: 32px 40px;
+  border-radius: 16px;
+  background-color: aliceblue;
 }
 
 .profile-image {
@@ -57,24 +66,14 @@ body {
   margin-bottom: 4px;
 }
 
-.profile-detail {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%; /* 이거 확인!! */
-  text-align: center;
-}
-
 .profile-location {
   margin-bottom: 32px;
 }
 
-.profile {
+.profile-detail {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
   align-items: center;
-  width: 368px;
-  padding: 32px 40px;
-  border-radius: 16px;
-  background-color: #fff;
+  width: 100%; /* 이거 확인!! */
 }
