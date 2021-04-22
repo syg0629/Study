@@ -94,6 +94,17 @@
     - [기본값](#기본값)
   - [[CSS 기초] Media Query](#css-기초-media-query)
     - [viewport height & viewport width](#viewport-height--viewport-width)
+  - [[CSS 기초] Typography 1 & 2](#css-기초-typography-1--2)
+    - [1. font-size : 글자 크기](#1-font-size--글자-크기)
+    - [2. line-height : 줄 간격](#2-line-height--줄-간격)
+    - [3. letter-spacing : 글자와 글자사이의 간격. 글자간](#3-letter-spacing--글자와-글자사이의-간격-글자간)
+    - [4. font-family : 폰트. 서체](#4-font-family--폰트-서체)
+    - [5. font-weight : 굵기](#5-font-weight--굵기)
+    - [6. color : 글자 색](#6-color--글자-색)
+    - [7. text-align : 텍스트를 정렬](#7-text-align--텍스트를-정렬)
+    - [8. text-indent : 들여쓰기](#8-text-indent--들여쓰기)
+    - [9. text-transform : 텍스트 변형](#9-text-transform--텍스트-변형)
+    - [10. text-decoration :](#10-text-decoration-)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1322,6 +1333,105 @@ align-content: center;
 - 
 ### viewport height & viewport width
 - `height: 100vh;` & `width: 100vw;`
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Typography 1 & 2
+- 타이포그래피(typography)
+  - 활판에 의한 인쇄술
+  - 디자인에 있어 활자의 서체나 글자 배치 등의 구성 및 표현<br>
+  => 텍스트를 예쁘게 디자인한다.
+- 텍스트를 어떻게 배치하느냐에 따라 가독성이 달라짐. 사용자 경험도 달라짐.
+</br></br>
+
+### 1. font-size : 글자 크기
+- 단위 : px(절대 단위), em(상대 단위), rem(상대 단위)
+  - em = equal to capital M(대문자 M사이즈를 기준으로 한다)
+    - 실제로 적용된 폰트 사이즈를 1em으로 본다.
+    - 불안정하기에 잘 쓰지 않는다.
+  - rem = root em
+    - root = html 자체를 의미
+    - html에 적용된 폰트사이즈를 1em으로 본다
+
+
+### 2. line-height : 줄 간격
+- 단위 : px(절대 단위), em(상대 단위), rem(상대 단위)
+  - line-height를 사용할 때는 em을 많이 사용함.
+  - em : 적용된 폰트 사이즈에 비례해서 line-height를 적용
+  - <u>line-height는 글이 가운데 배치된다.</u>
+```css
+.text {
+  font-size: 16px;
+  line-height: 1.5;
+}
+- px, rem은 단위를 명시해 주어야하지만 em은 단위를 생략하는게 관례
+```
+
+### 3. letter-spacing : 글자와 글자사이의 간격. 글자간
+- 단위 : px(절대 단위), em(상대 단위)
+  - em을 더 많이 씀.
+```css
+.text {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.3em;
+}
+- line-height와 반대로 반드시 명시해야함.
+```
+
+### 4. font-family : 폰트. 서체
+- 참조 : serif(우리나라 명조체와 비슷), sans-serif(우리나라 돋음체와 비슷)
+```css
+.text {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.3em;
+  font-family: "Poppins", sans-serif;
+}
+- font-family : 폰트를 Poppins를 적용해줘! 없으면 sans-serif를 적용해줘. 없는 경우 대비
+```
+
+### 5. font-weight : 굵기
+```css
+.text {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.3em;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  /* 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 */
+}
+- 일반 사이즈는 400,
+- 굵은 사이즈는 700을 사용하는게 관례
+```
+### 6. color : 글자 색
+- color : hex, rgb, rgba
+  - hex : 문자로 사용 ex) #0066ff
+  - rgb : ex) rgb(0, 102, 255)
+  - rgba : a 알파, 투명도가 더해짐, 1이면 불투명, 0이면 투명 ex) rgba(0, 102, 255, 1)
+
+### 7. text-align : 텍스트를 정렬
+- text-aline : left | right | center
+
+### 8. text-indent : 들여쓰기
+- px
+- `-` 값도 넣을 수 있다!
+
+### 9. text-transform : 텍스트 변형
+- text-transform : none | capitalize | uppercase | lowercase
+- 한글 / 일본어 / 중국어는 안됨.
+- 알파벳 베이스로 된 문자들만 가능
+```html
+none : Kim bug
+capitalize : Kim Bug
+uppercase : KIM BUG
+lowercase : kim bug
+```
+
+### 10. text-decoration : 
 
 </br>
 
