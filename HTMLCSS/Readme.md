@@ -104,7 +104,9 @@
     - [7. text-align : 텍스트를 정렬](#7-text-align--텍스트를-정렬)
     - [8. text-indent : 들여쓰기](#8-text-indent--들여쓰기)
     - [9. text-transform : 텍스트 변형](#9-text-transform--텍스트-변형)
-    - [10. text-decoration :](#10-text-decoration-)
+    - [10. text-decoration](#10-text-decoration)
+    - [11. font-style](#11-font-style)
+  - [[CSS 기초] Webfont](#css-기초-webfont)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1431,7 +1433,42 @@ uppercase : KIM BUG
 lowercase : kim bug
 ```
 
-### 10. text-decoration : 
+### 10. text-decoration
+- text-decoration : none | underline | line-through | overline
+
+### 11. font-style
+- font-style : normal | italic | oblique
+- italic, oblique 비슷함.
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Webfont
+- 내가 지정한 font가 사용자 컴퓨터에 없다면 기본 서체로 돌아감.
+- webfont를 쓰는 2가지 방법 : 갖다 쓴다 | 직접 제공한다
+  - Google Fonts
+- `body`에 `font-family`를 지정해놓으면 일일이 지정 안해도 됨.
+- font가 제대로 적용이 됐는지 확인하기 위해서는 개발자도구로 Rendered Fonts 확인할 수 있다.
+- 각각의 브라우저마다 지원하는 폰트의 확장자가 다름
+  - https://css-tricks.com/snippets/css/using-font-face/<br>
+    여기에 접속해서 아래 것 복사 붙여놓기. 외울 필요 없음.
+```css
+font.css : font만 따로 작성한 css를 따로 만들고
+@font-face {
+  font-family: 'MyWebFont';
+  src: url('webfont.eot'); /* IE9 Compat Modes */
+  src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('webfont.woff2') format('woff2'), /* Super Modern Browsers */
+       url('webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+css에서 import 할 수 있다.
+@import url('./fonts.css')
+```
 
 </br>
 
