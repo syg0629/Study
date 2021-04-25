@@ -107,6 +107,12 @@
     - [10. text-decoration](#10-text-decoration)
     - [11. font-style](#11-font-style)
   - [[CSS 기초] Webfont](#css-기초-webfont)
+  - [[CSS 기초] Background](#css-기초-background)
+    - [background-color](#background-color)
+    - [background-image](#background-image)
+    - [background-repeat](#background-repeat)
+    - [background-size](#background-size)
+    - [background-position](#background-position)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1469,6 +1475,53 @@ font.css : font만 따로 작성한 css를 따로 만들고
 css에서 import 할 수 있다.
 @import url('./fonts.css')
 ```
+- 폰트가 제대로 따라오고 있는지 확인하기 위해서는 개발자도구 -> network -> font -> 새로고침
+- 폰트 라이브러리를 만들때 따로 `font.css`를 만들고 각각의 크기나 굵기나 색상에 따라 지정 
+
+
+```css
+참조!!
+.container {
+  width: 100%;
+  max-width: 736px;
+  /* 최대 736px까지만 키우고 그 다음엔 키우지 말아라 */
+  margin: 0 auto;
+  /* 자동으로 생기는 margin은 왼쪽 오른쪽 나눠가짐. 가운데 정렬 */
+  padding: 48px;
+}
+```
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Background
+
+### background-color
+- 배경의 색상을 정해주고 싶을 때(hex, rgb, rgba)
+
+### background-image
+- 배경으로 이미지를 넣어주고 싶을 때
+- 이미지가 있는 경로를 말해줘야함 url()
+  - unsplash : 무료 이미지
+
+### background-repeat
+- 이미지 반복
+- repeat(기본값) | no-repeat
+
+### background-size
+- 이미지의 사이즈 설정
+- contain | cover | custom
+- contain : 이미지의 모든 면이 다 들어감
+- cover :  빈 공간을 남기지 않고 꽉 채움. 짤림.
+- custom : 자체적으로 사이즈 정하기
+- center, %, px 다 가능
+
+### background-position
+- backgound-image를 어떻게 위치 시킬 것인가? x축, y축
+- center, %, px 다 가능
+
 
 </br>
 

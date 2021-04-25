@@ -6,7 +6,7 @@
 .container {
   width: 100%;
   max-width: 736px;
-  /* 최대 736px까지만 키우고 그다음엔 키우지 말아라 */
+  /* 최대 736px까지만 키우고 그 다음엔 키우지 말아라 */
   margin: 0 auto;
   /* 자동으로 생기는 margin은 왼쪽 오른쪽 나눠가짐. 가운데 정렬 */
   padding: 48px;
