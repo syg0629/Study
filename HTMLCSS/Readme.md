@@ -5,18 +5,19 @@
 ---
 >> <b><u>✨Check✨</u></b><br>
 >> 1. nav 태그를 아껴쓰자(1페이지 당 보통 1개) / 다른 페이지로 이동할 수 있는 링크를 모아둔 네비게이션 메뉴에만 제한해서 쓰쟈!<br>
->> 2. input type="submit"과 button의 차이<br>
->> 3. select 태그 자식 요소로 option외 optgroup도 있다.(option을 그룹핑할 때 사용)<br>
->> 4. `&amp;` 이스케이프코드<br>
->> 5. th로 할당된 칸 수를 컴퓨터는 알고 있음. 또 rowspan, colspan을 쓰면 그 칸의 수도 컴퓨터가 기억하고 있기 때문에 그 칸의 내용은 빼고 작성해도 괜찮음.<br>
->> 6. `scope="row|col"` 테이블 헤더한테만 쓸 수 있음. 테이블 헤더가 가로줄의 헤더인지 세로줄의 헤더인지 알려줌. 우리 눈에는 똑같지만 브라우저에게는 정확한 정보를 제공함. 일반 스크린 리더나 다른 도구를 이용해 웹을 이용하는 사용자들에게도 물론 도움을 줌. table 내 정보들의 관계성을 더 명확하게 파악할 수 있음.<br>
->> 7. Sectioning Elements(총 4개) : section, article, nav, aside<br>
->> 8. Selectioning element 내에는 반드시 heading 태그를 작성해야한다`<h1> ~ <h6>`.<br>
->> 9. `box-sizing: border-box;`을 하지 않고 CSS를 작업하면 기본값인 `box-sizing: content-box`가 되어서 margin과 padding 때문에 내가 원하는 width와 height 값이 나오지 않을 수 있음.<br>
->> 10. `margin`, `padding` 쓸 때 `~top`이나 `~bottom` 중 하나, `~left`이나 `~right`중 하나만 골라 쓸 것. 그렇지 않으면 코드를 볼 때 중구난방으로 되어 헷갈림. 기준을 잡으면 유지보수할 때도 좋음.<br>
->> 11. `image`.. `inline`이다......근데 width랑 height가 먹힌다. 반전..（⊙ｏ⊙）... 이미지 태그만 그렇대! 그래도 `display: block`을 주는게 좋대!!<br>
->> 12. a태그 inline<br>
->> 13. `position: fixed` 요소에게 직접 먹임<br>
+>> 2. select 태그 자식 요소로 option외 optgroup도 있다.(option을 그룹핑할 때 사용)<br>
+>> 3. `&amp;` 이스케이프코드<br>
+>> 4. th로 할당된 칸 수를 컴퓨터는 알고 있음. 또 rowspan, colspan을 쓰면 그 칸의 수도 컴퓨터가 기억하고 있기 때문에 그 칸의 내용은 빼고 작성해도 괜찮음.<br>
+>> 5. `scope="row|col"` 테이블 헤더한테만 쓸 수 있음. 테이블 헤더가 가로줄의 헤더인지 세로줄의 헤더인지 알려줌. 우리 눈에는 똑같지만 브라우저에게는 정확한 정보를 제공함. 일반 스크린 리더나 다른 도구를 이용해 웹을 이용하는 사용자들에게도 물론 도움을 줌. table 내 정보들의 관계성을 더 명확하게 파악할 수 있음.<br>
+>> 6. [HTML 기초] 기타 Etc 확인<br>
+>> 7. [HTML 훈련] <br>
+>> 8. Sectioning Elements(총 4개) : section, article, nav, aside<br>
+>> 9. Selectioning element 내에는 반드시 heading 태그를 작성해야한다`<h1> ~ <h6>`.<br>
+>> 10. `box-sizing: border-box;`을 하지 않고 CSS를 작업하면 기본값인 `box-sizing: content-box`가 되어서 margin과 padding 때문에 내가 원하는 width와 height 값이 나오지 않을 수 있음.<br>
+>> 11. `margin`, `padding` 쓸 때 `~top`이나 `~bottom` 중 하나, `~left`이나 `~right`중 하나만 골라 쓸 것. 그렇지 않으면 코드를 볼 때 중구난방으로 되어 헷갈림. 기준을 잡으면 유지보수할 때도 좋음.<br>
+>> 12. `image`.. `inline`이다......근데 width랑 height가 먹힌다. 반전..（⊙ｏ⊙）... 이미지 태그만 그렇대! 그래도 `display: block`을 주는게 좋대!!<br>
+>> 13. a태그 inline<br>
+>> 14. `position: fixed` 요소에게 직접 먹임<br>
 
 
 ## 목차
@@ -113,6 +114,7 @@
     - [background-repeat](#background-repeat)
     - [background-size](#background-size)
     - [background-position](#background-position)
+  - [[CSS 기초] 실습 Background 훈련 part 1](#css-기초-실습-background-훈련-part-1)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -665,7 +667,7 @@ href="https://youtube.com/c/kimbug">https://youtube.com/c/kimbug</a>
 - `&`의 경우는 브라우저가 렌더링할 때 헷갈려할 수도 있으니 HTML escape code인 `&amp;`를 사용해야한다.
 - WAI-ARIA 인터넷의 접근성을 높이는데 사용
   - `<a href="#" aria-label="Go to previous page" class="disabled">Previous</a>` 
-  - `aria-labe=""` : 눈에 보이지는 않지만 브라우저에게 전달되면 좋은 정보, 스크린 리더를 통해 웹을 사용하는 사용자들에게 전달해야하는 정보를 제공
+  - `aria-label=""` : 눈에 보이지는 않지만 브라우저에게 전달되면 좋은 정보, 스크린 리더를 통해 웹을 사용하는 사용자들에게 전달해야하는 정보를 제공
   - `aria-hidden="true"` : 스크린리더로 읽을 때 감추는 것.
 - ~는 ~고 ~는 ~다. key와 value의 형태 
 - 제출을 하려면 form태그 필요
@@ -907,6 +909,7 @@ p {
 
 ## [CSS 기초] Selectors - 구조적 가상 클래스 선택자 (Structural Pseudo-classes)
 - Pseudo : 가짜, 가상
+- HTML class를 만들지 않고 css에서 사용할 수 있어 깔끔하다.
 - element:first-child
 - element:last-child
 - element:nth-child(n)
@@ -1005,7 +1008,14 @@ last-child, nth-child(n), hover, focus, active) Selector
 </br></br>
 
 ## [CSS 기초] Box - Box Sizing
-- `box-sizing: border-box;`을 하지 않고 CSS를 작업하면 기본값인 `box-sizing: content-box`가 되어서 margin과 padding 때문에 내가 원하는 width와 height 값이 나오지 않을 수 있음.
+- `box-sizing: border-box;`를 하지 않고 CSS를 작업하면 기본값인 `box-sizing: content-box`가 되어서 margin과 padding 때문에 내가 원하는 width와 height 값이 나오지 않을 수 있음.
+- 계산하면서 css를 작성하고 싶지 않으면 `box-sizing: border-box` css 시작시 꼭 작성
+```css
+* {
+  box-sizing: border-box;
+}
+```
+
 
 </br>
 
@@ -1522,6 +1532,34 @@ css에서 import 할 수 있다.
 - backgound-image를 어떻게 위치 시킬 것인가? x축, y축
 - center, %, px 다 가능
 
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] 실습 Background 훈련 part 1
+- `img`말고 `background-image`를 쓰는 이유?
+  - 어떤 사진을 받게 될지 모를때 사용. 이미지 각각 설정하기 보다는 그냥 `background-image`로 받아서 설정하는게 훨씬 간편. 삽질을 줄일 수 있다..
+  - But `background-image`보다 `img`가 검색최적화에는 더 좋음!
+- `display: none`을 쓰면 css는 얘를 아예 없는 존재로 만들어버림.
+```css
+.sr-only {
+  position: absolute; 
+  /* 집을 나간 아이로 만들어버림 */
+  z-index: -100; 
+  /* 저 밑으로 사라져랏 = 눈에 안보이게 만듬 */
+  width: 1px;
+  height: 1px;
+  /* 더 확실하게 처리. 만약 width와 height가 0이면 스크린 리더가 읽어주지 않음. */
+  overflow: hidden;
+  /* 얘보다 컨텐츠가 넓으면 안보이게 가려줄 수 있음. 그게 overflow: hidden. 1px에서 벗어나는 애들은 다 짤라버림.*/
+    opacity: 0;
+  /* 투명도 0으로 !! */
+
+  이렇게 해야 스크린리더도 얘네를 인지함. 읽어줌. 우리 눈엔 사라져있음.
+}
+```
+- ·은 정보로 의미가 없음. 고로 마크업을 더럽히지 않겠다는 의미로 css에서 처리.
 
 </br>
 
