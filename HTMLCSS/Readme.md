@@ -1348,7 +1348,7 @@ align-content: center;
 ```
 - media query를 활용해서 반응형 웹을 만들때 모바일 버전으로 먼저 작성하는게 좋음! 확장 공사를 해나가는게 작업을 할때 편함.
 - 개발자 모드에서 iPhone 5/SE로 해서 하면 좋음(작아서 웬만하면 안깨짐)
-- 
+
 ### viewport height & viewport width
 - `height: 100vh;` & `width: 100vw;`
 
@@ -1367,6 +1367,7 @@ align-content: center;
 
 ### 1. font-size : 글자 크기
 - 단위 : px(절대 단위), em(상대 단위), rem(상대 단위)
+- font-size를 사용할 때는 px을 많이 쓴다.
   - em = equal to capital M(대문자 M사이즈를 기준으로 한다)
     - 실제로 적용된 폰트 사이즈를 1em으로 본다.
     - 불안정하기에 잘 쓰지 않는다.
@@ -1377,7 +1378,7 @@ align-content: center;
 
 ### 2. line-height : 줄 간격
 - 단위 : px(절대 단위), em(상대 단위), rem(상대 단위)
-  - line-height를 사용할 때는 em을 많이 사용함.
+- line-height를 사용할 때는 em을 많이 사용한다.
   - em : 적용된 폰트 사이즈에 비례해서 line-height를 적용
   - <u>line-height는 글이 가운데 배치된다.</u>
 ```css
@@ -1391,6 +1392,7 @@ align-content: center;
 ### 3. letter-spacing : 글자와 글자사이의 간격. 글자간
 - 단위 : px(절대 단위), em(상대 단위)
   - em을 더 많이 씀.
+  - 적용된 폰트 사이즈에 비례해서 글자간을 조정.
 ```css
 .text {
   font-size: 16px;
@@ -1575,4 +1577,4 @@ css에서 import 할 수 있다.
    - 두 요소를 옆으로 배치시켜야 한다 = float
 
 3. input과 button padding 처리시 좌우 padding만 설정하는 이유?
-- height를 설정하면 텍스트가 자동으로 가운데 배치가 된다.
+   - height를 설정하면 텍스트가 자동으로 가운데 배치가 된다.
