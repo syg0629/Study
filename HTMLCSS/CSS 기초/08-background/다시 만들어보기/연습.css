@@ -1,0 +1,134 @@
+.like-button {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* ▼ WHERE YOUR CODE BEGINS */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* .card {
+  width: 840px;
+  height: 248px;
+  padding: 24px 18px;
+  display: flex;
+} */
+
+.card-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./assets/img-house.jpg);
+  background-repeat: no-repeat;
+  background-position: center center; /* 이거 기억!!! */
+  background-size: cover;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 6px;
+  /* position: relative;
+  margin-right: 20px; */
+}
+
+.plus-badge {
+  display: inline-block; /* 이거 기억!!! */
+  padding: 1px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.428571428571429;
+  color: #fff;
+  background-color: #92174d;
+  text-transform: uppercase;
+  margin-right: 6px;
+  /* width: 48px;
+  height: 22px; */
+}
+
+.property-type span {
+  color: #7d858f;
+  font-size: 16px;
+  line-height: 1.25;
+  /* margin-right: 184.33px; */
+}
+
+.property-rate {
+  font-size: 16px;
+  line-height: 1.25;
+  display: flex;
+  justify-content: space-between;
+  width: 52px;
+  align-items: center;
+}
+
+.property-rate::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url(./assets/icon-star.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.property-rate > strong {
+  color: #151b26;
+  /* font-weight: 400; */
+}
+
+.property-rate > span {
+  color: #7d858f;
+}
+
+/* .card-image img {
+  width: 100%;
+  height: auto;
+}
+
+.like-button {
+  background-image: url(./assets/icon-favorite.svg);
+  background-repeat: no-repeat;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-position: center center;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  border: none;
+}
+
+.card-header {
+  margin-bottom: 8px;
+  display: flex;
+}
+
+h1 {
+  color: #151b26;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.card-detail {
+  line-height: 1.142857142857143;
+  font-size: 14px;
+  color: #7d858f;
+  display: block;
+}
+
+.property-detail > div:first-child {
+  margin-bottom: 8px;
+}
+
+.sr-only {
+  opacity: 0;
+  position: absolute;
+} */

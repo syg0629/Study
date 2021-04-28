@@ -1541,9 +1541,10 @@ css에서 import 할 수 있다.
 
 ## [CSS 기초] 실습 Background 훈련 part 1
 - `img`말고 `background-image`를 쓰는 이유?
-  - 어떤 사진을 받게 될지 모를때 사용. 이미지 각각 설정하기 보다는 그냥 `background-image`로 받아서 설정하는게 훨씬 간편. 삽질을 줄일 수 있다..
+  - 사용자로부터 어떤 이미지를 받게 될지 모를때 사용. 이미지 각각 설정하기 보다는 그냥 `background-image`로 받아서 설정하는게 훨씬 간편. 삽질을 줄일 수 있다..
   - But `background-image`보다 `img`가 검색최적화에는 더 좋음!
-- `display: none`을 쓰면 css는 얘를 아예 없는 존재로 만들어버림.
+- `overflow: hidden` 을 쓰면 이미지가 짤리게 된다. 나중에 배울것 같음...
+- `display: none`을 쓰면 css는 얘를 아예 없는 존재로 만들어버림. 
 ```css
 .sr-only {
   position: absolute; 
