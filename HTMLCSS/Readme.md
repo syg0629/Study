@@ -1544,7 +1544,7 @@ css에서 import 할 수 있다.
   - 사용자로부터 어떤 이미지를 받게 될지 모를때 사용. 이미지 각각 설정하기 보다는 그냥 `background-image`로 받아서 설정하는게 훨씬 간편. 삽질을 줄일 수 있다..
   - But `background-image`보다 `img`가 검색최적화에는 더 좋음!
 - `overflow: hidden` 을 쓰면 이미지가 짤리게 된다. 나중에 배울것 같음...
-- `display: none`을 쓰면 css는 얘를 아예 없는 존재로 만들어버림. 
+- `display: none`을 쓰면 css는 얘를 아예 없는 존재로 만들어버림. 스크린리더에는 보이지만 우리 눈에는 안보이게 하고 싶으면 아래와 같이 작성!
 ```css
 .sr-only {
   position: absolute; 
@@ -1563,6 +1563,17 @@ css에서 import 할 수 있다.
 }
 ```
 - ·은 정보로 의미가 없음. 고로 마크업을 더럽히지 않겠다는 의미로 css에서 처리.
+- 가상요소는 display가 기본적으로 inline!!
+  - margin top, bottom은 줄 수 없지만 left, right은 줄 수 있음!
+- 와 이 강의 몇 번 더 들어야할 듯
+  ```css
+  이거 기억
+  .property-detail dd span:last-child::after {
+  content: "";
+  margin: 0;
+  }
+  ```
+- `flex-grow` : 공간이 남으면 flex box가 더 차지하게 만드는 것. 키우려면 정수를 쓰면 된다. 0을 쓰면 키우지 않겠다.
 
 </br>
 
