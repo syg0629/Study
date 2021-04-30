@@ -115,6 +115,10 @@
     - [background-size](#background-size)
     - [background-position](#background-position)
   - [[CSS 기초] 실습 Background 훈련 part 1](#css-기초-실습-background-훈련-part-1)
+  - [[CSS 기초] Transition](#css-기초-transition)
+    - [property](#property)
+    - [duration](#duration)
+    - [timing-function](#timing-function)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1574,6 +1578,37 @@ css에서 import 할 수 있다.
   }
   ```
 - `flex-grow` : 공간이 남으면 flex box가 더 차지하게 만드는 것. 키우려면 정수를 쓰면 된다. 0을 쓰면 키우지 않겠다.
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Transition
+- 요소의 속성값을 변경할 때가 있음.
+- 확 바뀌기 보단 스르륵 바뀌도록 할 때 Transition 사용
+- `property`, `duration`, `[timing-function]`(생략되어도 괜찮), `[delay]`(생략되어도 괜찮)
+
+### property
+- 제일 먼저 선언되어야 함.
+- CSS 속성을 뜻 함.
+
+### duration
+- 지속시간
+- Transition의 변화가 얼마동안 일어나야하는지에 대해 설정
+- 시간을 설정할 때 단위 : ms, s
+  - 1,000ms === 1s
+```css
+.box{
+  transition: all 2500ms;
+  효과를 다 주고싶을 때 : all
+}
+```
+
+### timing-function
+- 생략가능
+- 변화의 속도를 지정할 수 있음
+- ease-in, ease-out, ease-in-out, cubic-bezier()
 
 </br>
 
