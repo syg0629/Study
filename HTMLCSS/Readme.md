@@ -119,6 +119,16 @@
     - [property](#property)
     - [duration](#duration)
     - [timing-function](#timing-function)
+    - [delay](#delay)
+  - [[CSS 기초] Animation](#css-기초-animation)
+    - [name](#name)
+    - [duration](#duration-1)
+    - [timing-function](#timing-function-1)
+    - [delay](#delay-1)
+    - [iteration-count](#iteration-count)
+    - [direction](#direction)
+    - [더 많은 Animation](#더-많은-animation)
+  - [[CSS 기초] Transition 훈련](#css-기초-transition-훈련)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1601,14 +1611,266 @@ css에서 import 할 수 있다.
 ```css
 .box{
   transition: all 2500ms;
-  효과를 다 주고싶을 때 : all
 }
+  효과를 다 주고싶을 때 : all
 ```
 
 ### timing-function
 - 생략가능
 - 변화의 속도를 지정할 수 있음
 - ease-in, ease-out, ease-in-out, cubic-bezier()
+  - ease-in : 처음에는 천천히 바뀌다가 갑자기 휙 바뀜
+  - ease-out :  처음에는 휙 바뀌다가 나중에 천천히 바뀜
+  - ease-in-out :  위에 애들 짬뽕
+  - cubic-bezier() : 변화의 속도를 내가 조절. 
+    - https://cubic-bezier.com/#.17,.67,.83,.67
+```css
+.box{
+  transition: all 2500ms ease-in;
+  transition: all 2500ms cubic-bezier(.17,.67,.92,-0.89);
+}
+```
+
+### delay
+- 말 그대로 지연되어 있다가 transotion 효과가 나타남
+- 가장 마지막에 씀
+```css
+.box{
+  transition: all 2500ms cubic-bezier(.17,.67,.92,-0.89) 1000ms;
+  이렇게 다 해서 넣을 수 있고 
+
+  transition: font-size 1000ms ease-out, background-color 2000ms cubic-bezier(.17,.67,.92,-0.89) 1000ms;
+  개별적으로도 선언 가능
+}
+```
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Animation
+- Animation vs Transition
+  - transition는 속성의 값이 변화할 때 사용
+  - 스르륵 전환하면서 부드럽게 바뀜
+  - Animation 주고싶을 때 그냥 사용.. 더 자유롭다
+- Animation은 관련 속성들이 굉장히 많음.
+- Animation 자체는 한번에 쓰는 속기형
+- 각각의 property를 쪼개서 쓰는 걸 추천
+- Animation이 끝나면 원래의 상태로 돌아감.
+
+### name
+- Animation을 줄 때 제일 중요한 것 @keyframes
+- 어떤 애니메이션을 줄 것인지 정의내림
+```css
+@keyframes name { 여기에 name은 내가 원하는 것을 적음.
+  from { 시작할 때
+    /* Rules */
+  }
+
+  to { 끝날 때
+    /* Rules */
+  }
+}
+```
+```css
+@keyframes name { 여기에 name은 내가 원하는 것을 적음.
+  0% {
+    /* Rules */
+  }
+
+  50% {
+    /* Rules */
+  }
+
+  100% {
+    /* Rules */
+  }
+}
+쫌 더 세세하게 하고 싶을 때 사용
+```
+```css
+.box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: #0066ff;
+  antimation-name: move-box;
+}
+
+@keyframes move-box {
+  from {
+    top: 0;
+    background-color: #0066ff;
+  }
+
+  to {
+    top: 200px;
+    background-color: #ff4949;
+  }
+}
+```
+
+### duration
+- transition에서 썼던 아이와 같음.
+- 지속시간. 이 아이가 몇 초 동안 지속 될 것인가?
+- 시간을 설정할 때 단위 : ms, s
+  - 1,000ms === 1s
+```css
+.box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: #0066ff;
+  animation-name: move-box;
+  animation-duration: 2000ms;
+}
+
+@keyframes move-box {
+  from {
+    top: 0;
+    background-color: #0066ff;
+  }
+
+  to {
+    top: 200px;
+    background-color: #ff4949;
+  }
+}
+```
+### timing-function
+- transition과 같음
+- 생략가능
+- 변화의 속도를 지정할 수 있음
+- ease-in, ease-out, ease-in-out, cubic-bezier()
+
+```css
+.box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: #0066ff;
+  animation-name: move-box;
+  animation-duration: 2000ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes move-box {
+  from {
+    top: 0;
+    background-color: #0066ff;
+  }
+
+  to {
+    top: 200px;
+    background-color: #ff4949;
+  }
+}
+```
+
+### delay
+- transition과 같음
+- 말 그대로 지연되어 있다가 animation 효과가 나타남
+
+```css
+.box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: #0066ff;
+  animation-name: move-box;
+  animation-duration: 2000ms;
+  animation-delay: 1000ms;
+  animation-timing-function: ease-in-out;
+
+}
+
+@keyframes move-box {
+  from {
+    top: 0;
+    background-color: #0066ff;
+  }
+
+  to {
+    top: 200px;
+    background-color: #ff4949;
+  }
+}
+```
+
+### iteration-count
+- 되풀이를 몇 번할 것인가?
+- 정수를 적거나 `infinite` 무한대
+
+```css
+.box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: #0066ff;
+  animation-name: move-box;
+  animation-duration: 2000ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 3;
+}
+
+@keyframes move-box {
+  from {
+    top: 0;
+    background-color: #0066ff;
+  }
+
+  to {
+    top: 200px;
+    background-color: #ff4949;
+  }
+}
+```
+
+### direction
+- animation이 진행될 때 어떤 방향으로 진행?
+- @keyfames에서 reverse를 사용하게 되면 from -> to의 순서가 to -> from을 바뀜
+- `alternate` 번갈아가며 진행
+```css
+.box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: #0066ff;
+  animation-name: move-box;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+@keyframes move-box {
+  from {
+    top: 0;
+    background-color: #0066ff;
+  }
+
+  to {
+    top: 200px;
+    background-color: #ff4949;
+  }
+}
+```
+
+### 더 많은 Animation
+- https://developer.mozilla.org/ko/docs/Web/CSS/animation
+
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Transition 훈련
+- `border-bottom`으로는 서서히 밑줄을 그을 수 없다.
+- 가상요소를 이용해야한다!
+- 가상요소를 사용할 때 제일 중요한 것은 `content: "";`를 넣어줘야한다는 것!!
+- 보통 작은 인터랙션은 250ms를 쓴다!
+
 
 </br>
 
@@ -1625,3 +1887,23 @@ css에서 import 할 수 있다.
 
 3. input과 button padding 처리시 좌우 padding만 설정하는 이유?
    - height를 설정하면 텍스트가 자동으로 가운데 배치가 된다.
+
+4. CSS로 font를 지정했으나 지정이 안됨 -> button, input, textarea 같은 form과 관련된 요소들은 body에 font-family를 적는다고 하더라도 font가 적용이 안된다.
+```css
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+button,
+input,
+textarea {
+    font-family: "Lato", sans-serif;
+}
+
+*에 넣을 수도 있지만 그것보다 이렇게 하신다고 한다!
+```
