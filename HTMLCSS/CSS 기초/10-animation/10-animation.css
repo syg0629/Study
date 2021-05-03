@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Mulish", sans-serif;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px;
+}
+
+.loading-title {
+  font-size: 18px;
+  line-height: 1.333333333333333;
+  margin-bottom: 20px;
+}
+
+.progress-bar-gauge {
+  display: block;
+  width: 380px;
+  height: 12px;
+  background-color: #e5eaef;
+  border-radius: 100px;
+  animation-name: loding-box;
+}
+
+@keyframes loding-box {
+  from {
+    width: 0;
+    background-color: #13ce66;
+  }
+  to {
+    width: 100%;
+    background-color: #13ce66;
+  }
+}

@@ -1695,7 +1695,7 @@ css에서 import 할 수 있다.
   width: 300px;
   height: 300px;
   background-color: #0066ff;
-  antimation-name: move-box;
+  animation-name: move-box;
 }
 
 @keyframes move-box {
