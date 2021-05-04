@@ -129,6 +129,7 @@
     - [direction](#direction)
     - [더 많은 Animation](#더-많은-animation)
   - [[CSS 기초] Transition 훈련](#css-기초-transition-훈련)
+  - [[CSS 기초] Animation 훈련](#css-기초-animation-훈련)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1871,6 +1872,14 @@ css에서 import 할 수 있다.
 - 가상요소를 사용할 때 제일 중요한 것은 `content: "";`를 넣어줘야한다는 것!!
 - 보통 작은 인터랙션은 250ms를 쓴다!
 
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Animation 훈련
+- 직사각형일 떄 모서리를 둥글게 하고 싶으면 `border-radius: 100px;`
+- 정사각형일 때 그냥 원을 만들고 싶으면 `border-radius: 50%;`
 
 </br>
 
