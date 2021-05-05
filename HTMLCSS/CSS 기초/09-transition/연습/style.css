@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+button,
+input,
+textarea {
+  font-family: "Lato", sans-serif;
+}
+
+.line-button {
+  border: none;
+  background-color: #fff;
+  padding: 18px 30px;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #151b26;
+  position: relative;
+}
+
+.line-button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #0066ff;
+  transition: width 250ms ease-in, background-color 250ms ease-in;
+  /* transition 위치를 자꾸 헷갈리는 듯 ㅠ_ㅠ */
+}
+
+.line-button:hover::after {
+  width: 100%;
+  background-color: hotpink;
+}

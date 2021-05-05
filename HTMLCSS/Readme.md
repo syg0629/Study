@@ -130,6 +130,7 @@
     - [더 많은 Animation](#더-많은-animation)
   - [[CSS 기초] Transition 훈련](#css-기초-transition-훈련)
   - [[CSS 기초] Animation 훈련](#css-기초-animation-훈련)
+  - [[CSS 기초] Etc. BoxShadow](#css-기초-etc-boxshadow)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1880,6 +1881,15 @@ css에서 import 할 수 있다.
 ## [CSS 기초] Animation 훈련
 - 직사각형일 떄 모서리를 둥글게 하고 싶으면 `border-radius: 100px;`
 - 정사각형일 때 그냥 원을 만들고 싶으면 `border-radius: 50%;`
+
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Etc. BoxShadow
+- 요소에게 그림자를 줄 때 사용
 
 </br>
 
