@@ -131,6 +131,8 @@
   - [[CSS 기초] Transition 훈련](#css-기초-transition-훈련)
   - [[CSS 기초] Animation 훈련](#css-기초-animation-훈련)
   - [[CSS 기초] Etc. BoxShadow](#css-기초-etc-boxshadow)
+  - [[CSS 기초] Etc. Opacity](#css-기초-etc-opacity)
+  - [[CSS 기초] Etc. Overflow](#css-기초-etc-overflow)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1890,6 +1892,43 @@ css에서 import 할 수 있다.
 
 ## [CSS 기초] Etc. BoxShadow
 - 요소에게 그림자를 줄 때 사용
+- 어떻게 사용하느냐에 따라 완전히 바뀐대!
+- neumorphism : 요즘 유행하는 것!
+  - https://neumorphism.io/#e0e0e0
+- 써줘야하는게 5개 순서가 바뀌면 안됨.
+- `h-offset` : x축으로 얼마나 이동시킬 것인지?
+- `v-offset` : y축으로 얼마나 이동시킬 것인지?
+- `blur` : 흐린정도
+- `spread` : 그림자 사이즈
+- `color` : 색상
+- color 빼고는 다 px로 표현!
+- figma같은 요즘 툴에서 다 알려주기 때문에 외울 필요 없다.
+- BoxShadow는 여러개를 동시에 사용할 수 있다.
+- 축약형도 있지만 다 써주는걸 권함.
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Etc. Opacity
+- 투명도
+- `opacity: 0` 완전 투명
+- `opacity: 1` 완전 불투명
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Etc. Overflow
+- width나 height를 가지는 아이의 content가 범위를 벗어났을 때 처리하는 방법
+- 말 그대로 넘처 흘렸을 때 사용
+- `overflow: visible;` : 기본 값. 그냥 보여주는 것.
+- `overflow: auto;`, `overflow: scroll;` : 넘치는 애들 스크롤 시켜버림.
+- `overflow: hidden;` : 넘치는 애들 숨겨버림. 스크롤도 안됨.
+- `overflow-x: scroll;`, `overflow-y:hidden;` 이런 식으로 따로따로 써도 된다!
+
 
 </br>
 
