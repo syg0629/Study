@@ -135,7 +135,7 @@
   - [[CSS 기초] Etc. Overflow](#css-기초-etc-overflow)
   - [[CSS 기초] Etc. Transform](#css-기초-etc-transform)
     - [`transform: translate(x, y)`](#transform-translatex-y)
-    - [`transform: scale(N)` : 사이즈를 키우고 줄일 때 사용. N에 숫자를 넣으면 됨. 숫자의 배율 만큼 사이즈가 조절이 됨.](#transform-scalen--사이즈를-키우고-줄일-때-사용-n에-숫자를-넣으면-됨-숫자의-배율-만큼-사이즈가-조절이-됨)
+    - [`transform: scale(N)`](#transform-scalen)
     - [`transform: rotate(Ndeg)`](#transform-rotatendeg)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
@@ -1943,6 +1943,8 @@ css에서 import 할 수 있다.
 - 요소를 2차원, 3차원의 공간에서 변형하고 싶은대로 변형할 수 있음
 - 원래 위치 기억하고 있음. 주변에 영향을 주지 않음.
 - position으로 자주 사용함.
+
+
 ### `transform: translate(x, y)`
 - 요소를 내가 원하는 방향으로 위치 시키고 싶을 때 사용. 
   - `transform: translate(100%, 100%)`
@@ -1950,7 +1952,8 @@ css에서 import 할 수 있다.
   - `transform: translate(-40px, -50px)`
   - `transform: translateX(-40px)`
 
-### `transform: scale(N)` : 사이즈를 키우고 줄일 때 사용. N에 숫자를 넣으면 됨. 숫자의 배율 만큼 사이즈가 조절이 됨.
+### `transform: scale(N)`
+-  사이즈를 키우고 줄일 때 사용. N에 숫자를 넣으면 됨. 숫자의 배율 만큼 사이즈가 조절이 됨.
   - `transform: scale(1)` : 자신의 본디 사이즈
   - `transform: scale(2)` : 자신의 2배 사이즈
   - `transform: scale(0.5,3)` : 이렇게도 사용 가능 x = width, y = height
