@@ -137,6 +137,9 @@
     - [`transform: translate(x, y)`](#transform-translatex-y)
     - [`transform: scale(N)`](#transform-scalen)
     - [`transform: rotate(Ndeg)`](#transform-rotatendeg)
+  - [[CSS 기초] Etc. Visibility](#css-기초-etc-visibility)
+    - [`visibility: visible`](#visibility-visible)
+    - [`visibility: hidden`](#visibility-hidden)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1968,6 +1971,24 @@ css에서 import 할 수 있다.
 [목차로 이동🚗](#목차)
 </br></br>
 
+## [CSS 기초] Etc. Visibility
+- 보여줄지 안보여줄지 결정
+
+
+### `visibility: visible`
+- 기본값 
+- 보여줌
+
+### `visibility: hidden`
+- 보이지 않음.
+- 자리는 있지만 숨김.
+- `opacity: 0;`과 비슷한 상황
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
 ## [CSS 기초] Q & A
 1. active란 상태는 a, button, input, textarea 등과 같이 인터렉션 요소가 있는 요소에게만 적용되는 가상클래스입니다! 그래서 div나 li, span과 같은 친구들에게는 active 상태가 적용이 안 될 거예요!
    -  어째 li는 안먹고 a는 먹더라니..(⊙o⊙)
@@ -1998,3 +2019,9 @@ textarea {
 
 *에 넣을 수도 있지만 그것보다 이렇게 하신다고 한다!
 ```
+
+5. `display: none;` VS &nbsp; `visibility: hidden;` VS &nbsp;`opacity:0;`
+- `display: none;`: box의 타입을 없게 해줌. 없는 존재 처럼 취급을 함. 영역 없음. 클릭 이벤트 작동 안함. tab focus 안됨.
+- `visibility: hidden;`: 있는데 안보이게 하는 것. 영역 있음. 클릭 이번트 작동 안함. tab focus 안됨. 뒤에 있는 요소 클릭 가능
+- `opacity:0;`: 영역있음. 클릭 이벤트 작동 함. tab focus 됨. 뒤에 있는 요소 클릭 불가능.
+  - 참조 : https://velog.io/@kya754/no1
