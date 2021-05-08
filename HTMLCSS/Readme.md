@@ -140,6 +140,8 @@
   - [[CSS 기초] Etc. Visibility](#css-기초-etc-visibility)
     - [`visibility: visible`](#visibility-visible)
     - [`visibility: hidden`](#visibility-hidden)
+  - [[CSS 기초] Grid System](#css-기초-grid-system)
+  - [[CSS 기초] Bootstrap](#css-기초-bootstrap)
   - [[CSS 기초] Q & A](#css-기초-q--a)
 <br>
 
@@ -1983,6 +1985,47 @@ css에서 import 할 수 있다.
 - 보이지 않음.
 - 자리는 있지만 숨김.
 - `opacity: 0;`과 비슷한 상황
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Grid System
+- Grid : 격자
+- `container` : grid 시스템이 적용이 되는 전체 범위
+- `column` : grid로 나눠진 칸
+  - 보통 디자이너들은 12칸을 많이 씀.
+  - 웹 디자인의 매직넘버
+- `gutter` : 간격을 위한 양쪽 여백
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [CSS 기초] Bootstrap
+- grid system을 굉장히 쉽게 css로 구현할 수 있게 해 줌.
+- 반응형 웹
+```html
+<div class="container">
+    <div class="row">
+        <div class="col-1">
+            <!--  원하는 요소 -->
+            <p>col-1</p>
+            <div class="program">
+            </div>
+        </div>
+    </div>
+</div>
+🎈container의 자식으로는 row가!
+🎈row의 자식으로는 col-N(넣고 싶은 숫자)가 와야한다!
+🎈그 안에 내가 원하는 요소를 적을 것!
+```
+- Bootstrap의 Breakpoints 알아둘 것.
+  - https://getbootstrap.com/docs/5.0/layout/breakpoints/
+- 시작은 모바일 사이즈부터 시작해서 점차 늘려주는게 좋음.
+  - `<div class="col-12 col-md-6 col-lg-4 col-xl-3">`
 
 </br>
 
