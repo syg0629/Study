@@ -2011,10 +2011,12 @@ css에서 import 할 수 있다.
 <div class="container">
     <div class="row">
         <div class="col-1">
+
             <!--  원하는 요소 -->
             <p>col-1</p>
             <div class="program">
             </div>
+        
         </div>
     </div>
 </div>
