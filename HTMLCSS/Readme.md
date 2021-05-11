@@ -143,6 +143,7 @@
   - [[CSS 기초] Grid System](#css-기초-grid-system)
   - [[CSS 기초] Bootstrap](#css-기초-bootstrap)
   - [[CSS 기초] Q & A](#css-기초-q--a)
+  - [[실습] Landing Section](#실습-landing-section)
 <br>
 
 
@@ -2070,3 +2071,13 @@ textarea {
 - `visibility: hidden;`: 있는데 안보이게 하는 것. 영역 있음. 클릭 이번트 작동 안함. tab focus 안됨. 뒤에 있는 요소 클릭 가능
 - `opacity:0;`: 영역있음. 클릭 이벤트 작동 함. tab focus 됨. 뒤에 있는 요소 클릭 불가능.
   - 참조 : https://velog.io/@kya754/no1
+
+</br>
+
+[목차로 이동🚗](#목차)
+</br></br>
+
+## [실습] Landing Section
+- button은 보통 한번만 쓰는 경우는 잘 없음!
+- 시안을 잘 보고 CSS 작성시 위에 공통적으로 묶어 주는게 좋음! 
+- 부트스트랩의 class들은 가급적이면 건들지 말아라
