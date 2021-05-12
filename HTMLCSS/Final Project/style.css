@@ -70,6 +70,10 @@ p {
   margin-right: 8px;
 }
 
+.landing .col-12 {
+  padding: 0;
+}
+
 /* landing */
 .landing {
   background-color: #fdded8;
@@ -108,8 +112,35 @@ p {
 }
 
 /*  */
-.sencon-page {
+.sencond-page {
   background-color: #f4f5f7;
+}
+
+.second-page-content {
+  width: 100%;
+  height: 100vh;
+  color: #2b292d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.second-page-content h1 {
+  font-size: 22px;
+  line-height: 1.363636363636364;
+  letter-spacing: -0.04%;
+  margin-bottom: 16px;
+}
+
+.second-page-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01%;
+}
+
+.second-page .first-content {
+  margin-bottom: 40px;
 }
 
 /* ≥ 768px (Desktop) */
