@@ -175,6 +175,17 @@ p {
   align-items: center;
 }
 
+.third-page-image {
+  width: 290px;
+  height: 291px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 9px 9px 18px #d6d6d6, -9px -9px 18px #ffffff;
+  background-image: url("assets/img-fulltime-campus.png");
+  background-size: 24px;
+  background-repeat: no-repeat;
+}
+
 /* ≥ 768px (Desktop) */
 @media screen and (min-width: 768px) {
   /* Reset CSS */
