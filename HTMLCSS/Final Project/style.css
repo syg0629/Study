@@ -147,6 +147,7 @@ p {
 /* third-page */
 .third-page {
   background-color: #fff;
+  padding: 15px;
 }
 
 .third-page strong {
@@ -175,15 +176,51 @@ p {
   align-items: center;
 }
 
-.third-page-image {
+.third-page-image p {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.333333333333333;
+  letter-spacing: -0.02%;
+  text-align: center;
+  padding-top: 235px;
+}
+
+.img-fulltime-campus {
   width: 290px;
   height: 291px;
   border-radius: 8px;
   background: #ffffff;
   box-shadow: 9px 9px 18px #d6d6d6, -9px -9px 18px #ffffff;
   background-image: url("assets/img-fulltime-campus.png");
-  background-size: 24px;
+  background-size: 35%;
   background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.img-fulltime-remote {
+  width: 290px;
+  height: 291px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 9px 9px 18px #d6d6d6, -9px -9px 18px #ffffff;
+  background-image: url("assets/img-fulltime-remote.png");
+  background-size: 35%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.img-partime-flex {
+  width: 290px;
+  height: 291px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 9px 9px 18px #d6d6d6, -9px -9px 18px #ffffff;
+  background-image: url("assets/img-parttime-flex.png");
+  background-size: 35%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* ≥ 768px (Desktop) */
