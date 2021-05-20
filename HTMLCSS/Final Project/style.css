@@ -129,7 +129,7 @@ p {
 .second-page-content h1 {
   font-size: 22px;
   line-height: 1.363636363636364;
-  letter-spacing: -0.04%;
+  letter-spacing: -0.04em;
   margin-bottom: 16px;
 }
 
@@ -137,7 +137,7 @@ p {
 .third-page-content p {
   font-size: 16px;
   line-height: 1.5;
-  letter-spacing: -0.01%;
+  letter-spacing: -0.01em;
 }
 
 .second-page .first-content {
@@ -146,6 +146,8 @@ p {
 
 /* third-page */
 .third-page {
+  width: 100%;
+  height: 100vh;
   background-color: #fff;
 }
 
@@ -153,32 +155,36 @@ p {
   color: #009b4d;
   font-size: 16px;
   line-height: 1.5;
-  letter-spacing: -0.01%;
+  letter-spacing: -0.01em;
   margin-bottom: 8px;
+  text-align: left;
 }
 
 .third-page h1 {
   font-size: 34px;
   line-height: 1.058823529411765;
-  letter-spacing: -0.03%;
+  letter-spacing: -0.03em;
   color: #2b292d;
   margin-bottom: 24px;
+  font-weight: 700;
 }
 
 .third-page-content {
-  width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.third-page-content p {
+  margin-bottom: 32px;
+}
+
 .third-page-image p {
   font-size: 18px;
   font-weight: 700;
   line-height: 1.333333333333333;
-  letter-spacing: -0.02%;
+  letter-spacing: -0.02em;
   padding-top: 235px;
 }
 
