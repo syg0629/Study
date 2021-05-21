@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYE, 2020</title>
+
+    <!-- title에 붙어 있는 이미지. 구글에서 원하는 것을 찾아 이미지 주소 복사! -->
+    <link rel="shortcut icon" href="https://freepngimg.com/download/christmas/26196-6-christmas-stocking.png">
+
+    <!-- 공유를 위한 기초 작업 -->
+    <!-- url을 공유하면 자동으로 나오는 이미지, 제목, 설명  -->
+    <meta property="og:image" content="https://www.christmastreeassociation.org/wp-content/uploads/2016/06/multiple-christmas-trees-in-one-household-800x400.jpg">
+    <meta property="og:title" content="카드카두카듀">
+    <meta property="og:description" content="Bye, 2020">
+
+    <!-- 눈 오는 효과 -->
+    <script src="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/xmas/snow.js"></script>
+
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Nanum Myeongjo', serif;
+        }
+        
+        body {
+            background-color: #9b070f;
+        }
+        
+        .envelope {
+            /* background-color: black; */
+            /* div의 값이 아무것도 안들어가있으면 background-color를 해도 아무것도 표시되지않음 */
+            /* 너비와 높이를 지정해줘야함 */
+            width: 200px;
+            height: 200px;
+            background-image: url('https://pngimg.com/uploads/envelope/envelope_PNG18366.png');
+            background-position: center;
+            background-size: cover;
+            /* margin : auto 가운데로 오게끔  */
+            margin: 200px auto 0px auto;
+            cursor: pointer;
+        }
+        
+        h2,
+        h1 {
+            text-align: center;
+            color: white;
+        }
+        
+        h1 {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .letter-close {
+            /* HTML코드는 있는데 안보이게 만드는 */
+            display: block;
+        }
+        
+        .letter-open {
+            display: none;
+        }
+        
+        .rtan {
+            background-color: white;
+            width: 200px;
+            height: 200px;
+            background-image: url('https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/xmas/rtan.gif');
+            background-size: cover;
+            background-position: center;
+            
+            margin: 100px auto 0px auto;
+            
+            /* 테두리 부분 */
+            border-radius: 100px;
+            border: 5px solid white;
+            /* box-shadow 가로, 밑 치우침, 얼마나 뿌옇게 할 것인가, 얼마나 길게 뿌옇게 할 것인가  */
+            box-shadow: 0px 0px 10px 0px white;
+        }
+        
+        .msgbox {
+            /* height는 그 길이에 맞춰지기 때문에 굳이 안해도 됨 */
+            background-color: ivory;
+            width: 400px;
+            margin: auto;
+            color: brown;
+            font-size: 20px;
+            padding: 30px;
+            /* line-height는 font-size보다 큰게 좋다 */
+            line-height: 30px;
+            border: 5px solid white;
+            box-shadow: 0px 0px 10px 0px white;
+            
+        }
+        
+        .finish {
+            text-align: right;
+            margin-bottom: 0px;
+        }
+        
+        /* 모바일 버전 처리 */
+        @media screen and (max-width: 760px) {
+            /* 여기 안에 있는 내용은 760보다 작을때 읽어라 */
+            /* 모바일 버전으로 바뀌었을때 이렇게 해줘 */
+            .msgbox {
+                width: 300px;
+                padding: 20px;
+            }
+            .rtan {
+                /* 개발자 모드로 봐서 수정해서 복사 붙여놓기 해도 좋음 */
+                width: 150px;
+                height: 150px;
+                margin: 70px auto 0px auto;
+            }
+            h1 {
+                font-size: 28px
+            }
+            .envelope{
+                margin: 150px auto 0px auto;
+            }
+        }
+    </style>
+
+    <script>
+        // 정해진 동작을 수행하는 것이 함수
+        // 봉투 클릭시 편지 등장
+        function open_letter() {
+            document.getElementsByClassName("letter-close")[0].style.display = 'none'
+            document.getElementsByClassName("letter-open")[0].style.display = 'block'
+        }
+
+        //눈 내리는 효과. 남들이 해놓은 자바스크립트를 잘 찾아오는 것이 point!! title 밑에 넣었돠!
+
+        // 
+        function go_rtan() {
+            alert('안뇽안뇽 :) !?');
+            window.location.href='https://online.spartacodingclub.kr/mypage';
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="letter-close">
+        <div class="envelope" onclick="open_letter()"></div>
+        <h2>❤OPEN❤</h2>
+    </div>
+
+    <div class="letter-open">
+        <div class="rtan" onclick="go_rtan()"></div>
+        <h1>2020년 수고 많았어</h1>
+        <div class="msgbox">
+            안녕 DO IT! <br />
+            (●･̆⍛･̆●) <br />
+            고마오... <br />
+            (◍•ᴗ•◍)❤<br />
+            안뇽!<br />
+            <p class="finish">
+                2020.12.20 ㄴ ㅐㄱ ㅏ<br />
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

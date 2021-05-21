@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인페이지</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+
+    <style>
+        
+        *{
+            font-family: 'Nanum Myeongjo', serif;
+        }
+
+        .wrap{
+            /* background-color를 보니 div의 여백을 보니 꽉 차있음 -> 여백부터 줄이고 -> 이동 */
+            width: 300px;
+            /* margin: auto; 여백이 동등해짐 */
+            margin: auto;
+        }
+
+        .mytitle{
+            /* div로 영역을 지정한 다음에 background-color로 div가 먹힌 영역을 확인.
+               그리고 가로, 세로를 정해줌 */
+            /* background-image: url('') 사진 가져옴  */
+            /* background-size: cover; 이미지 크기를 맞춤 */
+            /* background-position: center; 사진을 가운데로 맞춤 */
+            /* 위 세개는 보통 같이 다닌다!! */
+            /* margin : 바깥 여백. 상하좌우 다 조절. 시계방향 */
+            /* padding : 안쪽 여백.  */
+            /* Ctrl + k + f : 자동 줄맞춤 */
+            /* shift + Tab 앞으로 tab만큼 이동 */
+            width: 300px;
+            height: 200px;
+            color: white;
+            text-align: center;
+            background-image: url('https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            padding-top: 20px;
+        }
+
+        .mybtn{
+            width: 300px;
+            height: 50px;
+            background-color: brown;
+            border-radius: 10px;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="mytitle">
+            <h1>로그인 페이지</h1>
+            <p>아이디, 비밀번호를 입력해주세요</p>
+        </div>
+        <p>ID: <input type="text"/></p>
+        <p>PW: <input type="text"/></p>
+        <button class="mybtn">로그인하기</button>
+    </div>
+</body>
+</html>
