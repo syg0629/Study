@@ -1,0 +1,105 @@
+* {
+  margin: 0 auto;
+  font-family: "Noto Serif KR", serif;
+}
+
+.mytitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.btn {
+  width: 300px;
+  height: 40px;
+  border: 2px solid #e8344e;
+  border-radius: 40px;
+  color: #e8344e;
+  text-decoration: none;
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.btn:hover {
+  background-color: #e8344e;
+  color: #fff;
+}
+
+.box {
+  width: 1000px;
+  /* height: 내용물의 높이를 따라가기에 굳이 필요하지 않는다. */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.map {
+  width: 500px;
+  height: 500px;
+  margin-right: 30px;
+  border-radius: 24px;
+}
+
+.story {
+  width: 450px;
+  height: 500px;
+}
+
+.img {
+  width: 300px;
+  height: 300px;
+  background-image: url("./image.png");
+  background-position: center;
+  background-size: cover;
+  border-radius: 24px;
+}
+
+.story > h2 {
+  margin: 20px 0 0 0;
+  color: cornflowerblue;
+}
+
+.story > h3 {
+  margin: 5px 0 10px 0;
+  font-size: 16px;
+  color: grey;
+  font-weight: normal;
+}
+
+.story > p {
+  line-height: 24px;
+}
+
+@media screen and (max-width: 640px) {
+  h1 {
+    font-size: 26px;
+  }
+  .box {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .map {
+    width: 100%;
+    height: 200px;
+    margin: 0;
+  }
+
+  .stroy {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .img {
+    width: 100%;
+    height: 200px;
+  }
+}

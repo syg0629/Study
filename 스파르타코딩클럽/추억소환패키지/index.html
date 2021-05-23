@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘 갈 곳!</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <meta property="og:title" content="오늘 놀러갈 곳:D"/>
+    <meta property="og:description" content="안뇽" />
+    <meta property="og:image" content="image.png" />
+</head>
+<body>
+    <div class="mytitle">
+        <h1>오늘 여기 갈 것입니다!</h1>
+        <a class="btn" href="#" target="_blank">오늘 놀러갈 곳 보러가기 ></a>
+    </div>
+    <div class="box">
+        <div class="map" id="map"></div>
+        <div class="story">
+            <div class="img"></div>
+                <h2>
+                    종묘
+                </h2>
+                <h3>
+                    서울 종로구 종로 157
+                </h3>
+                <p>
+                    종묘는 한 번도 안 가본 것 같은데,<br>
+                    오늘 가볼 듯하다.<br>
+                    하지만 난 정말 집순이인가보다.<br>
+                    벌써부터 밖에 나가고 싶지 않다...<br>
+                    나가려니 강의 듣고 싶은 이상한 기분o((⊙﹏⊙))o
+                </p>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=535068688f1a8bca1c21a9445ede0a89"></script>
+    <script>
+          var markerPosition = new kakao.maps.LatLng(37.573067634671055, 126.9943625268021)
+          var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+              mapOption = { 
+                  center: markerPosition, // 지도의 중심좌표
+                  level: 3 // 지도의 확대 레벨
+              };
+    
+          var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    
+          var imageSrc = "https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/2021_05_free_parents/sparta-marker.png"; 
+          var imageSize = new kakao.maps.Size(65, 86); 
+          var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+          
+          var marker = new kakao.maps.Marker({
+              map: map,
+              position: markerPosition,
+              image : markerImage
+          });
+    
+    </script>
+</body>
+</html>
