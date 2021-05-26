@@ -10,7 +10,7 @@
 - 변수 : 값을 담음<br/>
   - `let a = 2`
   - `let a_list=['수박', '참외']`
-    - `a_list.push('감')` : 중간에 값을 넣음
+    - 추가 : `a_list.push('감')`
 - 자료형 : 
   - `let a_dict = {'name':'bob', 'age':'24'}`
     - `a_dict['name']` => `"bob"`
