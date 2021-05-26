@@ -49,7 +49,7 @@
   ```
 <br/>
 
-  ## 1주차 숙제 Reminder
+  ## ✨1주차 숙제 Reminder✨
 - `background-image`를 쓸 때 아래 3개는 세트!!
 ```css
   background-image: url("https://cdn.pixabay.com/photo/2018/02/23/11/38/bouquet-3175315_960_720.jpg");
