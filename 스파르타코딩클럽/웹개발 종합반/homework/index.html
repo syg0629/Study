@@ -29,7 +29,7 @@
             font-style: normal;
         }
 
-        body {
+        * {
             font-family: 'Cafe24Oneprettynight';
         }
 
@@ -37,22 +37,18 @@
             width: 500px;
             margin: auto;
         }
+
         .image {
             width: 500px;
-            height: auto;
+            height: 300px;
             background-image: url("https://cdn.pixabay.com/photo/2018/02/23/11/38/bouquet-3175315_960_720.jpg");
             background-position: center;
             background-size: cover;
         }
 
-        .mytitle {
+       .price {
             font-weight: 700;
-            font-size: 30px;
-            margin-right: 10px;
-        }
-
-        .price {
-            font-weight: 700;
+            font-size: 20px;
         }
 
         button {
@@ -60,49 +56,62 @@
             width: 100px;
             margin: auto;
         }
+
+        .item-desc {
+            margin: 20px 0;
+        }
     </style>
 </head>
 
 <body>
     <div class="content">
         <div class="image"></div>
-        <span class="mytitle">예쁜 화분 팝니다!</span>
-        <span class="price">가격: 1,000,000원 / 개</span>
-        <p>이 상품으로 말할 것 같으면 용왕이 찾지 못한 토끼의 간을 찾아 빨간망토의 늑대와 아기 돼지 삼형제의 숨결이 고루 녹아 있는 먹으면 120세까지 살 수 있다는 이 상품으로 말할 것 같으면 용왕이 찾지 못한 토끼의 간을 찾아 빨간망토의 늑대와 아기 돼지..</p>
-
-        <div>
-            <span class="mytitle">주문하기</span>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">주문자 성함</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">수량</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">전화번호</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Default"
-                       aria-describedby="inputGroup-sizing-default">
-            </div>
-            <button type="submit" class="btn btn-primary">주문하기</button>
+        <div class="item-desc">
+            <h1>[예쁜 화분 팝니다💐]<span class="price">가격: 1,000,000원 / 개</span></h1>
+            <p>이 상품으로 말할 것 같으면 용왕이 찾지 못한 토끼의 간을 찾아 빨간망토의 늑대와 아기 돼지 삼형제의 숨결이 고루 녹아 있는 먹으면 120세까지 살 수 있다는 이 상품으로 말할 것 같으면 용왕이
+                찾지 못한 토끼의 간을 찾아 빨간망토의 늑대와 아기 돼지..</p>
         </div>
+
+        <h1>[주문하기]</h1>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">주문자 성함</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default"
+                   aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">수량</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option selected>--수량을 선택하세요--</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default"
+                   aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">전화번호</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default"
+                   aria-describedby="inputGroup-sizing-default">
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="purchase()">주문하기</button>
     </div>
 </body>
-
+<script>
+    function purchase() {
+        alert('주문이 완료되었습니다 :D')
+    }
+</script>
 </html>
+
