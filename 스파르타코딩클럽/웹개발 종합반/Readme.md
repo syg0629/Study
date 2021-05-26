@@ -47,3 +47,25 @@
         console.log(name, score)
     }
   ```
+<br/>
+
+  ## 1주차 숙제 Reminder
+- `background-image`를 쓸 때 아래 3개는 세트!!
+```css
+  background-image: url("https://cdn.pixabay.com/photo/2018/02/23/11/38/bouquet-3175315_960_720.jpg");
+  background-position: center;
+  background-size: cover;
+```
+- `background-image`를 쓸 때 이미지가 나타나지 않는다면? => width와 height를 확인할 것.
+```css
+  width: 500px;
+  height: 300px;
+```
+- `button` CSS
+```css
+  display: block; /* button이 움직이지 않는다면 이거! */
+  width: 100px; /* button이 움직이지 않는다면 이거! */
+  margin: auto; /* button 가운데 정렬 */
+```
+- 변수 이름은 명시적으로 작성할 것!<br/>
+  ex) item-image, item-desc
