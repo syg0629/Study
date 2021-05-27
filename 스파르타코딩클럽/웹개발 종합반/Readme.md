@@ -1,4 +1,9 @@
-# 웹개발 종합반 항해 2기
+# 웹개발 종합반 1주차
+## 수업목표
+1. 서버와 클라이언트의 역할에 대해 이해한다.
+2. HTML, CSS의 기초 지식을 이해한다. 부트스트랩을 가져다 쓸 줄 안다!
+3. Javascript 기초 문법을 익힌다.
+
 ## PyCharm
 - 파이썬을 쓰기에 가장 편한 툴
 
@@ -69,3 +74,26 @@
 ```
 - 변수 이름은 명시적으로 작성할 것!<br/>
   ex) item-image, item-desc
+
+<br/><br/>
+# 웹개발 종합반 2주차
+## 수업목표
+1. Javascript 문법에 익숙해진다.
+2. jQuery로 간단한 HTML을 조작할 수 있다.
+3. Ajax로 서버 API(약속)에 데이터를 주고, 결과를 받아온다.
+
+## Javascript 복습
+- 짝수 번 눌렀을 때는 "짝짝짝👏", 홀수 번 눌렀을 때는 "홀홀홀🎅" 얼럿을 띄우는 버튼을 만들어보기
+  - click이 예약어인지 click()으로 함수를 만들었더니 안먹더라!
+  - hey()로 바꾸니까 잘 됨!
+
+## JQuery
+- HTML의 요소들을 조작하는, 편리한 Javascript를 미리 작성해둔 것 => 라이브러리
+- 미리 작성된 Javascript 코드 그렇기 때문에 import 해야함!(jQuery CDN)
+- jQuery 사용하기 -> jQuery CDN을 `<head>`와 `</head>` 사이에 넣으면 끝!
+- JQuery도 CSS 선택자(id, class)처럼 선택해서 작성.
+
+## 참고
+- 참고 : 부트스트랩 템플릿을 사용하면 JQery CDN이 들어가 있다.
+- JavaScript와 JQuery를 쓸 때는 중간중간 alert이나 console.log을 많이 써서 잘 돌아가는지 확인!
+- 나는 JQeury hide로 포스팅박스 숨기기를 했는데 강의에서는 CSS에서 display:none으로 설정하더라! 이게 더 간단한 듯(⊙o⊙),,
