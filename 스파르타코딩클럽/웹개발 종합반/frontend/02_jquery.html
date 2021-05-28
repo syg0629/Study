@@ -20,7 +20,7 @@
             if(answer1 != '') {
                 alert(answer1);
             }else {
-                alert('입력하세요🤷‍!')
+                alert('입력하세요🤷‍!');
             }
             // 1. input-q1의 입력값을 가져온다. $('# .... ').val() 이렇게!
             // 2. 만약 입력값이 빈칸이면 if(입력값=='')
@@ -30,7 +30,12 @@
 
         function q2() {
             let answer2 = $('#input-q2').val();
-            if(answer2 )
+            if(answer2.includesOf('@')){
+                answer2_split = answer2.split('@');
+                alert(answer2_split)
+            } else{
+                alert('이메일이 아닙니다.')
+            }
             // 1. input-q2 값을 가져온다.
             // 2. 만약 가져온 값에 @가 있으면 (includes 이용하기 - 구글링!)
             // 3. info.spartacoding@gmail.com -> gmail 만 추출해서 ( .split('@') 을 이용하자!)
