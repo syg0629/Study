@@ -44,12 +44,20 @@
         }
 
         function q3() {
+            let answer3 = $('#input-q3').val();
+            if(answer3 != ''){
+                let temp_html = `<li>${answer3}</li>`  // 백틱을 넣어야하는데 작은 따옴표를 넣어서 오류가 났다ㅠㅠㅠ
+                    $('#names-q3').append(temp_html);
+            } else {
+                alert('이름을 입력하세요🤦‍');
+            }
             // 1. input-q3 값을 가져온다. let txt = ... q1, q2에서 했던 걸 참고!
             // 2. 가져온 값을 이용해 names-q3에 붙일 태그를 만든다. (let temp_html = `<li>${txt}</li>`) 요렇게!
             // 3. 만들어둔 temp_html을 names-q3에 붙인다.(jQuery의 $('...').append(temp_html)을 이용하면 굿!)
         }
 
         function q3_remove() {
+            $('#names-q3').empty();
             // 1. names-q3의 내부 태그를 모두 비운다.(jQuery의 $('....').empty()를 이용하면 굿!)
         }
 
