@@ -30,7 +30,9 @@
 
         function q2() {
             let answer2 = $('#input-q2').val();
-            if(answer2.includesOf('@')){
+                alert(answer2);
+            if(answer2.includes('@')){
+                let domain = answer2
                 answer2_split = answer2.split('@');
                 alert(answer2_split)
             } else{
