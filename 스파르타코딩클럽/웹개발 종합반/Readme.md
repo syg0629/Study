@@ -98,6 +98,48 @@
 - JavaScript와 JQuery를 쓸 때는 중간중간 alert이나 console.log을 많이 써서 잘 돌아가는지 확인!
 - 나는 JQeury hide로 포스팅박스 숨기기를 했는데 강의에서는 CSS에서 display:none으로 설정하더라! 이게 더 간단한 듯(⊙o⊙),,
 
+## AJAX
+- JavaScript로 페이지 전환없이 서버에서 값을 받아올 수 있는 방법
+- <u>Ajax는 jQuery를 임포트한 페이지에서만 동작 가능</u>
+- Ajax 기본 골격. 외우지 말고 복사해서 쓰래요!
+```javascript
+$.ajax({
+  type: "GET",
+  url: "여기에URL을입력",
+  data: {}, /* 이건 post 방식에서 쓰는 것! */
+  success: function(response){
+    console.log(response)
+  }
+})
+```
+- url을 입력하면 값이 response에 들어가고 console에도 찍히게 됨.
+
+
+## JSON
+- 서버 → 클라이언트: JSON 이해하기
+- Key:Value로 이루어져 있다. 
+- 자료형 Dictionary와 아주 유사
+- list 안에 dictionary가 여러개 들어 있는 것.
+
+## GET / POST 요청
+- 클라이언트 → 서버: GET 요청 이해하기
+- GET : 통상적으로! 데이터 조회(Read)를 요청할 때
+  예) 영화 목록 조회
+- POST : 통상적으로! 데이터 생성(Create), 변경(Update), 삭제(Delete) 요청 할 때
+  예) 회원가입, 회원탈퇴, 비밀번호 수정
+- 이 중에서 오늘은 GET 방식에 대해 배워보겠습니다. (POST는 4주차에 배웁니다)
+
+### GET 방식으로 데이터를 전달하는 방법
+- ?  : 여기서부터 전달할 데이터가 작성된다는 의미
+- & : 전달할 데이터가 더 있다는 뜻입니다.
+ex) google.com/search?q=아이폰&sourceid=chrome&ie=UTF-8
+  위 주소는 google.com의 search 창구에 다음 정보를 전달합니다!
+  q=아이폰                        (검색어)
+  sourceid=chrome        (브라우저 정보)
+  ie=UTF-8                      (인코딩 정보)
+
+
+
 
 <br/>
 
