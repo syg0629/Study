@@ -106,7 +106,7 @@
 $.ajax({
   type: "GET",
   url: "여기에URL을입력",
-  data: {}, /* 이건 post 방식에서 쓰는 것! */
+  data: {}, /* 이건 post 방식에서 쓰는 것!, get 방식때는 비워둠 */
   success: function(response){
     console.log(response)
   }
@@ -138,9 +138,6 @@ ex) google.com/search?q=아이폰&sourceid=chrome&ie=UTF-8
   sourceid=chrome        (브라우저 정보)
   ie=UTF-8                      (인코딩 정보)
 
-
-
-
 <br/>
 
 ## ✨2주차 Reminder✨
@@ -148,3 +145,4 @@ ex) google.com/search?q=아이폰&sourceid=chrome&ie=UTF-8
 - .empty()는 선택한 요소의 내용을 지움. 내용만 지울 뿐 태그는 남아있다!!
 - 태그 포함 요소 전체를 제거할 때는 .remove()를 사용
 - split을 하면 요소가 나뉨. 그걸 배열식으로 표현하니까 0번째를 가져오고 싶다하면 `txt.split('@')[0]` 이렇게 표현!!
+- 와 javascript는 오타가 잘 발견되지 않으니 진짜 주의 ㅠㅠㅠㅠㅠㅠ
