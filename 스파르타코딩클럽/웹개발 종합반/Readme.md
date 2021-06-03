@@ -105,10 +105,12 @@
 ```javascript
 $.ajax({
   type: "GET",
-  url: "여기에URL을입력",
-  data: {}, /* 이건 post 방식에서 쓰는 것!, get 방식때는 비워둠 */
-  success: function(response){
+  url: "요청할 URL 입력",
+  data: {}, 
+  /* 요청하면서 함께 줄 데이터. 이건 post 방식에서 쓰는 것! get 방식때는 비워둠 */
+  success: function(response){ /* 서버에서 준 결과를 response라는 변수에 담음 */
     console.log(response)
+    /* 서버에서 준 결과를 이용해서 나머지 코드를 작성 */
   }
 })
 ```
