@@ -9,11 +9,22 @@
 >> 4. `WHERE HIREDATE >= '1982/01/01';` 날짜 문자열임!
 >> 5. 입사년도가 1981년인 사원 중에 급여가 1500이상인 사원의 사원번호, 이름, 급여, 입사일을 가져온다. (2가지 방법!)
 >> 6. 급여가 2000보다 크거나 1000보다 작은 사원의 사원번호, 이름, 급여를 가져온다.
->> 7. 
+>> 7. 직무가 CLERK, SALESMAN, ANALYST인 사원의 사원번호, 이름, 직무를 가져온다.(IN사용)
+>> 8. 
 ---
+
 <br><br><br>
 ## 목차
 
+<!-- TOC -->
+- [Oracle](#oracle) 
+  - [목차](#목차)
+  - [[6강] DML - SELECT 기본](#6강-dml---select-기본)
+  - [[7강] DML - 연산자 사용하기](#7강-dml---연산자-사용하기)
+    - [CONCAT 연산자](#concat-연산자)
+    - [DISTICT](#distict)
+    - [조건절](#조건절)
+  - [[9강] 논리 연산자 사용하기](#9강-논리-연산자-사용하기)
 ---
 
 ## [6강] DML - SELECT 기본
@@ -129,4 +140,25 @@ SELECT EMPNO, ENAME, SAL
 FROM EMP
 WHERE NOT(SAL >= 1000 AND SAL <= 2000);
 
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE NOT(SAL BETWEEN 1000 AND 2000);
+-- 부서번호가 20이거나 30인 사원의 사원번호, 이름, 부서번호를 가져온다.
+SELECT EMPNO, ENAME, DEPTNO
+FROM EMP
+WHERE DEPTNO = '20' OR DEPTNO = '30';
+-- 직무가 CLERK, SALESMAN, ANALYST인 사원의 사원번호, 이름, 직무를 가져온다.
+SELECT EMPNO, ENAME, JOB
+FROM EMP
+WHERE JOB = 'CLERK' OR JOB = 'SALESMAN' OR JOB = 'ALAYST';
+
+SELECT EMPNO, ENAME, JOB
+FROM EMP
+WHERE JOB IN ('CLERK', 'SALESMAN', 'ALAYST'); -- 특정 컬럼의 값이 ~이거나 ~이거나 ~이면 IN을 써도 된다.
 ```
+
+## [10강] Like 연산자
+- 문자열 비교하기
+- 조건문에서 문자열 컬럼도 =과 <>로 비교 가능
+- 만약 문자열 컬럼에 저장되어 있는 값이 특정 문자열을 포함하고 있는지 파악하고 싶을 때 LIKE연산자를 사용한다.
+- 
