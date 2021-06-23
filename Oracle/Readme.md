@@ -382,5 +382,170 @@ FROM DUAL;
 -- 문자열 변경
 SELECT 'ABCDEFG', REPLACE('ABCTDTG', 'TDTG', 'DEFG')
 FROM DUAL;
-
 ```
+
+## [15강] 날짜 함수
+- 오라클은 날짜 데이터를 제어할 수 있는 함수들을 제공 
+  - sysdate : 현재 날짜와 시간을 반환한다.
+  - months_between : 두 날짜간의 개월 수를 구한다.
+  - add_months : 주어진 개월 수 만큼 더한다.
+  - next_day : 돌아오는 지정된 요일의 날짜를 반환한다.
+  - last_day :  지정된 달에 마지막 날을 반환한다.
+  - round : 지정된 기준으로 반올림한다.
+  - trunc : 지정된 기준으로 버린다.
+```SQL
+-- 현재 날짜 구하기
+SELECT SYSDATE
+FROM DUAL;
+
+SELECT SYSDATE - 10000
+FROM DUAL;
+-- 각 사원이 입사한 날짜로부터 1000일 후가 되는 날짜
+SELECT ENAME, HIREDATE, HIREDATE +1000
+FROM EMP;
+-- 직무가 SALESMAN인 사원의 입사일 100일전 날짜를 가져온다.
+SELECT ENAME, JOB, HIREDATE - 100
+FROM EMP
+WHERE JOB = 'SALESMAN';
+-- 전 사원의 근무 일을 가져온다.
+SELECT TRUNC(SYSDATE- HIREDATE)
+FROM EMP;
+-- 반올림
+SELECT SYSDATE,
+       ROUND(SYSDATE, 'CC') AS  "년도두자리",
+       ROUND(SYSDATE, 'YYYY') AS "월기준", -- 월을 기준으로 년도를 올리는지 내리는지
+       ROUND(SYSDATE, 'DDD') AS "시기준",
+       ROUND(SYSDATE, 'HH') AS "분기준",
+       ROUND(SYSDATE, 'MM') AS "일기준",
+       ROUND(SYSDATE, 'DAY') AS "주기준",
+       ROUND(SYSDATE, 'MI') AS "초기준"
+FROM EMP;
+-- 각 사원의 입사일을 월 기준으로 반올림한다.
+SELECT ENAME, HIREDATE, ROUND(HIREDATE, 'YYYY') AS "월기준 반올림"
+FROM EMP;
+-- 버림
+SELECT SYSDATE, TRUNC(SYSDATE, 'CC') AS "년도두자리",
+       TRUNC(SYSDATE, 'YYYY') AS "월기준", -- 월을 기준으로 년도를 올리는지 내리는지
+       TRUNC(SYSDATE, 'DDD') AS "시기준",
+       TRUNC(SYSDATE, 'HH') AS "분기준",
+       TRUNC(SYSDATE, 'MM') AS "일기준",
+       TRUNC(SYSDATE, 'DAY') AS "주기준",
+       TRUNC(SYSDATE, 'MI') AS "초기준"
+FROM EMP;
+-- 2020년에 입사한 사원들의 사원번호, 사원이름, 급여, 입사일을 가져온다.
+SELECT EMPNO, ENAME, SAL, HIREDATE
+FROM EMP
+WHERE HIREDATE BETWEEN '2020/01/01' AND '2020/12/31';
+
+SELECT EMPNO, ENAME, SAL, HIREDATE
+FROM EMP
+WHERE TRUNC(HIREDATE, 'YYYY') = '20/01/01';
+
+-- 두 날짜 사이의 일수를 구한다.
+SELECT 
+
+-- 16분 부터 다시 듣기!!
+```
+## [16강] DECODE, CASE
+### DECODE
+- 값에 따라 반환값이 결정되는 구문이다.
+```SQL
+decode(컬럼명,
+        값1, 반환값1,
+        값2, 반환값2,
+        값3, 반환값3)
+```
+```SQL
+각 사원의 부서 이름을 가져온다.
+  10 : 인사과, 20 : 개발부, 30 : 경원지원팀,   
+  40 : 생산부
+
+
+직급에 따라 인상된 급여액을 가져온다.
+   CLERK : 10%
+   SALESMAN : 15%
+   PRESIDENT : 200%
+   MANAGER : 5%
+   ANAYST : 20%
+```
+### CASE
+- 조건에 따라 반환값이 결정되는 구문이다
+```SQL
+case when 조건식1 then 반환값1
+     when 조건식2 then 반환값2
+end
+```
+- 급여액 별 등급을 가져온다.
+   1000 미만 : C등급
+   1000 이상 2000미만 : B등급
+   2000 이상 : A등급
+- 직원들의 급여를 다음과 같이 인상한다.
+  1000 이하 : 100%
+  1000 초과 2000미만 : 50%
+  2000 이상 : 200%
+```SQL
+/*
+각 사원의 부서 이름을 가져온다.
+  10 : 인사과, 20 : 개발부, 30 : 경원지원팀,   
+  40 : 생산부
+*/
+SELECT EMPNO, ENAME, 
+       DECODE(DEPTNO, 10, '인사과',
+                      20, '개발부',
+                      30, '경영지원팀',
+                      40, '생산부')
+FROM EMP;
+/*
+직급에 따라 인상된 급여액을 가져온다.
+   CLERK : 10%
+   SALESMAN : 15%
+   PRESIDENT : 200%
+   MANAGER : 5%
+   ANAYST : 20%
+*/
+SELECT EMPNO, ENAME, JOB,
+       DECODE(JOB, 'CLERK', SAL*1.1, 
+                   'SALESEMAN', SAL*1.15,
+                   'PRESIDENT', SAL*2,
+                   'MANAGER', SAL*1.05,
+                   'ANAYST', SAL*1.2)
+FROM EMP;
+
+/*
+- 급여액 별 등급을 가져온다.
+   1000 미만 : C등급
+   1000 이상 2000미만 : B등급
+   2000 이상 : A등급
+*/
+SELECT EMPNO, ENAME,
+       CASE WHEN SAL < 1000 THEN 'C등급'
+            WHEN SAL > 1000 AND SAL < 2000 THEN 'B등급'
+            WHEN SAL > 2000 THEN 'A등급'
+       END
+FROM EMP; --쉼표는 빼야한다!!!
+/*
+- 직원들의 급여를 다음과 같이 인상한다.
+  1000 이하 : 100%
+  1000 초과 2000미만 : 50%
+  2000 이상 : 200%
+*/
+SELECT EMPNO, ENAME,
+       CASE WHEN SAL <= 1000 THEN SAL*2
+            WHEN SAL > 1000 AND SAL < 2000 THEN SAL/2
+            WHEN SAL >= 2000 THEN SAL*3
+        END
+FROM EMP;
+```
+- DECODE를 사용하면 값에 따라 반환 값을 결정
+- CASE를 사용하면 조건에 따라 반환 값을 결정
+
+## [17강] 그룹함수
+- select 문을 통해 가져올 결과를 그룹으로 묶고 그룹 내에서 지정된 컬럼의 총합, 평균 등을 구할 수 있는 함수
+    -sum : 총합
+    -avg : 평균
+    -count : 로우의 수
+    -max : 최대 값
+    -min : 최소 값
+```SQL
+```
+- 4분부터 들으면 됨.
