@@ -10,7 +10,15 @@
 >> 5. 입사년도가 1981년인 사원 중에 급여가 1500이상인 사원의 사원번호, 이름, 급여, 입사일을 가져온다. (2가지 방법!)
 >> 6. 급여가 2000보다 크거나 1000보다 작은 사원의 사원번호, 이름, 급여를 가져온다.
 >> 7. 직무가 CLERK, SALESMAN, ANALYST인 사원의 사원번호, 이름, 직무를 가져온다.(IN사용)
->> 8. 
+>> 8. 이름이 F로 시작하는 사원의 이름과 사원 번호를 가져온다.
+>> 9. - 특정 테이블의 함수를 가져오는게 아니라서 굳이 테이블 이름을 작성 X. 하지만 데이터베이스에서 FROM을 반드시 적어야함. 그럴때 사용하는게 `FROM DUAL;`
+>> 10. 급여가 2천 이하인 사원들의 급여를 20%씩 인상한다. 단 10의 자리를 기준으로 반올림한다.
+>> 11. 사원들의 이름을 첫 글자만 대문자, 나머지는 소문자로
+>> 12. 문자열 잘라내기(SUBSTR)
+>> 13. 문자열 찾기(INSTR)
+>> 14. 문자열 변경(REPLACE)
+>> 15. 공백 제거(TRIM)
+>> 16. 특정 문자열로 채우기(LPAD, RPAD)
 ---
 
 <br><br><br>
@@ -161,4 +169,218 @@ WHERE JOB IN ('CLERK', 'SALESMAN', 'ALAYST'); -- 특정 컬럼의 값이 ~이거
 - 문자열 비교하기
 - 조건문에서 문자열 컬럼도 =과 <>로 비교 가능
 - 만약 문자열 컬럼에 저장되어 있는 값이 특정 문자열을 포함하고 있는지 파악하고 싶을 때 LIKE연산자를 사용한다.
-- 
+    - select 컬럼명 from 테이블명
+    - where 컬럼명 like '와일드카드'
+      - 와일드카드
+      - _: 글자 하나를 의미
+      - %: 글자 0개 이상을 의미
+```SQL
+-- 이름이 F로 시작하는 사원의 이름과 사원 번호를 가져온다.
+SELECT ENAME, EMPNO
+FROM EMP
+WHERE ENAME LIKE 'F%'; --F 문자열이니까 ''를 넣어줘야지!!
+-- 이름이 S로 끝나는 사원의 이름과 사원 번호를 가져온다.
+SELECT ENAME, EMPNO
+FROM EMP
+WHERE ENAME LIKE '%S';
+-- 이름에 A가 포함되어 있는 사원의 이름과 사원 번호를 가져온다.
+SELECT ENAME, EMPNO
+FROM EMP
+WHERE ENAME LIKE '%A%';
+-- 이름의 두번째 글자가 A인 사원의 이름, 사원 번호를 가져온다.
+SELECT ENAME, EMPNO
+FROM EMP
+WHERE ENAME LIKE '_A%';
+-- 이름이 4글자인 사원의 사원 이름, 사원 번호를 가져온다.
+SELECT ENAME, EMPNO
+FROM EMP
+WHERE ENAME LIKE '____';
+```
+
+## [11강] NULL
+- NULL은 정해져 있지 않은 값 혹은 무한대의 의미를 갖는 값이다.
+- =이나 <>를 통해 컬럼의 값이 NULL인지 연산할 수 없다.
+    - NULL은 비교 연산자를 사용할 수 없다.
+    - WHERE A IS NULL 과 WHERE A = NULL은 다른 결과가 나온다.
+- IS NULL, IS NOT NULL로 NULL 비교가 가능하다.
+
+```SQL
+-- 사원 중에 커미션을 받지 않는 사원의 사원번호, 이름, 커미션을 가져온다.
+SELECT EMPNO, ENAME, COMM
+FROM EMP
+WHERE COMM IS NULL; -- COM = NULL 이라고 하면 값을 못 가져옴! NULL은 무한대를 의미하니까!
+-- 사원 중에 커미션을 받는 사원의 사원번호, 이름, 커미션을 가져온다.
+SELECT EMPNO, ENAME, COMM
+FROM EMP
+WHERE COMM IS NOT NULL;
+-- 회사 대표(직속상관이 없는 사람)의 이름과 사원번호를 가져온다.
+SELECT ENAME, EMPNO
+FROM EMP
+WHERE MGR IS NULL;
+```
+
+## [12강] 정렬
+- SELECT 문을 통해 얻어온 결과를 특정컬럼을 기준으로 오름차순 혹은 내림차순으로 정렬할 수 있다.
+- 숫자, 문자열, 날짜 등 모든 타입의 데이터를 정렬할 수 있다.
+  - SELECT 컬럼명 FROM 테이블명
+  - WHERE 조건
+  - ORDER BY 컬럼명[ASC|DESC]
+    - ASC : 오름차순, 생략가능
+    - DESC : 내림차순
+```SQL
+-- 사원의 사원번호, 이름, 급여를 가져온다. 급여를 기준으로 오름차순 정렬한다.
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+ORDER BY SAL;
+
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+ORDER BY SAL ASC;
+-- 사원의 사원번호, 이름, 급여를 가져온다. 사원번호를 기준으로 내림차순 정렬을 한다.
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+ORDER BY EMPNO DESC;
+-- 사원의 사원번호, 이름을 가져온다, 사원의 이름을 기준으로 오름차순 정렬을 한다.
+SELECT EMPNO, ENAME
+FROM EMP
+ORDER BY ENAME; -- 문자열도 정렬 가능하다.
+-- 사원의 사원번호, 이름, 입사일을 가져온다. 입사일을 기준으로 내림차순 정렬을 한다.
+SELECT EMPNO, ENAME, HIREDATE
+FROM EMP
+ORDER BY HIREDATE DESC;
+-- 직무가 SALESMAN인 사원의 사원이름, 사원번호, 급여를 가져온다. 급여를 기준으로 오름차순 정렬을 한다.
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE JOB = 'SALESMAN'
+ORDER BY SAL;
+-- 1981년에 입사한 사원들의 사원번호, 사원이름, 입사일을 가져온다. 사원번호를 기준으로 내림차순 정렬을 한다.
+SELECT EMPNO, ENAME, HIREDATE
+FROM EMP
+WHERE HIREDATE BETWEEN '1981/01/01' AND '1981/12/31'
+ORDER BY EMPNO DESC;
+-- 사원의 이름, 급여, 커미션을 가져온다. 커미션을 기준으로 오름차순 정렬을 한다.
+SELECT ENAME, SAL, COMM
+FROM EMP
+ORDER BY COMM ASC; --NULL이 무한대 의미라서
+-- 사원의 이름, 급여, 커미션을 가져온다. 커미션을 기준으로 내림차순 정렬을 한다.
+SELECT ENAME, SAL, COMM
+FROM EMP
+ORDER BY COMM DESC;
+-- 사원의 이름, 사원번호, 급여를 가져온다. 급여를 기준으로 내림차순 정렬, 이름을 기준으로 오름차순 정렬
+SELECT ENAME, EMPNO, SAL
+FROM EMP
+ORDER BY SAL DESC, ENAME;
+```
+## [13강] 숫자함수
+- 컬럼에 저장되어 있는 숫자 값에 대해 처리를 하여 값을 가져올 수 있는 함수들을 의미한다.
+- 특정 테이블의 함수를 가져오는게 아니라서 굳이 테이블 이름을 작성 X. 하지만 데이터베이스에서 FROM을 반드시 적어야함. 그럴때 사용하는게 `FROM DUAL;`
+```SQL
+-- 절대값 구하기
+SELECT -10, ABS(-10)
+FROM DUAL;
+-- 전직원의 급여를 2000 삭감하고 삭감한 급여액의 절대값을 구한다.
+SELECT SAL, SAL-2000, ABS(SAL-2000)
+FROM EMP;
+
+-- 소수점 이하 버리기
+SELECT 12.3456, FLOOR(12.3456)
+FROM DUAL;
+-- 급여가 1500 이상인 사원의 급여를 15% 삭감한다. 단 소수점 이하는 버린다.
+SELECT SAL, SAL*0.85, FLOOR(SAL*0.85)
+FROM EMP
+WHERE SAL >= 1500;
+
+-- 반올림
+SELECT 12.3456, ROUND(12.3456)
+FROM DUAL;
+SELECT 12.8888, ROUND(12.8888)
+FROM DUAL;
+SELECT 888.888, ROUND(888,888), ROUND(888.8888, 2), ROUND(888.888, -2)
+FROM DUAL;
+-- 급여가 2천 이하인 사원들의 급여를 20%씩 인상한다. 단 10의 자리를 기준으로 반올림한다.
+SELECT SAL, SAL * 1.2, ROUND(SAL * 1.2, -2)
+FROM EMP
+WHERE SAL <= 2000;
+```
+
+## [14강] 문자열 함수
+- 컬럼에 저장되어 있는 문자열에 대해 처리를 하여 값을 가져올 수 있는 함수들을 의미한다.
+
+```SQL
+-- 대문자 -> 소문자
+SELECT 'ABcdEF', LOWER('ABcdEF')
+FROM DUAL;
+-- 사원들의 이름을 소문자로 가져온다.
+SELECT ENAME, LOWER(ENAME)
+FROM EMP;
+
+-- 소문자 -> 대문자
+SELECT 'ABcdEF', UPPER('ABcdEF')
+FROM DUAL;
+-- 사원들의 이름을 가져온다. 대문자 -> 소문자 -> 대문자
+SELECT ENAME, LOWER(ENAME), UPPER(LOWER(ENAME))
+FROM EMP;
+
+-- 첫 글자만 대문자, 나머지는 소문자로
+SELECT 'aBCDEF', INITCAP('aBCDEF')
+FROM DUAL;
+-- 사원들의 이름을 첫 글자만 대문자, 나머지는 소문자로
+SELECT ENAME, INITCAP(ENAME)
+FROM EMP;
+
+--문자열 연결
+SELECT CONCAT('ㅋㅋㅋㅋ', CONCAT('ABC', 'DEF'))
+FROM DUAL;
+-- 사원들의 이름과 직무를 다음과 같이 가져온다.
+-- 사원의 이름은 ㅇㅇㅇ이고, 직무는 ㅇㅇㅇ입니다.
+SELECT CONCAT(CONCAT(CONCAT(CONCAT('사원의 이름은 ', ENAME),'이고, 직무는 '), JOB), '입니다.')
+FROM EMP;
+
+SELECT '사원의 이름은 ' || ENAME || '이고, 직무는 ' || JOB || '입니다.'
+FROM EMP;
+
+-- 문자열의 길이
+SELECT LENGTH('ABCD'), -- 문자열의 갯수
+       LENGTHB('ABCD'), --문자열의 바이트 수
+       LENGTH('안녕하세요'),
+       LENGTHB('안녕하세요') -- 한글은 1글자를 2바이트로 씀
+FROM DUAL;
+
+-- 문자열 잘라내기
+SELECT SUBSTR('ABCE',3,1), SUBSTRB('ABCD', 3), -- 오라클은 1부터 시작. 3번째부터 1자리 수를 가져오겠다.
+       SUBSTR('안녕하세요', 3),
+       SUBSTRB('안녕하세요', 3),
+       SUBSTR('동해물과 백두산이',3,4) --띄어쓰기 포함 됨.
+FROM DUAL;
+
+-- 문자열 찾기
+SELECT INSTR('ABCDABCDABCD', 'BC'), 
+       INSTR('ABCDABCDABCD', 'BC', 3), -- 3번째 자리부터 BC 찾기
+       INSTR('ABCDABCDABCD', 'BC', 3, 2) -- 3번째 자리부터 BC를 찾는데 2번째 BC 찾기
+FROM DUAL;
+SELECT INSTR('ABCEDFG', 'AAA') FROM DUAL; -- 없는 것을 찾으면 0이 나온다.
+-- 사원의 이름 중에 A라는 글자가 두번째 이후에 나타나는 사원의 이름을 가져온다.
+SELECT ENAME
+FROM EMP
+WHERE INSTR(ENAME, 'A') > 1; -- 2번째 글자 이후에 나옴
+SELECT ENAME 
+FROM EMP
+WHERE ENAME LIKE '_A%'; -- 2번째 글자에 나옴. 고로 X
+
+-- 특정 문자열로 채우기
+SELECT '문자열', LPAD('문자열', 20) FROM DUAL; -- 20칸 만큼의 공간을 차지한 다음에 우측정렬해서 문자열이 출력됨.
+SELECT '문자열', RPAD('문자열', 20) FROM DUAL; -- 20칸 만큼의 공간을 차지한 다음에 좌측정렬해서 문자열이 출력됨.
+SELECT '문자열', LPAD('문자열', 20), RPAD('문자열', 20, '_') FROM DUAL; -- 20칸 만큼 _을 차지한 다음에 좌측정렬해서 문자열이 출력됨.
+
+-- 공백 제거
+SELECT '               문자열          ',
+LTRIM('               문자열          '),
+RTRIM('               문자열          '),
+TRIM('               문자열          ')
+FROM DUAL;
+
+-- 문자열 변경
+SELECT 'ABCDEFG', REPLACE('ABCTDTG', 'TDTG', 'DEFG')
+FROM DUAL;
+
+```
