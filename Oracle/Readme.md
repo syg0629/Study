@@ -440,12 +440,38 @@ WHERE HIREDATE BETWEEN '2020/01/01' AND '2020/12/31';
 SELECT EMPNO, ENAME, SAL, HIREDATE
 FROM EMP
 WHERE TRUNC(HIREDATE, 'YYYY') = '20/01/01';
-
 -- 두 날짜 사이의 일수를 구한다.
-SELECT 
-
--- 16분 부터 다시 듣기!!
+SELECT SYSDATE - HIREDATE
+FROM EMP;
+-- 모든 사원이 근무한 개월 수를 구한다.
+SELECT TRUNC(MONTHS_BETWEEN(SYSDATE, HIREDATE))
+FROM EMP;
+-- 100일 후 / 100개월 후(개월 수 더하기)
+SELECT SYSDATE + 100, ADD_MONTHS(SYSDATE,100) 
+FROM DUAL;
+--각 사원들의 입사일 후 100개월 되는 날짜를 구한다.
+SELECT ENAME, HIREDATE, ADD_MONTHS(HIREDATE, 100)
+FROM EMP;
+-- 지정된 날짜를 기준으로 지정된 요일이 몇일인지...
+SELECT SYSDATE, NEXT_DAY(SYSDATE, '월요일')
+FROM DUAL;
+-- 지정된 날짜의 월의 마지막 날짜를 구한다.
+SELECT SYSDATE, LAST_DAY(SYSDATE)
+FROM DUAL;
+-- TO CHAR : 날짜나 숫자함수를 문자로. 오라클 데이터베이스에서 프로그램으로 날짜 데이터를 가져올 때 주로 사용
+SELECT SYSDATE, TO_CHAR(SYSDATE, 'YYYY-MM-DD HH:MI:SS AM')
+FROM DUAL;
+SELECT SYSDATE, TO_CHAR(SYSDATE, 'YYYY년 MM월 HH시 MI분 SS초 AM') --> 오류남. 날짜 형식에는 한글이 들어갈 수 없음.
+FROM DUAL;
+-- TO_DATE : 프로그램에서 얻어진 날짜 값을 오라클에 저장
+SELECT TO_DATE('2021-06-24 05:49:20 오전', 'YYYY-MM-DD HH:MI:SS AM')
+FROM DUAL;
+-- 사원들의 입사일을 다음과 같은 양식으로 가져온다.
+-- 1900-10-10
+SELECT ENAME, HIREDATE, TO_CHAR(HIREDATE, 'YYYY-MM-DD')
+FROM EMP;
 ```
+
 ## [16강] DECODE, CASE
 ### DECODE
 - 값에 따라 반환값이 결정되는 구문이다.
@@ -510,7 +536,6 @@ SELECT EMPNO, ENAME, JOB,
                    'MANAGER', SAL*1.05,
                    'ANAYST', SAL*1.2)
 FROM EMP;
-
 /*
 - 급여액 별 등급을 가져온다.
    1000 미만 : C등급
@@ -547,5 +572,92 @@ FROM EMP;
     - max : 최대 값
     - min : 최소 값
 ```SQL
+-- 사원들의 급여 총합을 구한다.
+SELECT SUM(SAL) -- 그룹함수와 다른 컬럼은 함께 가져올 수 없다.
+FROM EMP;
+-- 사원들의 커미션 총합을 구한다.
+SELECT SUM(COMM) -- 그룹함수는 NULL 값을 다 없애버리고 계산함
+FROM EMP;
+-- 급여가 1500 이상인 사원들의 급여 총합을 구한다.
+SELECT SUM(SAL)
+FROM EMP
+WHERE SAL>=1500;
+-- 20번 부서에 근부하고 있는 사원들의 급여 총합을 구한다.
+SELECT SUM(SAL)
+FROM EMP
+WHERE DEPTNO = 20;
+-- 직무가 SALESMAN인 사원들의 급여 총합을 구한다.
+SELECT SUM(SAL)
+FROM EMP
+WHERE JOB = 'SALESMAN';
+-- 직무가 SALESMAN인 사원들의 이름과 급여총합을 가져온다.
+SELECT ENAME, SUM(SAL) --> 이름은 4개인데 총 합은 하나니까 갯수가 맞지 않음! 오류!
+FROM EMP
+WHERE JOB = 'SALESMAN';
+-- 전 사원의 급여 평균을 구한다.
+SELECT TRUNC(AVG(SAL))
+FROM EMP;
+-- 커미션을 받는 사원들의 커미션 평균을 구한다.
+SELECT TRUNC(AVG(COMM)) --> 그룹함수에서 NULL값 저절로 제외하고 계산함
+FROM EMP;
+-- 전 사원의 커미션의 평균을 구한다.
+SELECT TRUNC(AVG(NVL(COMM,0)))
+FROM EMP;
+-- 커미션을 받는 사원들의 급여 평균을 구한다.
+SELECT TRUNC(AVG(SAL))
+FROM EMP
+WHERE COMM IS NOT NULL;
+-- 30번 부서에 근무하고 있는 사원들의 급여 평균을 구한다.
+SELECT TRUNC(AVG(SAL))
+FROM EMP
+WHERE DEPTNO = 30;
+-- 직무가 SALESMAN인 사원들의 급여 + 커미션 평균을 구한다.
+SELECT TRUNC(AVG(SAL + COMM)) --> 더하기 전에 NULL이 있는지 우선 확인!
+FROM EMP
+WHERE JOB = 'SALESMAN';
+-- 사원들의 총 수를 가져온다.
+SELECT COUNT(ENAME)
+FROM EMP;
+
+SELECT COUNT(*)
+FROM EMP;
+-- 커미션을 받는 사원들의 총 수를 가져온다.
+SELECT COUNT(COMM)
+FROM EMP;
+-- 사원들의 급여 최대, 최소값을 가져온다.
+SELECT MAX(SAL), MIN(SAL)
+FROM EMP;
 ```
-- 4분부터 들으면 됨.
+
+## [18강] Group By
+- 그룹 함수를 사용할 경우 select ~ from ~ where 절 까지 모두 수행하여 가져온 결과를 하나의 그룹으로 묶어 총합, 평균 등을 구할 수 있다.
+- Group By 절을 사용하면 select문을 수행하여 가져온 하나의 결과를 여러 그룹으로 나눠 그룹 각각의 총합과 평균 등을 구할 수 있다.
+```SQL
+select 컬럼명
+from 테이블명
+where 조걸절
+group by 그룹기준
+order by 정렬기준
+```
+```SQL
+-- 각 부서별 사원들의 급여 평균을 구한다.
+SELECT DEPTNO, AVG(SAL)
+FROM EMP
+GROUP BY DEPTNO;
+-- 각 직무별 사원들의 급여 총합을 구한다.
+SELECT JOB, SUM(SAL)
+FROM EMP
+GROUP BY JOB;
+-- 1500 이상 급여를 받는 사원들의 부서별 급여 평균을 구한다.
+SELECT  DEPTNO, AVG(SAL)
+FROM EMP
+WHERE SAL >= 1500
+GROUP BY DEPTNO;
+```
+
+## [19강] Having
+- Group by로 묶인 각 그룹들 중에 실제 가져올 그룹을 선택할 조건을 having 절에 작성한다.
+- Having은 Group By 절의 조건이 된다.
+```SQL
+
+```
