@@ -28,7 +28,33 @@
 <br><br>
 ## 목차
 
-<!-- TOC -->autoauto- [Oracle](#oracle)auto    - [목차](#목차)auto    - [[6강] DML - SELECT 기본](#6강-dml---select-기본)auto    - [[7강] DML - 연산자 사용하기](#7강-dml---연산자-사용하기)auto        - [CONCAT 연산자](#concat-연산자)auto        - [DISTICT](#distict)auto        - [조건절](#조건절)auto    - [[9강] 논리 연산자 사용하기](#9강-논리-연산자-사용하기)auto    - [[10강] Like 연산자](#10강-like-연산자)auto    - [[11강] NULL](#11강-null)auto    - [[12강] 정렬](#12강-정렬)auto    - [[13강] 숫자함수](#13강-숫자함수)auto    - [[14강] 문자열 함수](#14강-문자열-함수)auto    - [[15강] 날짜 함수](#15강-날짜-함수)auto    - [[16강] DECODE, CASE](#16강-decode-case)auto        - [DECODE](#decode)auto        - [CASE](#case)auto    - [[17강] 그룹함수](#17강-그룹함수)auto    - [[18강] Group By](#18강-group-by)auto    - [[19강] Having](#19강-having)auto    - [[20강] 조인(join)](#20강-조인join)auto    - [[21강] Self Join, Outer Join](#21강-self-join-outer-join)auto        - [SELF JOIN](#self-join)auto        - [OUTER JOIN](#outer-join)auto    - [[22강] 서브쿼리](#22강-서브쿼리)auto    - [[23강] 결과가 하나 이상인 서브쿼리](#23강-결과가-하나-이상인-서브쿼리)auto    - [[24강] SET](#24강-set)autoauto<!-- /TOC -->
+<!-- TOC -->
+  - [목차](#목차)
+  - [[6강] DML - SELECT 기본](#6강-dml---select-기본)
+  - [[7강] DML - 연산자 사용하기](#7강-dml---연산자-사용하기)
+    - [CONCAT 연산자](#concat-연산자)
+    - [DISTICT](#distict)
+    - [조건절](#조건절)
+  - [[9강] 논리 연산자 사용하기](#9강-논리-연산자-사용하기)
+  - [[10강] Like 연산자](#10강-like-연산자)
+  - [[11강] NULL](#11강-null)
+  - [[12강] 정렬](#12강-정렬)
+  - [[13강] 숫자함수](#13강-숫자함수)
+  - [[14강] 문자열 함수](#14강-문자열-함수)
+  - [[15강] 날짜 함수](#15강-날짜-함수)
+  - [[16강] DECODE, CASE](#16강-decode-case)
+      - [DECODE](#decode)
+      - [CASE](#case)
+  - [[17강] 그룹함수](#17강-그룹함수)
+  - [[18강] Group By](#18강-group-by)
+  - [[19강] Having](#19강-having)
+  - [[20강] 조인(join)](#20강-조인join)
+  - [[21강] Self Join, Outer Join](#21강-self-join-outer-join)
+      - [SELF JOIN](#self-join)
+      - [OUTER JOIN](#outer-join)
+  - [[22강] 서브쿼리](#22강-서브쿼리)
+  - [[23강] 결과가 하나 이상인 서브쿼리](#23강-결과가-하나-이상인-서브쿼리)
+  - [[24강] SET](#24강-set)
 <br><br>
 
 ---
