@@ -19,20 +19,18 @@
 >> 14. 문자열 변경(REPLACE)
 >> 15. 공백 제거(TRIM)
 >> 16. 특정 문자열로 채우기(LPAD, RPAD)
+>> 17. WHERE 절 이어질때 AND 까먹지 마라.......(╯°□°）╯
+>> 18. 서브쿼리할때 조인을 너무 남발하는 듯 ㅠㅠ
+>> 19. KING을 직속상관으로 가지고 있는 사원들이 근무하고 있는 근무 부서명, 지역을 가지고 온다.
+
 ---
 
-<br><br><br>
+<br><br>
 ## 목차
 
-<!-- TOC -->
-- [Oracle](#oracle) 
-  - [목차](#목차)
-  - [[6강] DML - SELECT 기본](#6강-dml---select-기본)
-  - [[7강] DML - 연산자 사용하기](#7강-dml---연산자-사용하기)
-    - [CONCAT 연산자](#concat-연산자)
-    - [DISTICT](#distict)
-    - [조건절](#조건절)
-  - [[9강] 논리 연산자 사용하기](#9강-논리-연산자-사용하기)
+<!-- TOC -->autoauto- [Oracle](#oracle)auto    - [목차](#목차)auto    - [[6강] DML - SELECT 기본](#6강-dml---select-기본)auto    - [[7강] DML - 연산자 사용하기](#7강-dml---연산자-사용하기)auto        - [CONCAT 연산자](#concat-연산자)auto        - [DISTICT](#distict)auto        - [조건절](#조건절)auto    - [[9강] 논리 연산자 사용하기](#9강-논리-연산자-사용하기)auto    - [[10강] Like 연산자](#10강-like-연산자)auto    - [[11강] NULL](#11강-null)auto    - [[12강] 정렬](#12강-정렬)auto    - [[13강] 숫자함수](#13강-숫자함수)auto    - [[14강] 문자열 함수](#14강-문자열-함수)auto    - [[15강] 날짜 함수](#15강-날짜-함수)auto    - [[16강] DECODE, CASE](#16강-decode-case)auto        - [DECODE](#decode)auto        - [CASE](#case)auto    - [[17강] 그룹함수](#17강-그룹함수)auto    - [[18강] Group By](#18강-group-by)auto    - [[19강] Having](#19강-having)auto    - [[20강] 조인(join)](#20강-조인join)auto    - [[21강] Self Join, Outer Join](#21강-self-join-outer-join)auto        - [SELF JOIN](#self-join)auto        - [OUTER JOIN](#outer-join)auto    - [[22강] 서브쿼리](#22강-서브쿼리)auto    - [[23강] 결과가 하나 이상인 서브쿼리](#23강-결과가-하나-이상인-서브쿼리)auto    - [[24강] SET](#24강-set)autoauto<!-- /TOC -->
+<br><br>
+
 ---
 
 ## [6강] DML - SELECT 기본
@@ -657,7 +655,343 @@ GROUP BY DEPTNO;
 
 ## [19강] Having
 - Group by로 묶인 각 그룹들 중에 실제 가져올 그룹을 선택할 조건을 having 절에 작성한다.
+  - SELECT에서 가져온 전제 결과를 GROUP BY으로 각각의 그룹으로 묶은 다음에 HAVING절의 조건에 맞는 그룹만 남겨놓고(조건에 맞지 않는 그룹 자체를 통체로 날려버림) GROUP함수를 이용해서 남은 그룹들의 결과를 가져옴.
 - Having은 Group By 절의 조건이 된다.
 ```SQL
-
+select 컬럼명
+from 테이블명
+where 조걸절(select문을 통해 가져오는 각 ROW)
+group by 그룹기준
+having 묶인 그룹에 대한 조건
+order by 정렬기준
 ```
+```SQL
+-- 부서별 평균 급여가 2000이상은 부서의 급여 평균을 가져온다.
+SELECT DEPTNO, AVG(SAL)
+FROM EMP
+GROUP BY DEPTNO
+HAVING AVG(SAL) >= 2000;
+-- 부서별 최대 급여액이 3000이하인 부서의 급여 총합을 가져온다.
+SELECT DEPTNO, SUM(SAL)
+FROM EMP
+GROUP BY DEPTNO
+HAVING MAX(SAL) <= 3000;
+-- 부서별 최소 급여액이 1000 이하인 부서에서 직무가 CLERK인 사원들의 급여 총합을 구한다.
+SELECT SUM(SAL)
+FROM EMP
+WHERE JOB = 'CLERK'
+GROUP BY DEPTNO
+HAVING MIN(SAL) <= 1000;
+-- 각 부서의 급여 최소가 900이상 최대가 10000이하인 부서의 사원들 중 1500이상의 급여를 받는 사원들의 평균 급여액을 가져온다.
+SELECT AVG(SAL)
+FROM EMP
+WHERE SAL >= 1500
+GROUP BY DEPTNO
+HAVING MIN(SAL) >= 900 AND MAX(SAL) <= 10000;
+```
+
+## [20강] 조인(join)
+- 두 개 이상의 테이블에 있는 컬럼의 값을 한번에 가져오기 위해 사용
+- `select 컬럼명 from 테이블1, 테이블 2;`
+- 두 개 이상의 테이블을 조인하게 되면 다 대 다의 관계로 가져오기 때문에 테이블1의 로우의 수 X 테이블2의 로우의 수 만큼 로우를 가져오게 된다.
+- 두 개 이상의 테이블에서 가져온 결과 중에 정확한 결과만 가져오기 위해 공통 부분을 이용한 조건문이 반드시 필요하다.
+
+```SQL
+-- 사원의 사원번호, 이름, 근무지역을 가져온다.
+SELECT A.EMPNO, A.ENAME, B.LOC
+FROM EMP A, DEPT B
+WHERE A.DEPTNO = B.DEPTNO;
+-- 사원의 사원번호, 이름, 근무부서 이름을 가져온다.
+SELECT A.EMPNO, A.ENAME, B.DNAME
+FROM EMP A, DEPT B
+WHERE A.DEPTNO = B.DEPTNO;
+-- DALLAS에 근무하고 있는 사원들의 사원번호, 이름, 직무를 가져온다.
+SELECT A.EMPNO, A.ENAME, A.JOB
+FROM EMP A, DEPT B
+WHERE A.DEPTNO = B.DEPTNO 
+  AND B.LOC = 'DALLAS';
+-- SALES 부서에 근무하고 있는 사원들의 급여 평균을 가져온다.
+SELECT AVG(A.SAL)
+FROM EMP A, DEPT B
+WHERE A.DEPTNO = B.DEPTNO
+  AND B.DNAME = 'SALES';
+-- 2020년에 입사한 사원들의 사원번호, 이름, 입사일, 근무부서 이름을 가져온다.
+SELECT A.EMPNO, A.ENAME, A.HIREDATE, B.DNAME
+FROM EMP A, DEPT B
+WHERE A.DEPTNO = B.DEPTNO
+  AND A.HIREDATE BETWEEN '2020/01/01' AND '2020/12/31';
+-- 각 사원들의 사원번호, 이름, 급여, 급여등급을 가져온다.
+SELECT A.EMPNO, A.ENAME, A.SAL, B.GRADE 
+FROM EMP A, SALGRADE B
+WHERE A.SAL BETWEEN B.LOSAL AND HISAL; --> WHERE 조건이 같다 아니다만 들어가진 않는다. 범위도 들어갈 수 있다.
+-- SALES 부서에 근무하고 있는 사원의 사원번호, 이름, 급여등급을 가져온다.
+SELECT A.EMPNO, A.ENAME, C.GRADE
+FROM EMP A, DEPT B, SALGRADE C
+WHERE A.DEPTNO = B.DEPTNO
+  AND B.DNAME = 'SALES' 
+  AND A.SAL BETWEEN C.LOSAL AND C.HISAL;
+-- 각 급여 등급별 급여의 총합과 평균, 사원의수, 최대급여, 최소급여를 가져온다.
+SELECT SUM(A.SAL), TRUNC(AVG(A.SAL)), COUNT(A.EMPNO), MAX(A.SAL), MIN(A.SAL)
+FROM EMP A, SALGRADE B
+WHERE A.SAL BETWEEN B.LOSAL AND B.HISAL
+GROUP BY B.GRADE 
+HAVING B.GRADE = 4;
+-- 급여 등급이 4등급인 사원들의 사원번호, 이름, 급여, 근무부서이름, 근무지역을 가져온다.
+SELECT A.EMPNO, A.ENAME, A.SAL, B.DNAME, B.LOC
+FROM EMP A, DEPT B, SALGRADE C
+WHERE A.DEPTNO = B.DEPTNO
+  AND A.SAL BETWEEN C.LOSAL AND C.HISAL
+  AND C.GRADE = 4;
+```
+
+## [21강] Self Join, Outer Join
+### SELF JOIN
+- 같은 테이블을 두번 이상 조인하는 것을 의미
+- 어떤 테이블이 어떠한 용도로 사용하는 건지 정의 후 사용하는게 수월함
+```SQL
+--SMITH 사원의 사원번호, 이름, 직속상관 이름을 가져온다.
+-- A1 : SMITH 사원의 정보
+-- A2 : 직속상관의 정보
+SELECT A1.EMPNO, A1.ENAME, A2.ENAME
+FROM EMP A1, EMP A2
+WHERE A1.MGR = A2.EMPNO
+  AND A1.ENAME = 'SMITH';
+--FORD 사원 밑에서 일하는 사원들의 사원번호, 이름, 직무를 가져온다.
+-- A1 : FORD 사원의 정보
+-- A2 : 부하직원의 정보
+SELECT A2.EMPNO, A2.ENAME, A2.JOB
+FROM EMP A1, EMP A2
+WHERE A2.MGR = A1.EMPNO
+  AND A1.ENAME = 'FORD';
+--SMITH 사원의 직속상관과 동일한 직무를 가지고 있는 사원들의 사원번호, 이름, 직무를 가져온다.
+-- A1 : SMITH 정보
+-- A2 : SMITH 사원의 직속상관 정보
+-- A3 : 직속상관과 동일한 직무를 가진 사원의 정보 
+SELECT A3.EMPNO, A3.ENAME, A3.JOB
+FROM EMP A1, EMP A2, EMP A3
+WHERE A1.MGR = A2.EMPNO
+  AND A2.JOB = A3.JOB
+  AND A1.ENAME = 'SMITH';
+```
+### OUTER JOIN
+- 조인 조건에 해당하지 않기 때문에 결과에 포함되지 않는 로우까지 가져오는 조인 (+)
+```SQL
+--각 사원의 이름, 사원번호, 직장상사 이름을 가져온다. 단 직속상관이 없는 사원도 가져온다.
+-- A1 : 각 사원정보
+-- A2 : 직장상사 정보
+SELECT A1.ENAME, A1.EMPNO, A2.ENAME
+FROM EMP A1, EMP A2
+WHERE A1.MGR = A2.EMPNO(+); --> 사원의 정보(A1)에는 KING이 있는데 직장상사의 정보(A2)에는 KING이 없음. 부족한 쪽에 (+)를 붙여주기. 그럼 KING도 나옴
+--모든 부서의 소속 사원의 근무부서명, 사원번호, 사원이름, 급여를 가져온다.
+SELECT * FROM DEPT; --> 4행 출력
+SELECT DISTINCT DEPTNO FROM EMP; --> 3행 출력. 40번 부서에서 근무하는 사원이 없다는 뜻
+-- A1 : 모든 부서 소속 사원
+-- A2 : 소속이 없는 사원
+SELECT B.DNAME, A.EMPNO, A.ENAME, A.SAL
+FROM EMP A, DEPT B
+WHERE A.DEPTNO(+) = B.DEPTNO --> EMP 테이블에 40번이 없으니까!
+ORDER BY DNAME ASC;
+```
+
+## [22강] 서브쿼리
+- 쿼리문 안에 들어가는 쿼리문을 서브 쿼리라고 한다.
+- 쿼리문 작성시 사용되는 값을 다른 쿼리문을 통해 구해야 할 경우 사용한다.
+```SQL
+--SCOTT 사원이 근무하고 있는 부서의 이름을 가져온다.
+SELECT B.DNAME
+FROM EMP A, DEPT B
+WHERE A.DEPTNO = B.DEPTNO
+  AND A.ENAME = 'SCOTT'; --> 서브쿼리를 만드는 건 조인문으로도 가능하다.
+  
+SELECT DNAME
+FROM DEPT 
+WHERE DEPTNO = (SELECT DEPTNO
+                FROM EMP
+                WHERE ENAME = 'SCOTT');
+--SMITH와 같은 부서에 근무하고 있는 사원들의 사원번호, 이름, 급여액, 부서이름을 가져온다.
+SELECT A.EMPNO, A.ENAME, A.SAL, B.DNAME
+FROM EMP A, DEPT B
+WHERE A.DEPTNO = B.DEPTNO
+  AND A.DEPTNO = (SELECT DEPTNO 
+                 FROM EMP
+                 WHERE ENAME = 'SMITH');
+                 
+--MARTIN과 같은 직무를 가지고 있는 사원들의 사원번호, 이름, 직무를 가져온다.
+SELECT EMPNO, ENAME, JOB 
+FROM EMP
+WHERE JOB = (SELECT JOB
+             FROM EMP
+             WHERE ENAME = 'MARTIN');
+--ALLEN과 같은 직속상관을 가진 사원들의 사원번호, 이름, 직속상관이름을 가져온다.
+-- A : 사원의 정보
+-- B : AEELEN의 직속 상관 정보
+SELECT A.EMPNO, A.ENAME, B.ENAME
+FROM EMP A, EMP B
+WHERE A.MGR = B.EMPNO
+  AND A.MGR = (SELECT MGR  --> WHERE 절 이어질때 AND 까먹지 마라.......(╯°□°）╯
+               FROM EMP
+               WHERE ENAME = 'ALLEN');
+--WARD와 같은 부서에 근무하고 있는 사원들의 사원번호, 이름, 부서번호를 가져온다.               
+SELECT EMPNO, ENAME, DEPTNO
+FROM EMP
+WHERE DEPTNO = (SELECT DEPTNO
+                FROM EMP
+                WHERE ENAME='WARD');
+--SALESMAN의 평균 급여보다 많이 받는 사원들의 사원번호, 이름, 급여를 가져온다.
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE SAL > (SELECT AVG(SAL)
+             FROM EMP
+             WHERE JOB = 'SALESMAN');
+--DALLAS 지역에 근무하는 사원들의 평균 급여를 가져온다.          
+SELECT TRUNC(AVG(SAL))
+FROM EMP
+WHERE DEPTNO = (SELECT DEPTNO
+                FROM DEPT
+                WHERE LOC = 'DALLAS');
+--SALES 부서에 근무하는 사원들의 사원번호, 이름, 근무지역을 가져온다.
+SELECT A.EMPNO, A.ENAME, B.LOC
+FROM EMP A, DEPT B
+WHERE A.DEPTNO = B.DEPTNO
+  AND A.DEPTNO = (SELECT DEPTNO
+                  FROM DEPT
+                  WHERE DNAME = 'SALES');
+--CHICAGO 지역에 근무하는 사원들 중 BLAKE이 직속상관인 사원들의 사원번호, 이름, 직무를 가져온다.	
+SELECT EMPNO, ENAME, JOB
+FROM EMP
+WHERE DEPTNO = (SELECT DEPTNO
+                FROM DEPT
+                WHERE LOC = 'CHICAGO')
+  AND MGR = (SELECT EMPNO
+             FROM EMP
+             WHERE ENAME = 'BLAKE'); --> 조인을 너무 많이 쓰려고 하지 마라!!!
+```
+
+## [23강] 결과가 하나 이상인 서브쿼리
+- 서브쿼리를 통해 가져온 결과가 하나 이상인 경우 결과를 모두 만족하거나 결과 중 하나만 만족하거나 해야 하는 경우가 있다. 이때 다음과 같은 연산자를 사용하면 된다.
+  - IN : 서브쿼리의 결과 중 하나라도 일치하면 조건은 참이 된다.
+    - 같다 OR 같냐?
+  - ANY, SOME : 서브쿼리의 결과와 하나 이상 일치하면 조건은 참이 된다.
+    - 조건을 자유롭게 만들 수 있음.
+  - ALL : 서브쿼리의 결과와 모두 일치해야 조건은 참이 된다.
+```SQL
+--3000 이상의 급여를 받는 사원들과 같은 부서에 근무하고 있는 사원의 사원번호, 이름, 급여를 가져온다
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE DEPTNO IN (SELECT DEPTNO
+                FROM EMP
+                WHERE SAL >= 3000); --> IN : 서브쿼리 결과 중 조건이 하나라도 일치하면 참
+
+SELECT ENAME, DEPTNO  --> 급여를 3000이상 받는 사람, 부서번호
+FROM EMP
+WHERE SAL >= 3000;
+--직무가 CLERK인 사원과 동일한 부서에 근무하고 있는 사원들의 사원번호, 이름, 입사일 가져온다.
+SELECT EMPNO, ENAME, HIREDATE, JOB, DEPTNO
+FROM EMP
+WHERE DEPTNO IN (SELECT DEPTNO
+                FROM EMP
+                WHERE JOB = 'CLERK');
+SELECT ENAME, JOB, DEPTNO
+FROM EMP
+WHERE JOB = 'CLERK';
+--KING을 직속상관으로 가지고 있는 사원들이 근무하고 있는 근무 부서명, 지역을 가지고 온다.
+SELECT DNAME, LOC
+FROM DEPT
+WHERE DEPTNO IN (SELECT DEPTNO
+                 FROM EMP
+                 WHERE MGR = (SELECT EMPNO
+                              FROM EMP
+                              WHERE ENAME = 'KING'));
+SELECT ENAME,DEPTNO, MGR
+FROM EMP
+WHERE MGR = (SELECT EMPNO
+             FROM EMP
+             WHERE ENAME = 'KING');
+--CLERK들의 직속상관의 사원번호, 이름, 급여를 가져온다.
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE EMPNO IN (SELECT MGR
+                FROM EMP
+                WHERE JOB = 'CLERK');
+--각 부서별 급여 평균보다 더 많이 받는 사원의 사원번호, 이름, 급여를 가져온다.
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE SAL > ALL (SELECT AVG(SAL) --> 서브쿼리의 결과들이 모두 급여 평균보다 많아야 하므로 ALL!!
+                 FROM EMP
+                 GROUP BY DEPTNO);
+ SELECT AVG(SAL), DEPTNO --> 각 부서별 평균 급여
+ FROM EMP
+ GROUP BY DEPTNO;
+ 
+ SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE SAL > (SELECT MAX(AVG(SAL)) --> 최고 급여액보다 더 큰 것을 가져오면 되므로 MAX
+             FROM EMP
+             GROUP BY DEPTNO);
+--각 부서별 급여 최저치보다 더 많이 받는 사원들의 사원번호, 이름, 급여를 가져온다.
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE SAL > ALL (SELECT MIN(SAL)
+                 FROM EMP
+                 GROUP BY DEPTNO);
+
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE SAL > (SELECT MAX(MIN(SAL))
+             FROM EMP
+             GROUP BY DEPTNO);
+
+SELECT MAX(MIN(SAL))
+FROM EMP
+GROUP BY DEPTNO;
+
+SELECT MIN(SAL)
+FROM EMP
+GROUP BY DEPTNO;
+--SALESMAN 보다 급여를 적게 받는 사원들의 사원번호, 이름, 급여를 가져온다.
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE SAL < ALL (SELECT SAL
+                 FROM EMP
+                 WHERE JOB = 'SALESMAN');
+SELECT SAL
+FROM EMP
+WHERE JOB = 'SALESMAN';
+
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE SAL <  (SELECT MIN(SAL)
+              FROM EMP
+              WHERE JOB = 'SALESMAN');
+--각 부서별 최저 급여액수보다 많이 받는 사원들이 사원번호, 이름, 급여를 가져온다. (하나라도 만족하면 가져옴)
+SELECT EMPNO, ENAME, SAL
+FROM EMP
+WHERE SAL > ANY (SELECT MIN(MIN(SAL))
+                 FROM EMP
+                 GROUP BY DEPTNO);
+
+SELECT MIN(MIN(SAL))
+FROM EMP
+GROUP BY DEPTNO;
+
+SELECT MIN(SAL)
+FROM EMP
+GROUP BY DEPTNO;
+--DALLAS에 근무하고 있는 사원들 중 가장 나중에 입사한 사원의 입사 날짜보다 더 먼저 입사한 사원들의 사원번호, 이름, 입사일을 가져온다. (하나라도 만족하면 가져옴)
+SELECT EMPNO, ENAME, HIREDATE
+FROM EMP
+WHERE HIREDATE < ANY(SELECT HIREDATE
+                     FROM EMP
+                     WHERE DEPTNO = (SELECT DEPTNO
+                                     FROM DEPT
+                                     WHERE LOC = 'DALLAS'));
+
+SELECT MAX(HIREDATE)
+FROM EMP
+WHERE DEPTNO = ();
+SELECT DEPTNO
+FROM DEPT
+WHERE LOC = 'DALLAS';
+```
+
+## [24강] SET
